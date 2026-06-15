@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import logoImg from '../assets/logo.jpeg';
 
 const Footer = () => {
   const { t, setLanguage } = useLanguage();
@@ -14,9 +15,7 @@ const Footer = () => {
           {/* Brand Info */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-6 group">
-              <div className="relative w-8 h-8 border border-gold-500 rotate-45 flex items-center justify-center">
-                <span className="text-gold-500 text-xs -rotate-45 font-semibold">RS</span>
-              </div>
+              <img src={logoImg} alt="R SUTARIYA EXPORTS Logo" className="h-8 w-8 object-contain rounded-sm bg-white p-0.5" />
               <div className="flex flex-col">
                 <span className="text-luxury-text tracking-widest text-sm font-semibold group-hover:text-gold-500 transition-colors duration-300">R SUTARIYA</span>
                 <span className="text-gold-500 tracking-[0.25em] text-[7px] uppercase -mt-1">EXPORTS</span>

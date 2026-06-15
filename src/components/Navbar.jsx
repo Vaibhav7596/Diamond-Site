@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { Menu, X, Globe, ChevronDown, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoImg from '../assets/logo.jpeg';
 
 const Navbar = () => {
   const { t, language, setLanguage } = useLanguage();
@@ -61,9 +62,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 border border-gold-500 rotate-45 flex items-center justify-center transition-transform duration-500 group-hover:rotate-[135deg]">
-                <span className="text-gold-500 font-serif text-sm -rotate-45 font-semibold group-hover:rotate-[-135deg] transition-transform duration-500">RS</span>
-              </div>
+              <img src={logoImg} alt="R SUTARIYA EXPORTS Logo" className="h-10 w-10 object-contain rounded-sm bg-white p-0.5" />
               <div className="flex flex-col">
                 <span className="text-white font-serif tracking-widest text-base font-semibold group-hover:text-gold-500 transition-colors duration-300">R SUTARIYA</span>
                 <span className="text-gold-500 tracking-[0.25em] text-[8px] uppercase -mt-1 font-serif">EXPORTS</span>
