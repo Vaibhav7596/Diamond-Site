@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 import LightReflect from '../components/LightReflect';
-import diamondShapes from '../assets/diamond_shapes.png';
 import { ChevronRight } from 'lucide-react';
+
+import roundCut from '../assets/round_cut.jfif';
+import ovalCut from '../assets/oval_cut.jfif';
+import princessCut from '../assets/princess_cut.jfif';
+import pearCut from '../assets/pear_cut.jfif';
+import radiantCut from '../assets/radiant_cut.jfif';
+import cushionCut from '../assets/cushion_cut.jfif';
 
 const Collection = () => {
   const { t } = useLanguage();
@@ -12,6 +18,7 @@ const Collection = () => {
   const collections = [
     {
       shape: "Round",
+      image: roundCut,
       desc: t('home.collection.roundDesc'),
       carats: "0.50 - 15.0 ct+",
       colors: "D - H (Colorless / Near Colorless)",
@@ -20,6 +27,7 @@ const Collection = () => {
     },
     {
       shape: "Oval",
+      image: ovalCut,
       desc: t('home.collection.ovalDesc'),
       carats: "0.70 - 12.0 ct+",
       colors: "D - H (Colorless / Near Colorless)",
@@ -28,6 +36,7 @@ const Collection = () => {
     },
     {
       shape: "Princess",
+      image: princessCut,
       desc: t('home.collection.princessDesc'),
       carats: "0.50 - 10.0 ct+",
       colors: "D - H (Colorless / Near Colorless)",
@@ -36,6 +45,7 @@ const Collection = () => {
     },
     {
       shape: "Pear",
+      image: pearCut,
       desc: t('home.collection.pearDesc'),
       carats: "0.80 - 10.0 ct+",
       colors: "D - H (Colorless / Near Colorless)",
@@ -44,6 +54,7 @@ const Collection = () => {
     },
     {
       shape: "Radiant",
+      image: radiantCut,
       desc: t('home.collection.radiantDesc'),
       carats: "0.80 - 15.0 ct+",
       colors: "D - H (Colorless / Near Colorless)",
@@ -52,6 +63,7 @@ const Collection = () => {
     },
     {
       shape: "Cushion",
+      image: cushionCut,
       desc: t('home.collection.cushionDesc'),
       carats: "1.00 - 12.0 ct+",
       colors: "D - H (Colorless / Near Colorless)",
@@ -104,7 +116,7 @@ const Collection = () => {
                   <div className="w-full lg:w-1/3 aspect-[4/3] bg-black/5 dark:bg-black/45 border border-luxury-border flex items-center justify-center p-6 relative rounded-sm">
                     <LightReflect>
                       <img 
-                        src={diamondShapes} 
+                        src={item.image} 
                         alt={`${item.shape} Cut Diamond Specs`} 
                         className="w-full h-full object-contain filter brightness-95"
                       />

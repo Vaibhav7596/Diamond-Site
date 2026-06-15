@@ -5,8 +5,14 @@ import { motion } from 'framer-motion';
 import LightReflect from '../components/LightReflect';
 import NumberCounter from '../components/NumberCounter';
 import heroDiamond from '../assets/hero_diamond.png';
-import diamondShapes from '../assets/diamond_shapes.png';
 import { Award, ShieldCheck, Factory, Truck, UserCheck } from 'lucide-react';
+
+import roundCut from '../assets/round_cut.jfif';
+import ovalCut from '../assets/oval_cut.jfif';
+import princessCut from '../assets/princess_cut.jfif';
+import pearCut from '../assets/pear_cut.jfif';
+import radiantCut from '../assets/radiant_cut.jfif';
+import cushionCut from '../assets/cushion_cut.jfif';
 
 const Home = () => {
   const { t } = useLanguage();
@@ -30,12 +36,12 @@ const Home = () => {
   ];
 
   const collections = [
-    { shape: "Round", desc: t('home.collection.roundDesc'), sizes: "0.50ct - 15.0ct+" },
-    { shape: "Oval", desc: t('home.collection.ovalDesc'), sizes: "0.70ct - 12.0ct+" },
-    { shape: "Princess", desc: t('home.collection.princessDesc'), sizes: "0.50ct - 10.0ct+" },
-    { shape: "Pear", desc: t('home.collection.pearDesc'), sizes: "0.80ct - 10.0ct+" },
-    { shape: "Cushion", desc: t('home.collection.cushionDesc'), sizes: "1.00ct - 12.0ct+" },
-    { shape: "Radiant", desc: t('home.collection.radiantDesc'), sizes: "0.80ct - 15.0ct+" },
+    { shape: "Round", image: roundCut, desc: t('home.collection.roundDesc'), sizes: "0.50ct - 15.0ct+" },
+    { shape: "Oval", image: ovalCut, desc: t('home.collection.ovalDesc'), sizes: "0.70ct - 12.0ct+" },
+    { shape: "Princess", image: princessCut, desc: t('home.collection.princessDesc'), sizes: "0.50ct - 10.0ct+" },
+    { shape: "Pear", image: pearCut, desc: t('home.collection.pearDesc'), sizes: "0.80ct - 10.0ct+" },
+    { shape: "Cushion", image: cushionCut, desc: t('home.collection.cushionDesc'), sizes: "1.00ct - 12.0ct+" },
+    { shape: "Radiant", image: radiantCut, desc: t('home.collection.radiantDesc'), sizes: "0.80ct - 15.0ct+" },
   ];
 
   return (
@@ -236,7 +242,7 @@ const Home = () => {
                 <div className="h-48 w-full relative overflow-hidden bg-black/5 dark:bg-black/45 border-b border-luxury-border flex items-center justify-center p-4">
                   <LightReflect>
                     <img 
-                      src={diamondShapes} 
+                      src={item.image} 
                       alt={`${item.shape} Cut Diamond Preview`} 
                       className="w-full h-full object-contain filter brightness-90 transition-transform duration-700 group-hover:scale-105"
                     />

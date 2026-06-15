@@ -72,19 +72,21 @@ const Footer = () => {
                 <MapPin className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />
                 <span className="text-luxury-text-sec leading-relaxed font-serif">
                   <strong className="text-luxury-text">R SUTARIYA EXPORTS</strong><br />
-                  Surat, Gujarat, India
+                  308, Vrundavan Diamond Center,<br />
+                  Opp. Varachha Police Station,<br />
+                  Varachha Main Road, Surat, Gujarat, India
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-gold-500 shrink-0" />
-                <a href="mailto:info@rsutariyaexports.com" className="hover:text-gold-500 transition-colors font-serif">
-                  info@rsutariyaexports.com
+                <a href="mailto:Kinjal.791@gmail.com" className="hover:text-gold-500 transition-colors font-serif">
+                  Kinjal.791@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-gold-500 shrink-0" />
-                <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="hover:text-gold-500 transition-colors font-serif">
-                  +91 (999) 999-9999 (WhatsApp)
+                <a href="https://wa.me/919898507686" target="_blank" rel="noopener noreferrer" className="hover:text-gold-500 transition-colors font-serif">
+                  +91-9898507686 (WhatsApp)
                 </a>
               </li>
             </ul>
@@ -99,7 +101,7 @@ const Footer = () => {
               Connecting European wholesalers, manufacturers, and designers directly with factory pricing.
             </p>
             <a
-              href="https://wa.me/919999999999"
+              href="https://wa.me/919898507686"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 justify-center w-full py-3 border border-gold-500 hover:border-gold-600 text-gold-500 hover:text-black font-serif text-xs uppercase tracking-widest hover:bg-gold-500 transition-all duration-300 rounded-sm cursor-pointer shadow-sm"

@@ -118,7 +118,7 @@ const Contact = () => {
                     <MapPin className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-luxury-text font-serif font-bold text-sm mb-1">{t('contactPage.location')}</h4>
-                      <p className="leading-relaxed font-serif">{t('brand')}<br />Surat, Gujarat, India</p>
+                      <p className="leading-relaxed font-serif">{t('brand')}<br />{t('contactPage.address')}</p>
                     </div>
                   </li>
                   
@@ -126,8 +126,8 @@ const Contact = () => {
                     <Mail className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-luxury-text font-serif font-bold text-sm mb-1">Direct Email</h4>
-                      <a href="mailto:exports@rsutariyaexports.com" className="text-gold-500 hover:text-luxury-text transition-colors">
-                        exports@rsutariyaexports.com
+                      <a href="mailto:Kinjal.791@gmail.com" className="text-gold-500 hover:text-luxury-text transition-colors">
+                        Kinjal.791@gmail.com
                       </a>
                     </div>
                   </li>
@@ -136,8 +136,8 @@ const Contact = () => {
                     <Phone className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-luxury-text font-serif font-bold text-sm mb-1">WhatsApp Hotline</h4>
-                      <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:text-luxury-text transition-colors">
-                        +91 (999) 999-9999
+                      <a href="https://wa.me/919898507686" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:text-luxury-text transition-colors">
+                        +91-9898507686
                       </a>
                     </div>
                   </li>
