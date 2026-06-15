@@ -76,7 +76,7 @@ const Navbar = () => {
                     key={link.path}
                     to={link.path}
                     className={({ isActive }) => `relative py-2 text-xs uppercase tracking-widest font-serif transition-colors duration-300 ${
-                      isActive ? 'text-gold-500 font-semibold' : 'text-luxury-text-sec hover:text-luxury-text'
+                      isActive ? 'text-gold-500 font-semibold' : 'text-luxury-text hover:text-gold-500'
                     }`}
                   >
                     {link.label}
@@ -95,11 +95,11 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   onClick={() => setShowLangDropdown(!showLangDropdown)}
-                  className="flex items-center gap-1.5 py-2 px-3 text-xs uppercase tracking-widest text-luxury-text-sec hover:text-luxury-text transition-colors duration-300 cursor-pointer"
+                  className="flex items-center gap-1.5 py-2 px-3 text-xs uppercase tracking-widest text-luxury-text hover:text-gold-500 transition-colors duration-300 cursor-pointer"
                 >
                   <Globe className="w-3.5 h-3.5 text-gold-500" />
                   <span>{currentLangObj.flag} {language.toUpperCase()}</span>
-                  <ChevronDown className={`w-3 h-3 text-gray-400 transition-transform duration-300 ${showLangDropdown ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-3 h-3 text-luxury-text transition-transform duration-300 ${showLangDropdown ? 'rotate-180' : ''}`} />
                 </button>
 
                 <AnimatePresence>
@@ -134,7 +134,7 @@ const Navbar = () => {
               {/* Theme Switcher Toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2 text-luxury-text-sec hover:text-gold-500 transition-colors duration-300 cursor-pointer"
+                className="p-2 text-luxury-text hover:text-gold-500 transition-colors duration-300 cursor-pointer"
                 aria-label="Toggle theme"
               >
                 {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
@@ -154,7 +154,7 @@ const Navbar = () => {
               {/* Theme Switcher Button for Mobile */}
               <button
                 onClick={toggleTheme}
-                className="p-2 text-luxury-text-sec hover:text-gold-500 transition-colors"
+                className="p-2 text-luxury-text hover:text-gold-500 transition-colors"
                 aria-label="Toggle theme"
               >
                 {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
@@ -167,7 +167,7 @@ const Navbar = () => {
                   const nextIndex = (currentIndex + 1) % languages.length;
                   setLanguage(languages[nextIndex].code);
                 }}
-                className="flex items-center gap-1 py-1.5 px-2 text-xs text-luxury-text-sec border border-luxury-border rounded-sm cursor-pointer"
+                className="flex items-center gap-1 py-1.5 px-2 text-xs text-luxury-text border border-luxury-border rounded-sm cursor-pointer"
               >
                 <Globe className="w-3.5 h-3.5 text-gold-500" />
                 <span>{currentLangObj.flag}</span>
@@ -175,7 +175,7 @@ const Navbar = () => {
 
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-luxury-text-sec hover:text-luxury-text p-2 cursor-pointer"
+                className="text-luxury-text hover:text-gold-500 p-2 cursor-pointer"
                 aria-label="Toggle menu"
               >
                 {isOpen ? <X className="w-6 h-6 text-gold-500" /> : <Menu className="w-6 h-6" />}
@@ -201,7 +201,7 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className={({ isActive }) => `block py-2.5 px-4 text-sm uppercase tracking-widest font-serif transition-colors ${
-                    isActive ? 'text-gold-500 bg-gold-500/5 border-l-2 border-gold-500 pl-3.5 font-semibold' : 'text-luxury-text-sec hover:text-luxury-text'
+                    isActive ? 'text-gold-500 bg-gold-500/5 border-l-2 border-gold-500 pl-3.5 font-semibold' : 'text-luxury-text hover:text-gold-500'
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
