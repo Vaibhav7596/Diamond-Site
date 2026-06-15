@@ -24,7 +24,7 @@ const ExportShipping = () => {
 
   const destinations = [
     {
-      flag: '🇮🇹',
+      flagCode: 'it',
       city: 'Italy',
       hubs: 'Milan · Rome · Vicenza · Valenza',
       transit: '2 – 3 Days',
@@ -32,7 +32,7 @@ const ExportShipping = () => {
       detail: 'Direct door-to-door delivery to Italian wholesalers, goldsmiths, and fine jewelry ateliers. Full customs clearance handled on both ends.',
     },
     {
-      flag: '🇫🇷',
+      flagCode: 'fr',
       city: 'France',
       hubs: 'Paris · Lyon · Nice',
       transit: '3 – 4 Days',
@@ -40,7 +40,7 @@ const ExportShipping = () => {
       detail: 'Servicing Parisian jewelry maisons and boutique designers with fully insured armored logistics via Malca-Amit & Brinks.',
     },
     {
-      flag: '🇪🇺',
+      flagCode: 'eu',
       city: 'Rest of Europe',
       hubs: 'Antwerp · Amsterdam · Zurich',
       transit: '3 – 5 Days',
@@ -247,7 +247,13 @@ const ExportShipping = () => {
                 </div>
 
                 <div className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/30 hover:shadow-[0_0_25px_rgba(197,168,128,0.06)] transition-all duration-300 group">
-                  <span className="text-4xl block mb-4">{dest.flag}</span>
+                  <div className="mb-4">
+                    <img 
+                      src={`https://flagcdn.com/${dest.flagCode}.svg`} 
+                      alt={dest.city} 
+                      className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10"
+                    />
+                  </div>
                   <h3 className="text-luxury-text text-xl font-serif font-bold tracking-wider mb-1 group-hover:text-gold-500 transition-colors duration-300">{dest.city}</h3>
                   <p className="text-[10px] text-gold-500/80 font-sans uppercase tracking-widest mb-4">{dest.hubs}</p>
                   <p className="text-luxury-text-sec text-xs leading-relaxed font-sans mb-6">{dest.detail}</p>

@@ -6,9 +6,9 @@ const LanguageSelection = () => {
   const { setLanguage } = useLanguage();
 
   const options = [
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'en', name: 'English', flagCode: 'gb' },
+    { code: 'it', name: 'Italiano', flagCode: 'it' },
+    { code: 'fr', name: 'Français', flagCode: 'fr' },
   ];
 
   return (
@@ -54,7 +54,11 @@ const LanguageSelection = () => {
               onClick={() => setLanguage(opt.code)}
               className="w-full sm:w-36 py-4 px-6 bg-luxury-dark/80 border border-gold-800/60 text-white font-serif hover:border-gold-400 hover:shadow-[0_0_15px_rgba(197,168,128,0.2)] rounded-sm transition-all duration-300 flex flex-col items-center justify-center gap-2 group cursor-pointer"
             >
-              <span className="text-2xl group-hover:scale-110 transition-transform duration-300">{opt.flag}</span>
+              <img 
+                src={`https://flagcdn.com/${opt.flagCode}.svg`} 
+                alt={opt.name} 
+                className="w-9 h-6 object-cover rounded-sm group-hover:scale-110 transition-transform duration-300 shadow-md border border-gold-800/40"
+              />
               <span className="text-sm tracking-wider uppercase group-hover:text-gold-300 transition-colors duration-300">{opt.name}</span>
             </motion.button>
           ))}

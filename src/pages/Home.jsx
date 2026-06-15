@@ -355,18 +355,36 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/25 transition-all duration-300">
-              <span className="text-3xl mb-4 block">🇮🇹</span>
+            <div className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="mb-4">
+                <img 
+                  src="https://flagcdn.com/it.svg" 
+                  alt="Italy" 
+                  className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10"
+                />
+              </div>
               <h3 className="text-luxury-text text-md font-serif mb-2 tracking-wider font-bold">{t('home.exportCoverage.italyTitle')}</h3>
               <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{t('home.exportCoverage.italyDesc')}</p>
             </div>
-            <div className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/25 transition-all duration-300">
-              <span className="text-3xl mb-4 block">🇫🇷</span>
+            <div className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="mb-4">
+                <img 
+                  src="https://flagcdn.com/fr.svg" 
+                  alt="France" 
+                  className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10"
+                />
+              </div>
               <h3 className="text-luxury-text text-md font-serif mb-2 tracking-wider font-bold">{t('home.exportCoverage.franceTitle')}</h3>
               <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{t('home.exportCoverage.franceDesc')}</p>
             </div>
-            <div className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/25 transition-all duration-300">
-              <span className="text-3xl mb-4 block">🇪🇺</span>
+            <div className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="mb-4">
+                <img 
+                  src="https://flagcdn.com/eu.svg" 
+                  alt="Europe" 
+                  className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10"
+                />
+              </div>
               <h3 className="text-luxury-text text-md font-serif mb-2 tracking-wider font-bold">{t('home.exportCoverage.europeTitle')}</h3>
               <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{t('home.exportCoverage.europeDesc')}</p>
             </div>

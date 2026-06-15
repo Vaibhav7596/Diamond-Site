@@ -126,8 +126,8 @@ const Contact = () => {
                     <Mail className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-luxury-text font-serif font-bold text-sm mb-1">Direct Email</h4>
-                      <a href="mailto:Kinjal.791@gmail.com" className="text-gold-500 hover:text-luxury-text transition-colors">
-                        Kinjal.791@gmail.com
+                      <a href="mailto:rsutariyaexports@gmail.com" className="text-gold-500 hover:text-luxury-text transition-colors">
+                        rsutariyaexports@gmail.com
                       </a>
                     </div>
                   </li>

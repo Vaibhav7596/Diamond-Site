@@ -42,9 +42,9 @@ const Navbar = () => {
   ];
 
   const languages = [
-    { code: 'en', label: 'English', flag: '🇬🇧' },
-    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
-    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+    { code: 'en', label: 'English', flagCode: 'gb' },
+    { code: 'it', label: 'Italiano', flagCode: 'it' },
+    { code: 'fr', label: 'Français', flagCode: 'fr' },
   ];
 
   const currentLangObj = languages.find(l => l.code === language) || languages[0];
@@ -99,7 +99,14 @@ const Navbar = () => {
                   className="flex items-center gap-1.5 py-2 px-3 text-xs uppercase tracking-widest text-white/90 hover:text-gold-500 transition-colors duration-300 cursor-pointer"
                 >
                   <Globe className="w-3.5 h-3.5 text-gold-500" />
-                  <span>{currentLangObj.flag} {language.toUpperCase()}</span>
+                  <span className="flex items-center gap-1.5">
+                    <img 
+                      src={`https://flagcdn.com/${currentLangObj.flagCode}.svg`} 
+                      alt={currentLangObj.label} 
+                      className="w-4 h-3 object-cover rounded-[1px] border border-white/10" 
+                    />
+                    {language.toUpperCase()}
+                  </span>
                   <ChevronDown className={`w-3 h-3 text-white/70 transition-transform duration-300 ${showLangDropdown ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -123,7 +130,11 @@ const Navbar = () => {
                             language === lang.code ? 'text-gold-500 bg-gold-500/5' : 'text-white/85'
                           }`}
                         >
-                          <span>{lang.flag}</span>
+                          <img 
+                            src={`https://flagcdn.com/${lang.flagCode}.svg`} 
+                            alt={lang.label} 
+                            className="w-4 h-3 object-cover rounded-[1px] border border-white/10" 
+                          />
                           <span>{lang.label}</span>
                         </button>
                       ))}
@@ -171,7 +182,11 @@ const Navbar = () => {
                 className="flex items-center gap-1 py-1.5 px-2 text-xs text-white/90 border border-white/20 rounded-sm cursor-pointer"
               >
                 <Globe className="w-3.5 h-3.5 text-gold-500" />
-                <span>{currentLangObj.flag}</span>
+                <img 
+                  src={`https://flagcdn.com/${currentLangObj.flagCode}.svg`} 
+                  alt={currentLangObj.label} 
+                  className="w-4 h-3 object-cover rounded-[1px] border border-white/10" 
+                />
               </button>
 
               <button
