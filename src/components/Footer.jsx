@@ -71,9 +71,9 @@ const Footer = () => {
                 <MapPin className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />
                 <span className="text-luxury-text-sec leading-relaxed font-serif">
                   <strong className="text-luxury-text">R SUTARIYA EXPORTS</strong><br />
-                  308, Vrundavan Diamond Center,<br />
-                  Opp. Varachha Police Station,<br />
-                  Varachha Main Road, Surat, Gujarat, India
+                  Room No. 106, Vrundavan Diamond Center,<br />
+                  Opp. Central Warehouse, Varachha Police Station,<br />
+                  Varachha Main Road, Surat – 395006, Gujarat, India
                 </span>
               </li>
               <li className="flex items-center gap-3">

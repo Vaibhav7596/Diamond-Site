@@ -188,7 +188,7 @@ export const translations = {
       quantity: "Quantity Requirement (e.g. 5 stones, 10 carats)",
       message: "Additional Specifications / Message",
       location: "Office Location",
-      address: "308, Vrundavan Diamond Center, Opp. Varachha Police Station, Varachha Main Road, Surat, Gujarat, India",
+      address: "Room No. 106, Vrundavan Diamond Center, Opp. Central Warehouse, Varachha Police Station, Varachha Main Road, Surat – 395006, Gujarat, India",
       hours: "Business Hours",
       hoursVal: "Mon - Sat: 09:00 AM - 06:00 PM (IST)"
     }
@@ -382,7 +382,7 @@ export const translations = {
       quantity: "Requisito Quantità (es. 5 pietre, 10 carati)",
       message: "Specifiche Aggiuntive / Messaggio",
       location: "Sede Ufficio",
-      address: "308, Vrundavan Diamond Center, Opp. Varachha Police Station, Varachha Main Road, Surat, Gujarat, India",
+      address: "Room No. 106, Vrundavan Diamond Center, Opp. Central Warehouse, Varachha Police Station, Varachha Main Road, Surat – 395006, Gujarat, India",
       hours: "Orari di Apertura",
       hoursVal: "Lun - Sab: 09:00 - 18:00 (IST)"
     }
@@ -576,7 +576,7 @@ export const translations = {
       quantity: "Quantité Requise (ex. 5 pierres, 10 carats)",
       message: "Spécifications Supplémentaires / Message",
       location: "Localisation du Bureau",
-      address: "308, Vrundavan Diamond Center, Opp. Varachha Police Station, Varachha Main Road, Surat, Gujarat, Inde",
+      address: "Room No. 106, Vrundavan Diamond Center, Opp. Central Warehouse, Varachha Police Station, Varachha Main Road, Surat – 395006, Gujarat, Inde",
       hours: "Heures d'Ouverture",
       hoursVal: "Lun - Sam : 09:00 - 18:00 (IST)"
     }
