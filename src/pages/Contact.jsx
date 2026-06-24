@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Check } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Check, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -51,19 +51,35 @@ const Contact = () => {
     // Google Apps Script Webhook endpoint (configure here)
     const webhookUrl = '';
 
+    // Build email body as fallback / primary route
+    const emailBody = [
+      `Full Name: ${formData.fullName}`,
+      `Company: ${formData.companyName}`,
+      `Country: ${formData.country}`,
+      `Email: ${formData.email}`,
+      `WhatsApp: ${formData.whatsappNumber}`,
+      `Diamond Shape: ${formData.diamondShape}`,
+      `Carat Requirement: ${formData.caratRequirement}`,
+      `Quantity: ${formData.quantityRequirement}`,
+      `Message: ${formData.message || 'N/A'}`,
+    ].join('%0A');
+
+    const mailtoLink = `mailto:rsutariyaexports@gmail.com?subject=B2B%20Diamond%20Inquiry%20-%20${encodeURIComponent(formData.companyName || formData.fullName)}&body=${emailBody}`;
+
     try {
       if (webhookUrl) {
-        const response = await fetch(webhookUrl, {
+        await fetch(webhookUrl, {
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
-        
         setIsSubmitting(false);
         setIsSubmitted(true);
       } else {
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        // Open mailto: link so the inquiry always reaches rsutariyaexports@gmail.com
+        window.location.href = mailtoLink;
+        await new Promise(resolve => setTimeout(resolve, 1200));
         setIsSubmitting(false);
         setIsSubmitted(true);
       }
@@ -383,6 +399,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Floating WhatsApp CTA is rendered globally in App.jsx */}
     </div>
   );
 };

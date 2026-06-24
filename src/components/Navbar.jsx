@@ -55,28 +55,29 @@ const Navbar = () => {
     <>
       <nav className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
         showTransparent 
-          ? 'bg-transparent py-6' 
-          : 'bg-[#0b0c10]/95 backdrop-blur-md border-b border-gold-500/15 py-4 shadow-sm'
+          ? 'bg-transparent py-5' 
+          : 'bg-[#0b0c10]/95 backdrop-blur-md border-b border-gold-500/15 py-3.5 shadow-sm'
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center gap-4">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <img src={logoImg} alt="R SUTARIYA EXPORTS Logo" className="h-10 w-10 object-contain rounded-sm bg-white p-0.5" />
+            <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
+              <img src={logoImg} alt="R SUTARIYA EXPORTS Logo" className="h-9 w-9 object-contain rounded-sm bg-white p-0.5" />
               <div className="flex flex-col">
-                <span className="text-white font-serif tracking-widest text-base font-semibold group-hover:text-gold-500 transition-colors duration-300">R SUTARIYA</span>
-                <span className="text-gold-500 tracking-[0.25em] text-[8px] uppercase -mt-1 font-serif">EXPORTS</span>
+                <span className="text-white font-serif tracking-widest text-sm font-semibold group-hover:text-gold-500 transition-colors duration-300 whitespace-nowrap">R SUTARIYA</span>
+                <span className="text-gold-500 tracking-[0.25em] text-[7px] uppercase -mt-0.5 font-serif">EXPORTS</span>
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
-              <div className="flex space-x-6">
+            {/* Desktop Navigation — visible at xl (1280px+) */}
+            <div className="hidden xl:flex items-center gap-2 flex-1 justify-end">
+              {/* Nav Links */}
+              <div className="flex items-center">
                 {navLinks.map((link) => (
                   <NavLink
                     key={link.path}
                     to={link.path}
-                    className={({ isActive }) => `relative py-2 text-xs uppercase tracking-widest font-serif transition-colors duration-300 ${
+                    className={({ isActive }) => `relative py-2 px-2 text-[11px] uppercase tracking-wide font-serif transition-colors duration-300 whitespace-nowrap leading-none ${
                       isActive ? 'text-gold-500 font-semibold' : 'text-white/90 hover:text-gold-500'
                     }`}
                   >
@@ -92,21 +93,21 @@ const Navbar = () => {
                 ))}
               </div>
 
+              {/* Divider */}
+              <div className="w-px h-5 bg-white/15 mx-1 flex-shrink-0" />
+
               {/* Language Switcher */}
-              <div className="relative">
+              <div className="relative flex-shrink-0">
                 <button
                   onClick={() => setShowLangDropdown(!showLangDropdown)}
-                  className="flex items-center gap-1.5 py-2 px-3 text-xs uppercase tracking-widest text-white/90 hover:text-gold-500 transition-colors duration-300 cursor-pointer"
+                  className="flex items-center gap-1 py-2 px-2 text-[11px] uppercase tracking-wide text-white/90 hover:text-gold-500 transition-colors duration-300 cursor-pointer whitespace-nowrap"
                 >
-                  <Globe className="w-3.5 h-3.5 text-gold-500" />
-                  <span className="flex items-center gap-1.5">
-                    <img 
-                      src={`https://flagcdn.com/${currentLangObj.flagCode}.svg`} 
-                      alt={currentLangObj.label} 
-                      className="w-4 h-3 object-cover rounded-[1px] border border-white/10" 
-                    />
-                    {language.toUpperCase()}
-                  </span>
+                  <Globe className="w-3.5 h-3.5 text-gold-500 flex-shrink-0" />
+                  <img 
+                    src={`https://flagcdn.com/${currentLangObj.flagCode}.svg`} 
+                    alt={currentLangObj.label} 
+                    className="w-4 h-3 object-cover rounded-[1px] border border-white/10 flex-shrink-0 ml-0.5" 
+                  />
                   <ChevronDown className={`w-3 h-3 text-white/70 transition-transform duration-300 ${showLangDropdown ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -146,7 +147,7 @@ const Navbar = () => {
               {/* Theme Switcher Toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2 text-white/90 hover:text-gold-500 transition-colors duration-300 cursor-pointer"
+                className="p-1.5 text-white/90 hover:text-gold-500 transition-colors duration-300 cursor-pointer flex-shrink-0"
                 aria-label="Toggle theme"
               >
                 {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
@@ -155,15 +156,15 @@ const Navbar = () => {
               {/* Inquiry Button */}
               <Link
                 to="/contact"
-                className="relative inline-flex items-center justify-center px-6 py-2 bg-transparent border border-gold-500 text-gold-500 hover:text-black font-serif text-xs uppercase tracking-widest overflow-hidden transition-all duration-300 hover:bg-gold-500 shadow-[0_0_10px_rgba(197,168,128,0.05)] hover:shadow-[0_0_15px_rgba(212,175,55,0.2)] rounded-sm cursor-pointer"
+                className="inline-flex items-center justify-center px-4 py-2 bg-transparent border border-gold-500 text-gold-500 hover:text-black font-serif text-[11px] uppercase tracking-wide overflow-hidden transition-all duration-300 hover:bg-gold-500 shadow-[0_0_10px_rgba(197,168,128,0.05)] hover:shadow-[0_0_15px_rgba(212,175,55,0.2)] rounded-sm cursor-pointer whitespace-nowrap flex-shrink-0"
               >
                 {t('inquiry')}
               </Link>
             </div>
 
-            {/* Mobile Menu Button & Toggles */}
-            <div className="flex items-center gap-2 lg:hidden">
-              {/* Theme Switcher Button for Mobile */}
+            {/* Mobile/Tablet Menu Button & Toggles */}
+            <div className="flex items-center gap-2 xl:hidden">
+              {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
                 className="p-2 text-white/90 hover:text-gold-500 transition-colors"
@@ -172,7 +173,7 @@ const Navbar = () => {
                 {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
               </button>
 
-              {/* Language Switcher Button for Mobile */}
+              {/* Language Cycle Button */}
               <button
                 onClick={() => {
                   const currentIndex = languages.findIndex(l => l.code === language);
@@ -209,15 +210,15 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-[73px] left-0 w-full bg-[#0b0c10]/98 border-b border-gold-500/15 backdrop-blur-lg z-30 lg:hidden overflow-hidden"
+            className="fixed top-[68px] left-0 w-full bg-[#0b0c10]/98 border-b border-gold-500/15 backdrop-blur-lg z-30 xl:hidden overflow-hidden"
           >
-            <div className="px-4 pt-4 pb-6 space-y-3">
+            <div className="px-4 pt-4 pb-6 space-y-1">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.path}
                   to={link.path}
-                  className={({ isActive }) => `block py-2.5 px-4 text-sm uppercase tracking-widest font-serif transition-colors ${
-                    isActive ? 'text-gold-500 bg-gold-500/5 border-l-2 border-gold-500 pl-3.5 font-semibold' : 'text-white/90 hover:text-gold-500'
+                  className={({ isActive }) => `block py-3 px-4 text-sm uppercase tracking-widest font-serif transition-colors ${
+                    isActive ? 'text-gold-500 bg-gold-500/5 border-l-2 border-gold-500 pl-3.5 font-semibold' : 'text-white/90 hover:text-gold-500 border-l-2 border-transparent'
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
