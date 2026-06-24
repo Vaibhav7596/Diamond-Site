@@ -211,7 +211,7 @@ const ExportShipping = () => {
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3, ease: 'easeInOut' }}
-              className="w-[1.5px] h-12 bg-gradient-to-b from-gold-500 to-gold-500/30 origin-top"
+              className="hidden md:block w-[1.5px] h-12 bg-gradient-to-b from-gold-500 to-gold-500/30 origin-top"
             />
 
             {/* Horizontal bar connector */}
@@ -220,7 +220,7 @@ const ExportShipping = () => {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.0, delay: 0.7, ease: 'easeInOut' }}
-              className="w-full max-w-3xl h-[1.5px] bg-gradient-to-r from-transparent via-gold-500 to-transparent origin-center"
+              className="hidden md:block w-full max-w-3xl h-[1.5px] bg-gradient-to-r from-transparent via-gold-500 to-transparent origin-center"
             />
           </div>
 
@@ -242,7 +242,7 @@ const ExportShipping = () => {
                     whileInView={{ scaleY: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.9 + idx * 0.1, ease: 'easeInOut' }}
-                    className="w-[1.5px] h-8 bg-gradient-to-b from-gold-500/60 to-gold-500/20 origin-top"
+                    className="hidden md:block w-[1.5px] h-8 bg-gradient-to-b from-gold-500/60 to-gold-500/20 origin-top"
                   />
                 </div>
 

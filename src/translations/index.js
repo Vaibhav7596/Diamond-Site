@@ -97,16 +97,82 @@ export const translations = {
     about: {
       storyTitle: "Our Heritage & Vision",
       storySubtitle: "Decades of diamond mastery, evolving from natural gems to next-generation HPHT technology.",
-      p1: "Founded as a traditional family business in 1973, R SUTARIYA EXPORTS began its journey in Surat, India—the heart of the global diamond industry. For nearly five decades, our craftsmen mastered the art of natural diamond cutting, polishing, and trading, building an international reputation based on integrity and uncompromising quality.",
-      p2: "In 2021, recognizing the scientific and sustainable advancement of lab-grown gems, we transitioned our decades of heritage and expertise into the HPHT (High Pressure High Temperature) sector. This allows us to manufacture diamonds with the exact same chemical, physical, and optical properties as mined diamonds, but with complete traceability.",
-      p3: "Today, we blend traditional Indian craftsmanship with state-of-the-art HPHT technology, serving as a trusted B2B supply partner to luxury designers, luxury brands, and wholesalers across Italy, France, and Europe.",
-      timeline: {
-        t1973: "Diamond business founded in Surat, India, dealing in natural diamonds.",
-        t2021: "Strategic transition into HPHT Lab-Grown Diamond manufacturing.",
-        tPresent: "Exporting premium certified lab-grown diamonds directly to Europe."
-      },
+      heroTagline: "From a Gujarat Village to European Markets",
+      heroTitle: "Our Story",
+      heroSubtitle: "A journey shaped by craftsmanship, family values, and generations of dedication to diamonds.",
+      storyTagline: "The R SUTARIYA Story",
+      storyHeading: "Generations of Diamond Mastery",
+      p1: "Our story began in a small village in the Bhavnagar district of Gujarat, India. Driven by determination and craftsmanship, our founder and his brothers entered the diamond industry as workers — learning every aspect of diamond polishing through hands-on experience and dedication.",
+      p2: "Over fifteen years, they built a reputation for quality workmanship, polishing diamonds and serving customers across nearby villages and the Bhavnagar diamond market. Their commitment laid the foundation for what would become a multi-generational business.",
+      p3: "Recognizing the growing opportunities in Surat — the global hub of diamond manufacturing — the family made a bold decision to expand. This move marked a new chapter of growth, allowing them to serve a wider market while continuing to uphold the values established from the very beginning.",
+      quote: "\"Quality, Trust, Integrity, Continuous Growth\"",
+      journeyTagline: "Our Journey",
+      journeyTitle: "From Village to World Markets",
+      milestones: [
+        {
+          era: "Early Years",
+          label: "Bhavnagar District, Gujarat",
+          heading: "Roots in a Village",
+          body: "Our story began in a small village in the Bhavnagar district of Gujarat. Driven by determination and craftsmanship, our founder and his brothers entered the diamond industry as workers — learning every aspect of diamond polishing through hands-on experience and unwavering dedication."
+        },
+        {
+          era: "Village Enterprise",
+          label: "15 Years of Mastery",
+          heading: "Polishing a Reputation",
+          body: "Over fifteen years, they built a reputation for quality workmanship — polishing diamonds and supplying clients across nearby villages and the Bhavnagar diamond market. Commitment to quality and integrity laid the foundation for what would become a multi-generational business."
+        },
+        {
+          era: "Expansion to Surat",
+          label: "The Global Hub",
+          heading: "Moving to Surat",
+          body: "Recognizing the growing opportunities within the diamond industry, the family made a bold decision to expand operations to Surat — the global hub of diamond manufacturing and trading. This move marked a new chapter of growth, allowing the business to serve a wider market while upholding the values established from the very beginning."
+        },
+        {
+          era: "Next Generation",
+          label: "After 1995",
+          heading: "Growth Under Family Leadership",
+          body: "As the years passed, the next generation joined the business — bringing new ideas while preserving the principles of craftsmanship, trust, and long-term relationships. The business continued to grow, expanding its capabilities and strengthening its presence within the diamond industry."
+        },
+        {
+          era: "2021",
+          label: "Innovation Leap",
+          heading: "Entry into HPHT Lab-Grown Diamonds",
+          body: "Embracing innovation and the future of the industry, we entered the HPHT Lab-Grown Diamond segment. By combining decades of diamond expertise with modern technology, we expanded our offerings to meet the evolving needs of global jewelry businesses."
+        },
+        {
+          era: "2024",
+          label: "International Markets",
+          heading: "Exports Begin to Europe",
+          body: "We took another important step forward by beginning exports to Europe — serving international clients with premium-quality HPHT lab-grown diamonds, reliable service, and a commitment to excellence."
+        },
+        {
+          era: "Today",
+          label: "Premium Global Exporter",
+          heading: "R SUTARIYA EXPORTS",
+          body: "Today, R SUTARIYA EXPORTS represents more than a business. It represents generations of dedication — a journey from village roots to international markets, and a commitment to carrying forward the values that shaped our success. While our reach now extends across borders, our foundation remains the same: quality, trust, integrity, and continuous growth."
+        }
+      ],
+      geoTagline: "Geographic Journey",
+      geoTitle: "Village to World",
+      geoPoints: [
+        { location: "Bhavnagar, Gujarat", role: "Origin", desc: "Village roots where the craft was born" },
+        { location: "Surat, Gujarat", role: "Expansion Hub", desc: "Global diamond manufacturing capital" },
+        { location: "Europe", role: "Export Destination", desc: "Italy · France · and beyond" }
+      ],
       legacyTitle: "Founder Legacy & Core Values",
-      legacyDesc: "Under the vision of our founders, we believe that trust is the hardest gem to polish. Our operations are guided by family values, transparent grading, and a dedication to forming lifetime business relationships with European designers and retailers."
+      legacyDesc: "Under the vision of our founders, we believe that trust is the hardest gem to polish. Our operations are guided by family values, transparent grading, and a dedication to forming lifetime business relationships with European designers and retailers.",
+      legacyP2: "As the next generation stepped into leadership roles, they brought fresh perspective while preserving the principles that built the business. The commitment to excellence — in every stone, every shipment, every conversation — remains unchanged.",
+      legacyP3: "Today, that same spirit drives our international expansion. Whether serving a wholesaler in Milan or a boutique designer in Paris, we bring the same integrity that began in a small Bhavnagar workshop decades ago.",
+      values: [
+        { title: "Quality", desc: "Every diamond we export meets stringent grading and quality standards established over generations." },
+        { title: "Integrity", desc: "Transparent pricing, authentic certification, and honest communication at every step." },
+        { title: "Craftsmanship", desc: "Decades of hands-on expertise inform every diamond we manufacture and export." },
+        { title: "Growth", desc: "From a village workshop to international markets — we continuously evolve." }
+      ],
+      ctaTagline: "Partner With Us",
+      ctaTitle: "Become Part of Our Story",
+      ctaDesc: "We are selectively building long-term relationships with European wholesalers, jewelry brands, and ateliers who value quality, transparency, and a genuine supply partnership.",
+      ctaButton: "Start a Conversation"
     },
 
     // Collection Page
@@ -287,20 +353,85 @@ export const translations = {
       }
     },
 
-    // About Us Page
     about: {
       storyTitle: "La Nostra Storia e Visione",
       storySubtitle: "Decenni di maestria nel settore dei diamanti, evolvendo dalle gemme naturali alla tecnologia HPHT di nuova generazione.",
-      p1: "Fondata come azienda familiare nel 1973, R SUTARIYA EXPORTS ha iniziato il suo viaggio a Surat, India, il cuore pulsante dell'industria diamantifera globale. Per quasi cinquant'anni, i nostri artigiani hanno perfezionato l'arte del taglio, della lucidatura e del commercio di diamanti naturali, costruendo una reputazione internazionale basata sull'integrità.",
-      p2: "Nel 2021, riconoscendo il progresso scientifico e sostenibile delle gemme create in laboratorio, abbiamo trasferito il nostro patrimonio di competenze nel settore HPHT. Questo ci consente di produrre diamanti con le stesse proprietà chimiche dei diamanti estratti, ma con tracciabilità totale.",
-      p3: "Oggi fondiamo l'artigianato tradizionale indiano con la tecnologia HPHT avanzata, ponendoci come partner di fornitura B2B di fiducia per designer, marchi di lusso e grossisti in Italia, Francia e in tutta Europa.",
-      timeline: {
-        t1973: "Fondazione dell'azienda di diamanti a Surat, specializzata in diamanti naturali.",
-        t2021: "Transizione strategica nella produzione di diamanti da laboratorio HPHT.",
-        tPresent: "Esportazione di diamanti premium certificati direttamente in Europa."
-      },
+      heroTagline: "Da un villaggio del Gujarat ai mercati europei",
+      heroTitle: "La Nostra Storia",
+      heroSubtitle: "Un viaggio plasmato dall'artigianato, dai valori familiari e da generazioni di dedizione ai diamanti.",
+      storyTagline: "La storia di R SUTARIYA",
+      storyHeading: "Generazioni di maestria nei diamanti",
+      p1: "La nostra storia è iniziata in un piccolo villaggio nel distretto di Bhavnagar del Gujarat, in India. Spinti da determinazione e spirito artigianale, il nostro fondatore e i suoi fratelli sono entrati nell'industria dei diamanti come operai, apprendendo ogni aspetto della lucidatura dei diamanti attraverso l'esperienza diretta e la dedizione.",
+      p2: "In quindici anni hanno costruito una reputazione per la lavorazione di qualità, lucidando diamanti e servendo clienti nei villaggi vicini e nel mercato dei diamanti di Bhavnagar. Il loro impegno ha gettato le basi per quella che sarebbe diventata un'azienda multigenerazionale.",
+      p3: "Riconoscendo le crescenti opportunità a Surat, l'hub globale della produzione di diamanti, la famiglia ha preso la coraggiosa decisione di espandersi. Questa mossa ha segnato un nuovo capitolo di crescita, consentendo loro di servire un mercato più ampio pur continuando a sostenere i valori stabiliti fin dall'inizio.",
+      quote: "\"Qualità, fiducia, integrità, crescita continua\"",
+      journeyTagline: "Il nostro viaggio",
+      journeyTitle: "Dal villaggio ai mercati mondiali",
+      milestones: [
+        {
+          era: "Primi anni",
+          label: "Distretto di Bhavnagar, Gujarat",
+          heading: "Radici in un villaggio",
+          body: "La nostra storia è iniziata in un piccolo villaggio nel distretto di Bhavnagar del Gujarat. Spinti dalla determinazione e dall'artigianato, il nostro fondatore e i suoi fratelli sono entrati nel settore dei diamanti come operai, imparando ogni aspetto della lucidatura del diamante con impegno costante."
+        },
+        {
+          era: "Impresa di villaggio",
+          label: "15 anni di maestria",
+          heading: "Lucidare una reputazione",
+          body: "In quindici anni, hanno costruito una reputazione per lavorazioni di qualità, lucidando diamanti e rifornendo clienti nei villaggi vicini e nel mercato diamantifero di Bhavnagar. L'impegno per la qualità ha posto le basi dell'azienda."
+        },
+        {
+          era: "Espansione a Surat",
+          label: "L'hub globale",
+          heading: "Trasferimento a Surat",
+          body: "Riconoscendo le crescenti opportunità nel settore, la famiglia ha deciso di espandere le attività a Surat, il centro mondiale della lavorazione e del commercio di diamanti. Questa mossa ha aperto un nuovo capitolo di crescita."
+        },
+        {
+          era: "Prossima generazione",
+          label: "Dopo il 1995",
+          heading: "Crescita a guida familiare",
+          body: "Con il passare degli anni, la generazione successiva è entrata in azienda, portando nuove idee e preservando i principi di artigianato, fiducia e relazioni a lungo termine che ci contraddistinguono."
+        },
+        {
+          era: "2021",
+          label: "Salto innovativo",
+          heading: "Ingresso nei diamanti HPHT da laboratorio",
+          body: "Abbracciando l'innovazione e il futuro del settore, siamo entrati nel segmento dei diamanti coltivati in laboratorio HPHT, combinando la nostra esperienza con le tecnologie moderne."
+        },
+        {
+          era: "2024",
+          label: "Mercati internazionali",
+          heading: "Inizio delle esportazioni in Europa",
+          body: "Abbiamo compiuto un altro passo importante avviando le esportazioni in Europa, servendo clienti internazionali con diamanti HPHT di alta qualità e un servizio affidabile."
+        },
+        {
+          era: "Oggi",
+          label: "Esportatore globale premium",
+          heading: "R SUTARIYA EXPORTS",
+          body: "Oggi, R SUTARIYA EXPORTS rappresenta più di un'azienda. Rappresenta generazioni di dedizione, un viaggio dalle radici rurali ai mercati internazionali, con l'impegno costante verso la qualità, la fiducia e l'integrità."
+        }
+      ],
+      geoTagline: "Viaggio geografico",
+      geoTitle: "Dal villaggio al mondo",
+      geoPoints: [
+        { location: "Bhavnagar, Gujarat", role: "Origine", desc: "Radici rurali dove l'artigianato è nato" },
+        { location: "Surat, Gujarat", role: "Hub di espansione", desc: "Capitale mondiale della produzione di diamanti" },
+        { location: "Europa", role: "Destinazione di esportazione", desc: "Italia · France · e oltre" }
+      ],
       legacyTitle: "Eredità dei Fondatori e Valori Fondamentali",
-      legacyDesc: "Secondo la visione dei nostri fondatori, crediamo che la fiducia sia la gemma più difficile da lucidare. Le nostre operazioni sono guidate da valori familiari, valutazioni trasparenti e dedizione a costruire relazioni commerciali a vita con i partner europei."
+      legacyDesc: "Secondo la visione dei nostri fondatori, crediamo che la fiducia sia la gemma più difficile da lucidare. Le nostre operazioni sono guidate da valori familiari, valutazioni trasparenti e dedizione a costruire relazioni commerciali a vita con i partner europei.",
+      legacyP2: "Quando la generazione successiva è entrata nei ruoli di leadership, ha portato una nuova prospettiva pur preservando i principi che hanno costruito l'azienda. L'impegno per l'eccellenza in ogni pietra, spedizione e conversazione rimane immutato.",
+      legacyP3: "Oggi, lo stesso spirito guida la nostra espansione internazionale. Che si tratti di servire un grossista a Milano o un designer a Parigi, portiamo la stessa integrità nata in un piccolo laboratorio di Bhavnagar decenni fa.",
+      values: [
+        { title: "Qualità", desc: "Ogni diamante che esportiamo soddisfa rigorosi standard di classificazione e qualità stabiliti nel corso delle generazioni." },
+        { title: "Integrità", desc: "Prezzi trasparenti, certificazioni autentiche e comunicazione onesta in ogni fase." },
+        { title: "Artigianato", desc: "Decenni di esperienza pratica informano ogni singolo diamante che produciamo ed esportiamo." },
+        { title: "Crescita", desc: "Da un laboratorio di villaggio ai mercati internazionali, evolviamo continuamente." }
+      ],
+      ctaTagline: "Collabora con noi",
+      ctaTitle: "Diventa parte della nostra storia",
+      ctaDesc: "Costruiamo relazioni a lungo termine con grossisti, marchi di gioielleria e atelier europei che apprezzano la qualità, la trasparenza e una vera partnership di fornitura.",
+      ctaButton: "Avvia una conversazione"
     },
 
     // Collection Page
@@ -485,22 +616,88 @@ export const translations = {
     about: {
       storyTitle: "Notre Héritage et Vision",
       storySubtitle: "Des décennies de maîtrise du diamant, évoluant des gemmes naturelles vers la technologie HPHT de pointe.",
-      p1: "Fondée en tant qu'entreprise familiale traditionnelle en 1973, R SUTARIYA EXPORTS a débuté son voyage à Surat, en Inde, le cœur de l'industrie mondiale du diamant. Pendant près de cinquante ans, nos artisans ont maîtrisé l'art de la taille, du polissage et du commerce de diamants naturels, bâtissant une réputation internationale.",
-      p2: "En 2021, reconnaissant les progrès scientifiques et écologiques des gemmes de laboratoire, nous avons orienté notre héritage et notre savoir-faire vers le secteur HPHT. Cela nous permet de fabriquer des diamants ayant les mêmes propriétés physiques et chimiques que les diamants de mine, avec une traçabilité totale.",
-      p3: "Aujourd'hui, nous allions l'artisanat indien traditionnel à la technologie HPHT de pointe, en tant que partenaire B2B de confiance pour les designers, marques de luxe et grossistes en Italie, en France et en Europe.",
-      timeline: {
-        t1973: "Fondation de l'entreprise de diamants à Surat, spécialisée dans les diamants naturels.",
-        t2021: "Transition stratégique vers la fabrication de diamants de laboratoire HPHT.",
-        tPresent: "Exportation de diamants premium certifiés directement vers l'Europe."
-      },
-      legacyTitle: "Héritage des Fondateurs et Valeurs",
-      legacyDesc: "Selon la vision de nos fondateurs, nous croyons que la confiance est la gemme la plus difficile à polir. Nos opérations sont guidées par des valeurs familiales, des classements transparents et la volonté d'établir des partenariats à long terme."
+      heroTagline: "D'un village du Gujarat aux marchés européens",
+      heroTitle: "Notre Histoire",
+      heroSubtitle: "Un voyage façonné par l'artisanat, les valeurs familiales et des générations de dévouement aux diamants.",
+      storyTagline: "L'histoire de R SUTARIYA",
+      storyHeading: "Des générations de maîtrise du diamant",
+      p1: "Notre histoire a commencé dans un petit village du district de Bhavnagar au Gujarat, en Inde. Guidés par la détermination et l'artisanat, notre fondateur et ses frères sont entrés dans l'industrie du diamant en tant qu'ouvriers, apprenant chaque aspect du polissage des diamants grâce à une expérience pratique et un dévouement sans faille.",
+      p2: "Sur quinze ans, ils ont bâti une réputation de travail de qualité, polissant des diamants et servant des clients dans les villages voisins et sur le marché du diamant de Bhavnagar. Leur engagement a jeté les bases de ce qui allait devenir une entreprise multigénérationnelle.",
+      p3: "Reconnaissant les opportunités croissantes à Surat, le pôle mondial de la fabrication de diamants, la famille a pris la décision audacieuse de s'y installer. Ce déménagement a marqué un nouveau chapitre de croissance, leur permettant de desservir un marché plus large tout en continuant à respecter les valeurs établies dès le début.",
+      quote: "\"Qualité, confiance, intégrité, croissance continue\"",
+      journeyTagline: "Notre parcours",
+      journeyTitle: "Du village aux marchés mondiaux",
+      milestones: [
+        {
+          era: "Premières années",
+          label: "District de Bhavnagar, Gujarat",
+          heading: "Racines dans un village",
+          body: "Notre histoire a commencé dans un petit village du district de Bhavnagar au Gujarat. Portés par la détermination et l'artisanat, notre fondateur et ses frères ont débuté dans le diamant comme ouvriers, apprenant le polissage par la pratique."
+        },
+        {
+          era: "Entreprise de village",
+          label: "15 ans de maîtrise",
+          heading: "Polir une réputation",
+          body: "Pendant quinze ans, ils ont bâti une réputation de qualité, polissant les diamants pour les villages voisins et le marché de Bhavnagar, posant les bases d'une entreprise familiale."
+        },
+        {
+          era: "Expansion à Surat",
+          label: "Le centre mondial",
+          heading: "Déménagement à Surat",
+          body: "Saisissant les opportunités du secteur, la famille a étendu ses activités à Surat, capitale mondiale de la taille de diamants, ouvrant un nouveau chapitre de croissance."
+        },
+        {
+          era: "Nouvelle génération",
+          label: "Après 1995",
+          heading: "Croissance et leadership familial",
+          body: "Au fil des ans, la génération suivante a rejoint l'entreprise, apportant des idées nouvelles tout en préservant le savoir-faire historique et les relations de confiance."
+        },
+        {
+          era: "2021",
+          label: "Saut innovant",
+          heading: "Entrée dans le diamant de laboratoire HPHT",
+          body: "Tournés vers l'avenir, nous nous sommes lancés dans le diamant de laboratoire HPHT, alliant notre expertise cinquantenaire aux technologies de pointe."
+        },
+        {
+          era: "2024",
+          label: "Marchés internationaux",
+          heading: "Début des exportations vers l'Europe",
+          body: "Nous avons franchi une étape clé en exportant vers l'Europe, offrant aux clients internationaux des diamants HPHT certifiés de qualité supérieure."
+        },
+        {
+          era: "Aujourd'hui",
+          label: "Exportateur mondial premium",
+          heading: "R SUTARIYA EXPORTS",
+          body: "Aujourd'hui, R SUTARIYA EXPORTS incarne des générations d'engagement, du village d'origine aux marchés mondiaux, avec des valeurs fortes de qualité, confiance et intégrité."
+        }
+      ],
+      geoTagline: "Parcours géographique",
+      geoTitle: "Du village au monde",
+      geoPoints: [
+        { location: "Bhavnagar, Gujarat", role: "Origine", desc: "Racines du village où l'artisanat est né" },
+        { location: "Surat, Gujarat", role: "Pôle d'expansion", desc: "Capitale mondiale de la fabrication de diamants" },
+        { location: "Europe", role: "Destination d'exportation", desc: "Italie · France · et au-delà" }
+      ],
+      legacyTitle: "Héritage des fondateurs et valeurs",
+      legacyDesc: "Selon la vision de nos fondateurs, nous croyons que la confiance est la gemme la plus difficile à polir. Nos opérations sont guidées par des valeurs familiales, des classements transparents et la volonté d'établir des partenariats à long terme.",
+      legacyP2: "Lorsque la génération suivante a accédé aux postes de direction, elle a apporté une perspective nouvelle tout en préservant les principes fondateurs. Notre exigence d'excellence demeure inchangée.",
+      legacyP3: "Aujourd'hui, ce même esprit anime notre expansion internationale. Que ce soit pour un grossiste à Milan ou un créateur à Paris, nous garantissons la même intégrité qu'à nos débuts.",
+      values: [
+        { title: "Qualité", desc: "Chaque diamant exporté répond aux normes strictes de classification et de qualité héritées de nos aînés." },
+        { title: "Intégrité", desc: "Tarification transparente, certification authentique et communication honnête à chaque étape." },
+        { title: "Artisanat", desc: "Des décennies d'expertise pratique guident la fabrication et l'exportation de chaque diamant." },
+        { title: "Croissance", desc: "D'un atelier de village aux marchés mondiaux, nous évoluons constamment." }
+      ],
+      ctaTagline: "Devenir partenaire",
+      ctaTitle: "Faites partie de notre histoire",
+      ctaDesc: "Nous bâtissons des partenariats à long terme avec les grossistes et ateliers européens qui privilégient la qualité, la transparence et la fiabilité.",
+      ctaButton: "Commencer une conversation"
     },
 
     // Collection Page
     collectionPage: {
       title: "Collection de Diamants HPHT",
-      subtitle: "Catalogue B2B de formes premium. Tous les diamants sont certifiés GIA/IGI. Tarifs sur devis.",
+      subtitle: "Catalogue B2B de formes premium. Tous les diamants sont certificés GIA/IGI. Tarifs sur devis.",
       shape: "Forme",
       caratRange: "Plage de Carats",
       colors: "Gamme de Couleurs",

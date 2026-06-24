@@ -118,28 +118,57 @@ const Collection = () => {
           {/* ═══ MOBILE LAYOUT ═══════════════════════════════════════════ */}
           <div className="lg:hidden">
 
-            {/* Mobile: Shape selector tabs (horizontal scroll) */}
-            <div className="mb-4 overflow-x-auto scrollbar-none flex gap-2 pb-2 border-b border-luxury-border/60">
-              {filteredShapes.map((shape) => {
-                const isActive = shape.id === selectedShapeId;
-                const shapeName = shape.name[language] || shape.name['en'];
-                return (
-                  <button
-                    key={shape.id}
-                    onClick={() => setSelectedShapeId(shape.id)}
-                    className={`shrink-0 px-3 py-1.5 text-[9px] tracking-widest uppercase font-serif border rounded-sm transition-all duration-300 ${
-                      isActive 
-                        ? 'border-gold-500 bg-gold-500/10 text-gold-500 font-bold' 
-                        : 'border-luxury-border bg-luxury-bg-sec/40 text-luxury-text-sec hover:border-gold-500/40'
-                    }`}
+            {/* Sticky Mobile Catalog Header */}
+            <div className="sticky top-[68px] z-30 bg-luxury-bg/95 backdrop-blur-md border-b border-luxury-border/60 py-3 -mx-4 px-4 mb-4">
+              {/* Search Bar */}
+              <div className="relative mb-3">
+                <Search className="w-3.5 h-3.5 text-luxury-text-sec/50 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input 
+                  type="text" 
+                  placeholder={language === 'it' ? "Cerca forme (es. Round, Oval, Heart...)" : language === 'fr' ? "Rechercher des formes..." : "Search shapes (e.g. Round, Oval, Heart...)"}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-9 pr-8 py-2 bg-luxury-bg-sec border border-luxury-border text-xs uppercase tracking-wider text-luxury-text focus:outline-none focus:border-gold-500 rounded-sm"
+                />
+                {searchTerm && (
+                  <button 
+                    onClick={() => setSearchTerm('')} 
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-luxury-text-sec hover:text-white text-xs font-sans"
                   >
-                    {shapeName.split(' ')[0]}
+                    ✕
                   </button>
-                );
-              })}
-              {filteredShapes.length === 0 && (
-                <span className="text-xs text-luxury-text-sec/60 italic py-2">No shapes match your filters.</span>
-              )}
+                )}
+              </div>
+
+              {/* Horizontal Scroll Selector */}
+              <div className="overflow-x-auto scrollbar-none flex gap-2 pb-1">
+                {filteredShapes.map((shape) => {
+                  const isActive = shape.id === selectedShapeId;
+                  const shapeName = shape.name[language] || shape.name['en'];
+                  // Simplify shape name for mobile tabs (e.g. "ROUND BRILLIANT CUT" -> "ROUND")
+                  const shortName = shapeName.replace(" CUT", "").replace(" 4 STEP", "").replace(" BRILLIANT", "").split(' ')[0];
+                  return (
+                    <button
+                      key={shape.id}
+                      onClick={() => {
+                        setSelectedShapeId(shape.id);
+                      }}
+                      className={`shrink-0 px-3 py-1.5 text-[9px] tracking-widest uppercase font-serif border rounded-sm transition-all duration-300 ${
+                        isActive 
+                          ? 'border-gold-500 bg-gold-500/10 text-gold-500 font-bold' 
+                          : 'border-luxury-border bg-luxury-bg-sec/40 text-luxury-text-sec hover:border-gold-500/40'
+                      }`}
+                    >
+                      {shortName}
+                    </button>
+                  );
+                })}
+                {filteredShapes.length === 0 && (
+                  <span className="text-[10px] text-luxury-text-sec/60 italic py-1.5">
+                    {language === 'it' ? "Nessuna forma trovata" : language === 'fr' ? "Aucune forme trouvée" : "No shapes found"}
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Mobile: Compact single-card for active shape */}
@@ -153,12 +182,12 @@ const Collection = () => {
                 className="bg-luxury-bg-sec border border-luxury-card-border rounded-sm overflow-hidden mb-6"
               >
                 {/* Image strip */}
-                <div className="flex items-center justify-center bg-luxury-bg relative overflow-hidden" style={{ height: '200px' }}>
-                  <div className="absolute w-40 h-40 bg-gold-500/5 rounded-full blur-2xl pointer-events-none" />
+                <div className="flex items-center justify-center bg-luxury-bg relative overflow-hidden" style={{ height: '140px' }}>
+                  <div className="absolute w-28 h-28 bg-gold-500/5 rounded-full blur-xl pointer-events-none" />
                   <motion.img
                     src={getShapeImageUrl(activeShape.imageName)}
-                    alt={activeShape.name[language]}
-                    className="max-h-[160px] max-w-[65%] object-contain drop-shadow-[0_8px_24px_rgba(150,123,69,0.18)] relative z-10"
+                    alt={activeShape.name[language] || activeShape.name['en']}
+                    className="max-h-[110px] max-w-[55%] object-contain drop-shadow-[0_8px_20px_rgba(150,123,69,0.15)] relative z-10"
                     initial={{ scale: 0.92 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -167,9 +196,9 @@ const Collection = () => {
                   <motion.div
                     animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2.5, repeat: Infinity }}
-                    className="absolute top-4 right-4 text-gold-500/40 pointer-events-none z-20"
+                    className="absolute top-3 right-3 text-gold-500/40 pointer-events-none z-20"
                   >
-                    <Sparkles className="w-4 h-4" />
+                    <Sparkles className="w-3.5 h-3.5" />
                   </motion.div>
                 </div>
 
@@ -177,25 +206,25 @@ const Collection = () => {
                 <div className="p-4 space-y-3">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <h2 className="text-xl font-serif tracking-wider font-bold gold-gradient-text uppercase leading-tight">
+                      <h2 className="text-lg font-serif tracking-wider font-bold gold-gradient-text uppercase leading-tight">
                         {activeShape.name[language] || activeShape.name['en']}
                       </h2>
-                      <div className="inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 border border-gold-500/30 bg-gold-500/5 text-gold-500 text-[8px] uppercase tracking-widest font-serif rounded-[2px]">
-                        <Award className="w-2.5 h-2.5" />
+                      <div className="inline-flex items-center gap-1 mt-1 px-1.5 py-0.5 border border-gold-500/30 bg-gold-500/5 text-gold-500 text-[8px] uppercase tracking-widest font-serif rounded-[2px]">
+                        <Award className="w-2 h-2" />
                         HPHT &amp; CVD
                       </div>
                     </div>
-                    <span className="text-[9px] text-luxury-text-sec border border-luxury-border px-2 py-0.5 rounded-sm font-mono shrink-0">
+                    <span className="text-[9px] text-luxury-text-sec border border-luxury-border px-1.5 py-0.5 rounded-sm font-mono shrink-0">
                       {activeShape.sizeRange}
                     </span>
                   </div>
 
-                  <p className="text-luxury-text-sec text-[11px] leading-relaxed font-sans line-clamp-2">
+                  <p className="text-luxury-text-sec text-[11px] leading-relaxed font-sans line-clamp-3">
                     {activeShape.desc[language] || activeShape.desc['en']}
                   </p>
 
                   {/* Mini spec row */}
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[10px] font-sans border-t border-luxury-border/50 pt-3">
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[10px] font-sans border-t border-luxury-border/50 pt-2.5">
                     <div className="flex flex-col">
                       <span className="text-luxury-text-sec/50 uppercase text-[8px] tracking-widest">Method</span>
                       <strong className="text-luxury-text font-serif">{activeShape.labs}</strong>
@@ -213,7 +242,7 @@ const Collection = () => {
                     <Link
                       to="/contact"
                       state={{ shape: activeShape.name.en }}
-                      className="inline-flex items-center justify-center gap-1.5 py-3 border border-gold-500 hover:bg-gold-500 text-gold-500 hover:text-black font-serif text-[9px] uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer font-bold"
+                      className="inline-flex items-center justify-center gap-1.5 py-2.5 border border-gold-500 hover:bg-gold-500 text-gold-500 hover:text-black font-serif text-[9px] uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer font-bold"
                     >
                       {t('collectionPage.requestQuoteBtn') || 'Request Quote'}
                       <ChevronRight className="w-3 h-3" />
@@ -222,7 +251,7 @@ const Collection = () => {
                       href={`https://wa.me/919898507686?text=Hello,%20I%20would%20like%20to%20inquire%20about%20${encodeURIComponent(activeShape.name.en)}%20Diamond%20(${encodeURIComponent(activeShape.sizeRange)}).`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 py-3 border border-luxury-border bg-luxury-bg hover:bg-gold-500/5 hover:border-gold-500/40 text-luxury-text-sec hover:text-gold-500 font-serif text-[9px] uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer"
+                      className="inline-flex items-center justify-center gap-1.5 py-2.5 border border-luxury-border bg-luxury-bg hover:bg-gold-500/5 hover:border-gold-500/40 text-luxury-text-sec hover:text-gold-500 font-serif text-[9px] uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer"
                     >
                       <MessageSquare className="w-3 h-3" />
                       WhatsApp

@@ -12,6 +12,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showLangDropdown, setShowLangDropdown] = useState(false);
+  const [showMobileLangDropdown, setShowMobileLangDropdown] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const Navbar = () => {
   useEffect(() => {
     setIsOpen(false);
     setShowLangDropdown(false);
+    setShowMobileLangDropdown(false);
   }, [location]);
 
   const navLinks = [
@@ -58,7 +60,7 @@ const Navbar = () => {
           ? 'bg-transparent py-5' 
           : 'bg-[#0b0c10]/95 backdrop-blur-md border-b border-gold-500/15 py-3.5 shadow-sm'
       }`}>
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-4">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
@@ -173,22 +175,56 @@ const Navbar = () => {
                 {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
               </button>
 
-              {/* Language Cycle Button */}
-              <button
-                onClick={() => {
-                  const currentIndex = languages.findIndex(l => l.code === language);
-                  const nextIndex = (currentIndex + 1) % languages.length;
-                  setLanguage(languages[nextIndex].code);
-                }}
-                className="flex items-center gap-1 py-1.5 px-2 text-xs text-white/90 border border-white/20 rounded-sm cursor-pointer"
-              >
-                <Globe className="w-3.5 h-3.5 text-gold-500" />
-                <img 
-                  src={`https://flagcdn.com/${currentLangObj.flagCode}.svg`} 
-                  alt={currentLangObj.label} 
-                  className="w-4 h-3 object-cover rounded-[1px] border border-white/10" 
-                />
-              </button>
+              {/* Language Switcher Dropdown for Mobile */}
+              <div className="relative">
+                <button
+                  onClick={() => {
+                    setShowMobileLangDropdown(!showMobileLangDropdown);
+                    setIsOpen(false); // Close mobile menu drawer if dropdown clicked
+                  }}
+                  className="flex items-center gap-1 py-1.5 px-2 text-xs text-white/90 border border-white/20 rounded-sm cursor-pointer"
+                >
+                  <Globe className="w-3.5 h-3.5 text-gold-500 flex-shrink-0" />
+                  <img 
+                    src={`https://flagcdn.com/${currentLangObj.flagCode}.svg`} 
+                    alt={currentLangObj.label} 
+                    className="w-4 h-3 object-cover rounded-[1px] border border-white/10 flex-shrink-0" 
+                  />
+                  <ChevronDown className={`w-3 h-3 text-white/70 transition-transform duration-300 ${showMobileLangDropdown ? 'rotate-180' : ''}`} />
+                </button>
+
+                <AnimatePresence>
+                  {showMobileLangDropdown && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute right-0 mt-2 w-32 bg-[#121212] border border-gold-500/15 shadow-xl rounded-sm py-1 z-50 overflow-hidden"
+                    >
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => {
+                            setLanguage(lang.code);
+                            setShowMobileLangDropdown(false);
+                          }}
+                          className={`w-full text-left px-3 py-2 text-xs tracking-wider font-serif flex items-center gap-2 hover:bg-gold-500/10 hover:text-gold-500 transition-colors duration-200 cursor-pointer ${
+                            language === lang.code ? 'text-gold-500 bg-gold-500/5' : 'text-white/85'
+                          }`}
+                        >
+                          <img 
+                            src={`https://flagcdn.com/${lang.flagCode}.svg`} 
+                            alt={lang.label} 
+                            className="w-4 h-3 object-cover rounded-[1px] border border-white/10" 
+                          />
+                          <span>{lang.label}</span>
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <button
                 onClick={() => setIsOpen(!isOpen)}
