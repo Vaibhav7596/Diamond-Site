@@ -24,7 +24,8 @@ export const translations = {
       collection: "Collection",
       certs: "Certifications",
       export: "Export & Shipping",
-      contact: "Contact Us"
+      contact: "Contact Us",
+      journey: "Diamond Journey"
     },
 
     // Language Selection
@@ -90,7 +91,186 @@ export const translations = {
       cta: {
         title: "Ready to Source Premium HPHT Diamonds?",
         subtitle: "Discuss your volume requirements with our diamond experts today. We respond within 24 hours."
+      },
+      heritage: {
+        tagline: "Over 50 Years of Mastery",
+        title: "About Our Heritage",
+        p1: "R Sutariya Exports was founded on the principles of trust, quality, and direct supply. Evolving from natural diamond cutting in Gujarat to state-of-the-art lab-grown diamond technology, our family has polished the craft for multi-generations.",
+        cta: "Explore Our Story"
+      },
+      whyChoose: {
+        title: "Why Choose R Sutariya Exports",
+        subtitle: "A legacy of trust, quality certification, and direct global export from the diamond capital.",
+        heritageTitle: "Generational Diamond Expertise",
+        heritageDesc: "Decades of family experience in diamond polishing, trading, and manufacturing.",
+        inventoryTitle: "HPHT & CVD Availability",
+        inventoryDesc: "Comprehensive inventory covering multiple shapes, sizes, and specifications.",
+        certsTitle: "International Certifications",
+        certsDesc: "Support for IGI, GIA, HRD, IIDGR, and other recognized certifications.",
+        directTitle: "Direct Export from Surat",
+        directDesc: "Located in the global diamond hub with direct access to manufacturing and export infrastructure.",
+        marketTitle: "European Market Experience",
+        marketDesc: "Serving buyers across major European jewelry markets.",
+        deliveryTitle: "Reliable Global Delivery",
+        deliveryDesc: "Professional logistics support and secure shipment handling."
+      },
+      industries: {
+        title: "Industries We Serve",
+        subtitle: "We connect global buyers directly with Surat's manufacturing hub, catering to high-volume trade and luxury brands.",
+        mfrTitle: "Jewelry Manufacturers",
+        mfrDesc: "Consistent, high-precision calibration of parcels for high-volume jewelry production lines.",
+        wholesalerTitle: "Diamond Wholesalers",
+        wholesalerDesc: "Direct manufacturer rates on bulk diamond assortments, from stars to loose single stones.",
+        retailerTitle: "Retail Jewelers",
+        retailerDesc: "Access to GIA and IGI certified diamonds to offer custom collections to retail buyers.",
+        privateTitle: "Private Label Jewelry Brands",
+        privateDesc: "Direct manufacturing support to launch and scale branded lab-grown diamond lines.",
+        designerTitle: "Luxury Jewelry Designers",
+        designerDesc: "Bespoke cuts and specialized shapes tailored to match unique couture creations.",
+        importerTitle: "International Importers",
+        importerDesc: "Fully compliant export documentation, customs handling, and armored door-to-door transit."
+      },
+      capabilities: {
+        title: "Product Capabilities",
+        subtitle: "An overview of our standard supply parameters. Custom orders available upon request.",
+        shapesLabel: "16+ Diamond Shapes",
+        shapesVal: "Round, Oval, Pear, Heart, Princess, Emerald, Marquise, Baguette, etc.",
+        sizesLabel: "Size Range",
+        sizesVal: "0.005 CT – 5.00 CT",
+        clarityLabel: "Clarity Range",
+        clarityVal: "IF – I2",
+        colorLabel: "Color Range",
+        colorVal: "D – M",
+        certsLabel: "Certification Support",
+        certsVal: "IGI / GIA / HRD / IIDGR"
+      },
+      creationDelivery: {
+        title: "From Creation to Delivery",
+        subtitle: "Every diamond follows a carefully managed journey from advanced growth technology to secure international delivery.",
+        step1Title: "Diamond Growth",
+        step1Desc: "HPHT and CVD technologies are used to create high-quality lab-grown diamonds with exceptional optical and physical properties.",
+        step2Title: "Cutting & Polishing",
+        step2Desc: "Each diamond is expertly cut and polished to maximize brilliance, symmetry, and light performance.",
+        step3Title: "Quality Inspection",
+        step3Desc: "Diamonds undergo strict quality checks for cut, color, clarity, and overall finish.",
+        step4Title: "Certification",
+        step4Desc: "Selected diamonds are certified through internationally recognized laboratories such as IGI, GIA, HRD, IIDGR, and others.",
+        step5Title: "Secure Packaging",
+        step5Desc: "Diamonds are carefully packaged and prepared for safe international transportation.",
+        step6Title: "Global Export",
+        step6Desc: "Orders are shipped worldwide with professional export support and secure logistics management."
+      },
+      stats: {
+        shapes: "Diamond Shapes",
+        avail: "HPHT & CVD Available",
+        global: "Global Export Capability",
+        heritage: "Multi-Generation Heritage",
+        certs: "International Cert Support"
+      },
+      journeyTeaser: {
+        tagline: "Transparency & Trust",
+        title: "The Diamond Journey",
+        subtitle: "From atomic growth chamber to your workbench — every step certified and tracked.",
+        cta: "Explore the Diamond Journey"
       }
+    },
+
+    // Diamond Journey Page
+    diamondJourney: {
+      heroTagline: "From Seed Crystal to Certified Stone",
+      heroTitle: "The Diamond Journey",
+      heroSubtitle: "Every R SUTARIYA EXPORTS diamond passes through six exacting stages — each transparent, each certified, each crafted with precision.",
+      step1: {
+        number: "01",
+        tagline: "At the Origin",
+        title: "HPHT / CVD Growth",
+        body: "Using either High Pressure High Temperature (HPHT) or Chemical Vapour Deposition (CVD) technology, a microscopic seed crystal is placed inside a precision growth chamber. Over weeks, carbon atoms bond under extreme conditions — replicating the geological forces that formed natural diamonds over billions of years. The result: a rough crystal of exceptional optical clarity and atomic purity.",
+        detail1Label: "Pressure",
+        detail1Val: "5–6 GPa (HPHT)",
+        detail2Label: "Temperature",
+        detail2Val: "1300–1600°C",
+        detail3Label: "Duration",
+        detail3Val: "3–6 Weeks",
+        detail4Label: "Crystal Type",
+        detail4Val: "Type IIa"
+      },
+      step2: {
+        number: "02",
+        tagline: "Precision Engineering",
+        title: "Planning & Cutting",
+        body: "Skilled diamond planners analyze the rough crystal using advanced scanning and 3D mapping software to identify the optimal cut strategy. Every facet angle, every proportion ratio is calculated to maximize light return. Precision laser-cutting technology then executes the plan — shaping the rough stone with micron-level accuracy that no hand tool could achieve.",
+        detail1Label: "Planning Tool",
+        detail1Val: "3D Laser Scan",
+        detail2Label: "Technique",
+        detail2Val: "Laser Bruting",
+        detail3Label: "Precision",
+        detail3Val: "± 0.001 mm",
+        detail4Label: "Shapes",
+        detail4Val: "16+ Available"
+      },
+      step3: {
+        number: "03",
+        tagline: "The Art of Brilliance",
+        title: "Polishing",
+        body: "Each facet of the cut diamond is individually polished on a rotating scaife — a cast-iron wheel charged with diamond powder. Our master polishers control angle, pressure, and duration with decades of intuition. This is where a diamond transitions from a shaped stone to a scintillating gem. Proper polishing unlocks a diamond's brilliance, fire, and scintillation — the three pillars of visual beauty.",
+        detail1Label: "Wheel",
+        detail1Val: "Diamond Scaife",
+        detail2Label: "Facets",
+        detail2Val: "57–58 (Brilliant)",
+        detail3Label: "Polish Grade",
+        detail3Val: "Excellent / VG",
+        detail4Label: "Method",
+        detail4Val: "Hand Polished"
+      },
+      step4: {
+        number: "04",
+        tagline: "Zero Compromise",
+        title: "Quality Inspection",
+        body: "Every finished diamond is subjected to multi-stage quality control before being released for certification. Trained gemologists assess the stone under 10x loupe magnification, measuring cut proportions, surface quality, and internal characteristics. Only diamonds that meet our strict internal grade benchmarks proceed to the certification stage.",
+        cColor: "Color Grade",
+        cClarity: "Clarity Grade",
+        cCut: "Cut Grade",
+        cCarat: "Carat Weight",
+        colorRange: "D – M",
+        clarityRange: "IF – I2",
+        cutRange: "Excellent – Good",
+        caratRange: "0.005 – 5.00 CT"
+      },
+      step5: {
+        number: "05",
+        tagline: "Internationally Recognized",
+        title: "Certification",
+        body: "Diamonds above 0.30ct are submitted to internationally recognized gemological laboratories. Each stone receives a unique report number, a full 4C grade, and a digital certificate verifiable online. These certificates travel with the diamond — providing our buyers in Europe with complete assurance of the stone's authenticity, quality, and lab-grown origin.",
+        igi: "International Gemological Institute",
+        igiDesc: "World's largest gemological laboratory, widely recognized across European jewelry markets.",
+        gia: "Gemological Institute of America",
+        giaDesc: "The gold standard in diamond grading — universally trusted by jewelers and collectors.",
+        hrd: "HRD Antwerp",
+        hrdDesc: "Belgium's leading gem lab, particularly prominent in European wholesale trade."
+      },
+      step6: {
+        number: "06",
+        tagline: "Secure & Insured",
+        title: "Packaging & Export",
+        body: "Certified diamonds are carefully placed in individual tamper-evident gem-holders, sealed with certification numbers visible through the packaging. Orders are then dispatched via armored courier services — Malca-Amit or Brinks — with full-value insurance from our Surat facility to the buyer's door in Europe. End-to-end tracking is provided at every step.",
+        route1: "Surat, India",
+        route2: "Customs Clearance",
+        route3: "Armored Air Cargo",
+        route4: "Europe Delivery",
+        detail1Label: "Courier",
+        detail1Val: "Malca-Amit / Brinks",
+        detail2Label: "Insurance",
+        detail2Val: "100% Full Value",
+        detail3Label: "Transit",
+        detail3Val: "2 – 5 Business Days",
+        detail4Label: "Tracking",
+        detail4Val: "End-to-End"
+      },
+      ctaTagline: "Start Your Order",
+      ctaTitle: "Ready to Source?",
+      ctaSubtitle: "Connect with our team directly. We respond to all B2B inquiries within 24 hours.",
+      ctaButton: "Request a Quote",
+      ctaSecondary: "View Our Collection"
     },
 
     // About Us Page
@@ -186,7 +366,21 @@ export const translations = {
       clarity: "Clarity Range",
       specsTitle: "Technical Specifications",
       certType: "Certifications",
-      requestQuoteBtn: "Request Quote for this Shape"
+      requestQuoteBtn: "Request Quote for this Shape",
+      inquiryModal: {
+        title: "Request Quote / Enquire",
+        subtitle: "Submit your B2B requirements for {shape} diamond. We respond within 24 hours.",
+        name: "Full Name",
+        company: "Company Name",
+        email: "Business Email",
+        whatsapp: "WhatsApp Number",
+        carats: "Carat Requirement (e.g. 1.5ct, 2ct)",
+        quantity: "Quantity Needed",
+        shape: "Selected Shape",
+        submit: "Submit Inquiry",
+        successTitle: "Thank You",
+        successText: "Your inquiry for {shape} has been received. Our team will contact you shortly."
+      }
     },
 
     // Certifications Page
@@ -195,8 +389,13 @@ export const translations = {
       subtitle: "Independent laboratory verification guaranteeing absolute quality and B2B transparency.",
       igiTitle: "IGI (International Gemological Institute)",
       igiDesc: "The global benchmark in lab-grown diamond grading. Each certificate verifies growth method (HPHT), color, clarity, and laser inscriptions.",
+      igiDetail: "International certification support available upon request. IGI certifies diamond growth type, color, and clarity with full digital verification.",
       giaTitle: "GIA (Gemological Institute of America)",
       giaDesc: "The world's most trusted name in gemology. GIA provides comprehensive grading reports confirming matching natural counterparts.",
+      giaDetail: "Global grading standards recognized worldwide. GIA certificates offer the absolute pinnacle of grading precision and customer reassurance.",
+      hrdTitle: "HRD Antwerp",
+      hrdDesc: "European diamond certification expertise. Highly respected by European wholesalers and retail jewelry brands.",
+      hrdDetail: "European diamond certification expertise. Provides highly detailed parameters on cut proportions and light performance.",
       processTitle: "Our Quality Control Process",
       step1: "1. Raw Crystal Selection",
       step1Desc: "Only high-grade seed crystals are placed in HPHT presses to minimize nitrogen impurities.",
@@ -205,7 +404,20 @@ export const translations = {
       step3: "3. Double Laser Inscription",
       step3Desc: "Every certified stone is engraved with the lab report number on the girdle for security and tracing.",
       step4: "4. Internal Auditing",
-      step4Desc: "Prior to shipping, our in-house gemologists inspect each diamond against the lab certificate."
+      step4Desc: "Prior to shipping, our in-house gemologists inspect each diamond against the lab certificate.",
+      compliance: {
+        title: "Trust & Compliance",
+        shipping: "Secure International Shipping",
+        shippingDesc: "Fully insured armored delivery (Brinks, Malca-Amit) directly to your jewelry business.",
+        docs: "Export Documentation Support",
+        docsDesc: "Customs clearance, certificates of origin, and tax invoicing fully managed by our experts.",
+        pkg: "Professional Packaging",
+        pkgDesc: "Vacuum-sealed tamper-evident packaging protects diamond parcels in transit.",
+        qc: "Quality Control Procedures",
+        qcDesc: "Every diamond undergoes dual testing: digital verification and manual inspection.",
+        comm: "Responsive B2B Communication",
+        commDesc: "Multilingual support in English, Italian, and French to streamline your sourcing."
+      }
     },
 
     // Export Page
@@ -285,7 +497,8 @@ export const translations = {
       collection: "Collezione",
       certs: "Certificazioni",
       export: "Esportazione & Spedizioni",
-      contact: "Contattaci"
+      contact: "Contattaci",
+      journey: "Viaggio del Diamante"
     },
 
     // Language Selection
@@ -351,7 +564,186 @@ export const translations = {
       cta: {
         title: "Pronto ad Acquistare Diamanti HPHT Premium?",
         subtitle: "Discuti oggi stesso le tue esigenze di volume con i nostri esperti di diamanti. Rispondiamo entro 24 ore."
+      },
+      heritage: {
+        tagline: "Oltre 50 anni di maestria",
+        title: "La nostra eredità",
+        p1: "R Sutariya Exports è stata fondata sui principi di fiducia, qualità e fornitura diretta. Evolvendoci dal taglio dei diamanti naturali nel Gujarat alla tecnologia avanzata dei diamanti coltivati in laboratorio, la nostra famiglia ha perfezionato l'arte da più generazioni.",
+        cta: "Esplora la nostra storia"
+      },
+      whyChoose: {
+        title: "Perché scegliere R Sutariya Exports",
+        subtitle: "Una storia di fiducia, qualità certificata ed esportazione diretta dalla capitale dei diamanti.",
+        heritageTitle: "Esperienza multigenerazionale nei diamanti",
+        heritageDesc: "Decenni di esperienza familiare nella lucidatura, commercio e produzione di diamanti.",
+        inventoryTitle: "Disponibilità HPHT & CVD",
+        inventoryDesc: "Inventario completo che copre molteplici forme, dimensioni e specifiche.",
+        certsTitle: "Certificazioni internazionali",
+        certsDesc: "Supporto per IGI, GIA, HRD, IIDGR e altre certificazioni riconosciute.",
+        directTitle: "Esportazione diretta da Surat",
+        directDesc: "Situato nel centro mondiale dei diamanti con accesso diretto all'infrastruttura di produzione ed esportazione.",
+        marketTitle: "Esperienza nel mercato europeo",
+        marketDesc: "Al servizio degli acquirenti nei principali mercati europei della gioielleria.",
+        deliveryTitle: "Spedizione globale affidabile",
+        deliveryDesc: "Supporto logistico professionale e gestione sicura delle spedizioni."
+      },
+      industries: {
+        title: "Settori che serviamo",
+        subtitle: "Colleghiamo direttamente gli acquirenti globali con il centro di produzione di Surat, soddisfacendo le esigenze di marchi di lusso e commercio all'ingrosso.",
+        mfrTitle: "Produttori di gioielli",
+        mfrDesc: "Calibrazione costante e ad alta precisione dei lotti per linee di produzione di gioielleria ad alto volume.",
+        wholesalerTitle: "Grossisti di diamanti",
+        wholesalerDesc: "Tariffe di fabbrica dirette su assortimenti di diamanti sfusi, dalle piccole dimensioni alle pietre singole.",
+        retailerTitle: "Gioiellieri al dettaglio",
+        retailerDesc: "Accesso a diamanti certificati GIA e IGI per offrire collezioni personalizzate ai clienti finali.",
+        privateTitle: "Marchi a marchio privato",
+        privateDesc: "Supporto di produzione diretto per lanciare e scalare linee di diamanti da laboratorio personalizzate.",
+        designerTitle: "Designer di gioielli di lusso",
+        designerDesc: "Tagli su misura e forme speciali progettate per abbinarsi a creazioni di alta moda uniche.",
+        importerTitle: "Importatori internazionali",
+        importerDesc: "Documentazione di esportazione conforme, gestione doganale e transito blindato porta a porta."
+      },
+      capabilities: {
+        title: "Capacità del prodotto",
+        subtitle: "Panoramica dei nostri parametri di fornitura standard. Ordini personalizzati disponibili su richiesta.",
+        shapesLabel: "16+ Forme di diamanti",
+        shapesVal: "Rotondo, Ovale, Pera, Cuore, Princess, Smeraldo, Marquise, Baguette, ecc.",
+        sizesLabel: "Dimensioni",
+        sizesVal: "0.005 CT – 5.00 CT",
+        clarityLabel: "Purezza",
+        clarityVal: "IF – I2",
+        colorLabel: "Colore",
+        colorVal: "D – M",
+        certsLabel: "Certificazioni supportate",
+        certsVal: "IGI / GIA / HRD / IIDGR"
+      },
+      creationDelivery: {
+        title: "Dalla creazione alla consegna",
+        subtitle: "Ogni diamante segue un percorso gestito con cura, dalla tecnologia di crescita avanzata alla consegna internazionale sicura.",
+        step1Title: "Crescita del diamante",
+        step1Desc: "Le tecnologie HPHT e CVD vengono utilizzate per creare diamanti coltivati in laboratorio di alta qualità con proprietà ottiche e fisiche eccezionali.",
+        step2Title: "Taglio e lucidatura",
+        step2Desc: "Ogni diamante viene tagliato e lucidato con maestria per massimizzare la brillantezza, la simmetria e la resa della luce.",
+        step3Title: "Ispezione di qualità",
+        step3Desc: "I diamanti sono sottoposti a severi controlli di qualità per taglio, colore, purezza e finitura complessiva.",
+        step4Title: "Certificazione",
+        step4Desc: "I diamanti selezionati sono certificati attraverso laboratori riconosciuti a livello internazionale come IGI, GIA, HRD, IIDGR e altri.",
+        step5Title: "Imballaggio sicuro",
+        step5Desc: "I diamanti sono imballati con cura e preparati per un trasporto internazionale sicuro.",
+        step6Title: "Esportazione globale",
+        step6Desc: "Gli ordini vengono spediti in tutto il mondo con supporto professionale all'esportazione e gestione sicura della logistica."
+      },
+      stats: {
+        shapes: "Forme di Diamanti",
+        avail: "HPHT & CVD Disponibili",
+        global: "Esportazione Globale",
+        heritage: "Tradizione Multigenerazionale",
+        certs: "Supporto Certificazioni"
+      },
+      journeyTeaser: {
+        tagline: "Trasparenza e Fiducia",
+        title: "Il Viaggio del Diamante",
+        subtitle: "Dalla camera di crescita atomica al tuo banco di lavoro — ogni fase certificata e tracciata.",
+        cta: "Esplora il Viaggio del Diamante"
       }
+    },
+
+    // Diamond Journey Page (IT)
+    diamondJourney: {
+      heroTagline: "Dal Cristallo Seme alla Pietra Certificata",
+      heroTitle: "Il Viaggio del Diamante",
+      heroSubtitle: "Ogni diamante R SUTARIYA EXPORTS attraversa sei fasi precise — ognuna trasparente, certificata e realizzata con precisione.",
+      step1: {
+        number: "01",
+        tagline: "All'Origine",
+        title: "Crescita HPHT / CVD",
+        body: "Utilizzando la tecnologia HPHT (Alta Pressione Alta Temperatura) o CVD (Deposizione Chimica da Vapore), un microscopico cristallo seme viene collocato in una camera di crescita di precisione. Nel corso di settimane, gli atomi di carbonio si legano in condizioni estreme — replicando le forze geologiche che hanno formato i diamanti naturali in miliardi di anni.",
+        detail1Label: "Pressione",
+        detail1Val: "5–6 GPa (HPHT)",
+        detail2Label: "Temperatura",
+        detail2Val: "1300–1600°C",
+        detail3Label: "Durata",
+        detail3Val: "3–6 Settimane",
+        detail4Label: "Tipo di Cristallo",
+        detail4Val: "Tipo IIa"
+      },
+      step2: {
+        number: "02",
+        tagline: "Ingegneria di Precisione",
+        title: "Pianificazione e Taglio",
+        body: "Esperti pianificatori di diamanti analizzano il cristallo grezzo con software avanzati di scansione 3D per identificare la strategia di taglio ottimale. Ogni angolo di sfaccettatura e ogni rapporto di proporzione viene calcolato per massimizzare la resa della luce. La tecnologia laser esegue il piano con precisione al micron.",
+        detail1Label: "Strumento",
+        detail1Val: "Scansione Laser 3D",
+        detail2Label: "Tecnica",
+        detail2Val: "Laser Bruting",
+        detail3Label: "Precisione",
+        detail3Val: "± 0.001 mm",
+        detail4Label: "Forme",
+        detail4Val: "16+ Disponibili"
+      },
+      step3: {
+        number: "03",
+        tagline: "L'Arte della Brillantezza",
+        title: "Lucidatura",
+        body: "Ogni sfaccettatura del diamante tagliato viene lucidata individualmente su uno scaife rotante — una ruota in ghisa caricata con polvere di diamante. I nostri maestri lucidatori controllano angolo, pressione e durata con decenni di intuizione. La lucidatura corretta sblocca brillantezza, fuoco e scintillio del diamante.",
+        detail1Label: "Ruota",
+        detail1Val: "Scaife al Diamante",
+        detail2Label: "Sfaccettature",
+        detail2Val: "57–58 (Brillante)",
+        detail3Label: "Grado di Lucidatura",
+        detail3Val: "Eccellente / Molto Buono",
+        detail4Label: "Metodo",
+        detail4Val: "Lucidatura a Mano"
+      },
+      step4: {
+        number: "04",
+        tagline: "Zero Compromessi",
+        title: "Ispezione di Qualità",
+        body: "Ogni diamante finito è sottoposto a un controllo qualità multifase prima di essere inviato alla certificazione. Gemmologi esperti valutano la pietra con lente di ingrandimento 10x, misurando proporzioni di taglio, qualità superficiale e caratteristiche interne.",
+        cColor: "Grado Colore",
+        cClarity: "Grado Purezza",
+        cCut: "Grado Taglio",
+        cCarat: "Peso in Carati",
+        colorRange: "D – M",
+        clarityRange: "IF – I2",
+        cutRange: "Eccellente – Buono",
+        caratRange: "0.005 – 5.00 CT"
+      },
+      step5: {
+        number: "05",
+        tagline: "Riconosciuto Internazionalmente",
+        title: "Certificazione",
+        body: "I diamanti sopra 0,30 ct vengono inviati a laboratori gemmologici internazionali. Ogni pietra riceve un numero di report unico, una valutazione completa 4C e un certificato digitale verificabile online. Questi certificati accompagnano il diamante fornendo ai nostri acquirenti europei la certezza dell'autenticità.",
+        igi: "Istituto Gemmologico Internazionale",
+        igiDesc: "Il laboratorio gemmologico più grande del mondo, ampiamente riconosciuto nei mercati europei.",
+        gia: "Istituto Gemmologico d'America",
+        giaDesc: "Il gold standard nella classificazione dei diamanti — universalmente affidabile per gioiellieri e collezionisti.",
+        hrd: "HRD Anversa",
+        hrdDesc: "Il principale laboratorio gemologico belga, particolarmente prominente nel commercio all'ingrosso europeo."
+      },
+      step6: {
+        number: "06",
+        tagline: "Sicuro e Assicurato",
+        title: "Imballaggio ed Esportazione",
+        body: "I diamanti certificati vengono inseriti in porta-gemme individuali antimanomissione, sigillati con i numeri di certificazione visibili attraverso l'imballaggio. Gli ordini vengono spediti tramite corrieri blindati — Malca-Amit o Brinks — con assicurazione a valore pieno dalla nostra struttura di Surat fino alla porta dell'acquirente in Europa.",
+        route1: "Surat, India",
+        route2: "Sdoganamento",
+        route3: "Cargo Aereo Blindato",
+        route4: "Consegna in Europa",
+        detail1Label: "Corriere",
+        detail1Val: "Malca-Amit / Brinks",
+        detail2Label: "Assicurazione",
+        detail2Val: "100% Valore Pieno",
+        detail3Label: "Transito",
+        detail3Val: "2 – 5 Giorni Lavorativi",
+        detail4Label: "Tracciamento",
+        detail4Val: "Fine-a-Fine"
+      },
+      ctaTagline: "Inizia il Tuo Ordine",
+      ctaTitle: "Pronto ad Approvvigionarti?",
+      ctaSubtitle: "Contatta direttamente il nostro team. Rispondiamo a tutte le richieste B2B entro 24 ore.",
+      ctaButton: "Richiedi un Preventivo",
+      ctaSecondary: "Visualizza la Collezione"
     },
 
     about: {
@@ -545,7 +937,8 @@ export const translations = {
       collection: "Collection",
       certs: "Certifications",
       export: "Export & Expédition",
-      contact: "Contactez-nous"
+      contact: "Contactez-nous",
+      journey: "Parcours du Diamant"
     },
 
     // Language Selection
@@ -611,7 +1004,111 @@ export const translations = {
       cta: {
         title: "Prêt à Approvisionner des Diamants HPHT Premium ?",
         subtitle: "Discutez de vos besoins de volume avec nos experts en diamants dès aujourd'hui. Réponse sous 24h."
+      },
+      journeyTeaser: {
+        tagline: "Transparence et Confiance",
+        title: "Le Parcours du Diamant",
+        subtitle: "De la chambre de croissance atomique à votre atelier — chaque étape certifiée et traçable.",
+        cta: "Explorer le Parcours du Diamant"
       }
+    },
+
+    // Diamond Journey Page (FR)
+    diamondJourney: {
+      heroTagline: "Du Cristal Germe à la Pierre Certifiée",
+      heroTitle: "Le Parcours du Diamant",
+      heroSubtitle: "Chaque diamant R SUTARIYA EXPORTS traverse six étapes rigoureuses — chacune transparente, certifiée et réalisée avec précision.",
+      step1: {
+        number: "01",
+        tagline: "À l'Origine",
+        title: "Croissance HPHT / CVD",
+        body: "Grâce à la technologie HPHT (Haute Pression Haute Température) ou CVD (Dépôt Chimique en Phase Vapeur), un minuscule cristal germe est placé dans une chambre de croissance de précision. Sur plusieurs semaines, les atomes de carbone se lient dans des conditions extrêmes — reproduisant les forces géologiques qui ont formé les diamants naturels sur des milliards d'années.",
+        detail1Label: "Pression",
+        detail1Val: "5–6 GPa (HPHT)",
+        detail2Label: "Température",
+        detail2Val: "1300–1600°C",
+        detail3Label: "Durée",
+        detail3Val: "3–6 Semaines",
+        detail4Label: "Type de Cristal",
+        detail4Val: "Type IIa"
+      },
+      step2: {
+        number: "02",
+        tagline: "Ingénierie de Précision",
+        title: "Planification et Taille",
+        body: "Des experts en planification analysent le cristal brut par scan 3D avancé pour définir la stratégie de taille optimale. Chaque angle de facette et chaque ratio de proportion est calculé pour maximiser le retour de lumière. La technologie laser exécute ensuite le plan avec une précision au micron.",
+        detail1Label: "Outil",
+        detail1Val: "Scan Laser 3D",
+        detail2Label: "Technique",
+        detail2Val: "Bruting Laser",
+        detail3Label: "Précision",
+        detail3Val: "± 0,001 mm",
+        detail4Label: "Formes",
+        detail4Val: "16+ Disponibles"
+      },
+      step3: {
+        number: "03",
+        tagline: "L'Art de la Brillance",
+        title: "Polissage",
+        body: "Chaque facette du diamant taillé est polie individuellement sur un scaife rotatif — une roue en fonte chargée de poudre de diamant. Nos maîtres polisseurs contrôlent l'angle, la pression et la durée avec des décennies d'intuition. C'est ici que le diamant passe d'une pierre façonnée à un joyau scintillant.",
+        detail1Label: "Roue",
+        detail1Val: "Scaife Diamant",
+        detail2Label: "Facettes",
+        detail2Val: "57–58 (Brillant)",
+        detail3Label: "Grade Polissage",
+        detail3Val: "Excellent / Très Bon",
+        detail4Label: "Méthode",
+        detail4Val: "Poli à la Main"
+      },
+      step4: {
+        number: "04",
+        tagline: "Zéro Compromis",
+        title: "Contrôle Qualité",
+        body: "Chaque diamant fini est soumis à un contrôle qualité en plusieurs étapes avant d'être envoyé en certification. Des gemmologues qualifiés évaluent la pierre sous loupe 10x, mesurant les proportions de taille, la qualité de surface et les caractéristiques internes.",
+        cColor: "Grade Couleur",
+        cClarity: "Grade Pureté",
+        cCut: "Grade Taille",
+        cCarat: "Poids en Carats",
+        colorRange: "D – M",
+        clarityRange: "IF – I2",
+        cutRange: "Excellent – Bon",
+        caratRange: "0,005 – 5,00 CT"
+      },
+      step5: {
+        number: "05",
+        tagline: "Reconnu Internationalement",
+        title: "Certification",
+        body: "Les diamants de plus de 0,30 ct sont soumis à des laboratoires gemmologiques reconnus internationalement. Chaque pierre reçoit un numéro de rapport unique, une classification 4C complète et un certificat numérique vérifiable en ligne. Ces certificats accompagnent le diamant pour offrir à nos acheteurs européens une assurance totale.",
+        igi: "Institut Gemmologique International",
+        igiDesc: "Le plus grand laboratoire gemmologique du monde, largement reconnu sur les marchés européens.",
+        gia: "Institut Gemmologique d'Amérique",
+        giaDesc: "La référence absolue en classement de diamants — universellement reconnue par joailliers et collectionneurs.",
+        hrd: "HRD Anvers",
+        hrdDesc: "Principal laboratoire gemmologique belge, particulièrement reconnu dans le commerce de gros européen."
+      },
+      step6: {
+        number: "06",
+        tagline: "Sécurisé et Assuré",
+        title: "Emballage et Exportation",
+        body: "Les diamants certifiés sont soigneusement placés dans des porte-gemmes individuels inviolables, scellés avec les numéros de certification visibles à travers l'emballage. Les commandes sont ensuite expédiées via des services de messagerie blindés — Malca-Amit ou Brinks — avec une assurance à pleine valeur de notre établissement de Surat jusqu'à la porte de l'acheteur en Europe.",
+        route1: "Surat, Inde",
+        route2: "Dédouanement",
+        route3: "Fret Aérien Blindé",
+        route4: "Livraison Europe",
+        detail1Label: "Transporteur",
+        detail1Val: "Malca-Amit / Brinks",
+        detail2Label: "Assurance",
+        detail2Val: "100% Valeur Totale",
+        detail3Label: "Transit",
+        detail3Val: "2 – 5 Jours Ouvrés",
+        detail4Label: "Suivi",
+        detail4Val: "De Bout en Bout"
+      },
+      ctaTagline: "Commencer votre Commande",
+      ctaTitle: "Prêt à Vous Approvisionner ?",
+      ctaSubtitle: "Contactez directement notre équipe. Nous répondons à toutes les demandes B2B sous 24 heures.",
+      ctaButton: "Demander un Devis",
+      ctaSecondary: "Voir Notre Collection"
     },
 
     // About Us Page
@@ -707,7 +1204,21 @@ export const translations = {
       clarity: "Gamme de Pureté",
       specsTitle: "Spécifications Techniques",
       certType: "Certifications",
-      requestQuoteBtn: "Demander un Devis pour cette Forme"
+      requestQuoteBtn: "Demander un Devis pour cette Forme",
+      inquiryModal: {
+        title: "Demander un Devis / Infos",
+        subtitle: "Soumettez vos besoins B2B pour le diamant {shape}. Réponse sous 24 heures.",
+        name: "Nom Complet",
+        company: "Nom de l'Entreprise",
+        email: "E-mail Professionnel",
+        whatsapp: "Numéro WhatsApp",
+        carats: "Carat Requis (ex. 1.5ct, 2ct)",
+        quantity: "Quantité Requise",
+        shape: "Forme Sélectionnée",
+        submit: "Soumettre la Demande",
+        successTitle: "Merci",
+        successText: "Votre demande pour {shape} a bien été reçue. Notre équipe vous contactera sous peu."
+      }
     },
 
     // Certifications Page
@@ -716,8 +1227,13 @@ export const translations = {
       subtitle: "Vérification par des laboratoires indépendants pour garantir une qualité absolue et la transparence B2B.",
       igiTitle: "IGI (International Gemological Institute)",
       igiDesc: "La référence mondiale pour la classification des diamants de laboratoire. Chaque certificat atteste de la méthode de croissance (HPHT), de la couleur, de la pureté et comporte une inscription laser.",
+      igiDetail: "Support de certification internationale disponible sur demande. L'IGI atteste de la méthode de croissance, de la couleur et de la pureté avec une vérification en ligne complète.",
       giaTitle: "GIA (Gemological Institute of America)",
       giaDesc: "L'institution de gemmologie la plus respectée au monde. Le GIA délivre des rapports d'analyse complets confirmant les caractéristiques parfaites du diamant.",
+      giaDetail: "Normes d'évaluation internationales reconnues dans le monde entier. Les certificats du GIA offrent la plus haute précision et garantissent la confiance de vos clients.",
+      hrdTitle: "HRD Antwerp",
+      hrdDesc: "L'expertise européenne en matière de certification de diamants. Hautement respecté par les grossistes et les détaillants européens.",
+      hrdDetail: "Expertise européenne en matière de certification de diamants. Fournit des paramètres extrêmement précis sur les proportions de taille et les performances lumineuses.",
       processTitle: "Notre Processus de Contrôle Qualité",
       step1: "1. Sélection du Semis cristallin",
       step1Desc: "Seuls les germes de cristal de haute qualité sont placés dans les presses HPHT pour limiter les impuretés d'azote.",
@@ -726,7 +1242,20 @@ export const translations = {
       step3: "3. Double Inscription Laser",
       step3Desc: "Chaque diamant certifié est gravé sur le rondiste avec son numéro de rapport unique pour plus de sécurité.",
       step4: "4. Audit Interne",
-      step4Desc: "Avant l'expédition, nos gemmologues internes examinent chaque diamant pour s'assurer de sa conformité avec le certificat."
+      step4Desc: "Avant l'expédition, nos gemmologues internes examinent chaque diamant pour s'assurer de sa conformité avec le certificat.",
+      compliance: {
+        title: "Confiance & Conformité",
+        shipping: "Transport International Sécurisé",
+        shippingDesc: "Livraison par transport blindé entièrement assuré (Brinks, Malca-Amit) directement dans votre entreprise.",
+        docs: "Assistance Documents d'Exportation",
+        docsDesc: "Gestion intégrale du dédouanement, des certificats d'origine et de la facturation fiscale par nos soins.",
+        pkg: "Emballage Professionnel",
+        pkgDesc: "L'emballage inviolable scellé sous vide protège vos lots de diamants durant tout le transport.",
+        qc: "Procédures de Contrôle Qualité",
+        qcDesc: "Chaque diamant fait l'objet d'une double vérification : analyse numérique et examen visuel manuel.",
+        comm: "Communication B2B Réactive",
+        commDesc: "Assistance multilingue dédiée en anglais, italien et français pour simplifier vos approvisionnements."
+      }
     },
 
     // Export Page

@@ -14,6 +14,7 @@ import Collection from './pages/Collection';
 import Certifications from './pages/Certifications';
 import ExportShipping from './pages/ExportShipping';
 import Contact from './pages/Contact';
+import DiamondJourney from './pages/DiamondJourney';
 
 // Scroll to top helper on navigation
 const ScrollToTop = () => {
@@ -69,6 +70,7 @@ const MainLayout = () => {
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/export-shipping" element={<ExportShipping />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/diamond-journey" element={<DiamondJourney />} />
         </Routes>
       </main>
       <Footer />

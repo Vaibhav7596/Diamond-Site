@@ -44,6 +44,7 @@ const Navbar = () => {
     { path: '/collection', label: t('nav.collection') },
     { path: '/certifications', label: t('nav.certs') },
     { path: '/export-shipping', label: t('nav.export') },
+    { path: '/diamond-journey', label: t('nav.journey') },
     { path: '/contact', label: t('nav.contact') },
   ];
 

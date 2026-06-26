@@ -1,8 +1,8 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Sparkles, SlidersHorizontal, ChevronRight, MessageSquare, Award } from 'lucide-react';
+import { Search, Sparkles, ChevronRight, MessageSquare, Award, X, Check } from 'lucide-react';
 import { diamondShapes, getShapeImageUrl } from '../data/shapesData';
 
 const Collection = () => {
@@ -12,9 +12,23 @@ const Collection = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGrowth, setSelectedGrowth] = useState('all'); // 'all', 'hpht', 'cvd'
   const [selectedCert, setSelectedCert] = useState('all'); // 'all', 'certified', 'non-certified'
+  const [selectedCategory, setSelectedCategory] = useState('all'); // 'all', 'round', 'fancy'
   
   // Active Shape State
   const [selectedShapeId, setSelectedShapeId] = useState('round-brilliant');
+
+  // B2B Inquiry Modal State
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalForm, setModalForm] = useState({
+    name: '',
+    company: '',
+    email: '',
+    whatsapp: '',
+    carats: '',
+    quantity: ''
+  });
+  const [modalLoading, setModalLoading] = useState(false);
+  const [modalSuccess, setModalSuccess] = useState(false);
 
   // Filtered shapes calculation
   const filteredShapes = useMemo(() => {
@@ -30,9 +44,14 @@ const Collection = () => {
         (selectedCert === 'certified' && shape.certified) ||
         (selectedCert === 'non-certified' && !shape.certified);
 
-      return nameMatch && growthMatch && certMatch;
+      const isRound = shape.id.includes('round');
+      const categoryMatch = selectedCategory === 'all' ||
+        (selectedCategory === 'round' && isRound) ||
+        (selectedCategory === 'fancy' && !isRound);
+
+      return nameMatch && growthMatch && certMatch && categoryMatch;
     });
-  }, [searchTerm, selectedGrowth, selectedCert, language]);
+  }, [searchTerm, selectedGrowth, selectedCert, selectedCategory, language]);
 
   // Adjust active selection if current selection is filtered out
   useEffect(() => {
@@ -45,6 +64,28 @@ const Collection = () => {
   const activeShape = useMemo(() => {
     return diamondShapes.find(s => s.id === selectedShapeId) || diamondShapes[0];
   }, [selectedShapeId]);
+
+  // Handle B2B Modal Submission
+  const handleModalSubmit = (e) => {
+    e.preventDefault();
+    setModalLoading(true);
+    setTimeout(() => {
+      setModalLoading(false);
+      setModalSuccess(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        setModalSuccess(false);
+        setModalForm({
+          name: '',
+          company: '',
+          email: '',
+          whatsapp: '',
+          carats: '',
+          quantity: ''
+        });
+      }, 2500);
+    }, 1200);
+  };
 
   // Product Profile Table Data
   const productProfiles = [
@@ -89,14 +130,14 @@ const Collection = () => {
     <div className="bg-luxury-bg text-luxury-text transition-colors duration-500 min-h-screen">
       
       {/* 1. Header */}
-      <section className="relative py-28 md:py-36 bg-luxury-bg-sec border-b border-luxury-border">
+      <section className="relative py-20 md:py-28 bg-luxury-bg-sec border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-3">Core Diamond Catalog</span>
+          <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-3 font-semibold">Core Diamond Catalog</span>
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, ease: "easeOut", delay: 0.1 }}
-            className="text-4xl md:text-5xl font-serif tracking-wide mb-4 gold-gradient-text uppercase"
+            className="text-3xl md:text-5xl font-serif tracking-wide mb-4 gold-gradient-text uppercase"
           >
             {t('collectionPage.title')}
           </motion.h1>
@@ -112,14 +153,15 @@ const Collection = () => {
       </section>
 
       {/* 2. Interactive B2B Catalog Panel */}
-      <section className="py-16 md:py-24 bg-luxury-bg border-b border-luxury-border">
+      <section className="py-12 md:py-20 bg-luxury-bg border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* ═══ MOBILE LAYOUT ═══════════════════════════════════════════ */}
           <div className="lg:hidden">
 
             {/* Sticky Mobile Catalog Header */}
-            <div className="sticky top-[68px] z-30 bg-luxury-bg/95 backdrop-blur-md border-b border-luxury-border/60 py-3 -mx-4 px-4 mb-4">
+            <div className="sticky top-[64px] z-30 bg-luxury-bg/95 backdrop-blur-md border-b border-luxury-border/60 py-3 -mx-4 px-4 mb-4">
+              
               {/* Search Bar */}
               <div className="relative mb-3">
                 <Search className="w-3.5 h-3.5 text-luxury-text-sec/50 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -145,14 +187,11 @@ const Collection = () => {
                 {filteredShapes.map((shape) => {
                   const isActive = shape.id === selectedShapeId;
                   const shapeName = shape.name[language] || shape.name['en'];
-                  // Simplify shape name for mobile tabs (e.g. "ROUND BRILLIANT CUT" -> "ROUND")
                   const shortName = shapeName.replace(" CUT", "").replace(" 4 STEP", "").replace(" BRILLIANT", "").split(' ')[0];
                   return (
                     <button
                       key={shape.id}
-                      onClick={() => {
-                        setSelectedShapeId(shape.id);
-                      }}
+                      onClick={() => setSelectedShapeId(shape.id)}
                       className={`shrink-0 px-3 py-1.5 text-[9px] tracking-widest uppercase font-serif border rounded-sm transition-all duration-300 ${
                         isActive 
                           ? 'border-gold-500 bg-gold-500/10 text-gold-500 font-bold' 
@@ -171,119 +210,136 @@ const Collection = () => {
               </div>
             </div>
 
-            {/* Mobile: Compact single-card for active shape */}
+            {/* Mobile: Compact side-by-side card for active shape */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeShape.id}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="bg-luxury-bg-sec border border-luxury-card-border rounded-sm overflow-hidden mb-6"
+                transition={{ duration: 0.3 }}
+                className="bg-luxury-bg-sec border border-luxury-card-border rounded-sm p-4 mb-4 space-y-4 shadow-lg"
               >
-                {/* Image strip */}
-                <div className="flex items-center justify-center bg-luxury-bg relative overflow-hidden" style={{ height: '140px' }}>
-                  <div className="absolute w-28 h-28 bg-gold-500/5 rounded-full blur-xl pointer-events-none" />
-                  <motion.img
-                    src={getShapeImageUrl(activeShape.imageName)}
-                    alt={activeShape.name[language] || activeShape.name['en']}
-                    className="max-h-[110px] max-w-[55%] object-contain drop-shadow-[0_8px_20px_rgba(150,123,69,0.15)] relative z-10"
-                    initial={{ scale: 0.92 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
-                  />
-                  {/* Sparkle */}
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 2.5, repeat: Infinity }}
-                    className="absolute top-3 right-3 text-gold-500/40 pointer-events-none z-20"
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                  </motion.div>
-                </div>
+                {/* Compact Grid split */}
+                <div className="grid grid-cols-12 gap-4 items-center">
+                  
+                  {/* Left Column: Image (5 cols) */}
+                  <div className="col-span-5 bg-luxury-bg border border-luxury-border p-2 flex items-center justify-center relative overflow-hidden rounded-sm h-[130px] w-full">
+                    <div className="absolute w-20 h-20 bg-gold-500/5 rounded-full blur-xl pointer-events-none" />
+                    <img
+                      src={getShapeImageUrl(activeShape.imageName)}
+                      alt={activeShape.name[language] || activeShape.name['en']}
+                      className="max-h-[110px] max-w-[85%] object-contain drop-shadow-[0_8px_16px_rgba(150,123,69,0.15)] relative z-10"
+                    />
+                  </div>
 
-                {/* Details */}
-                <div className="p-4 space-y-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <h2 className="text-lg font-serif tracking-wider font-bold gold-gradient-text uppercase leading-tight">
+                  {/* Right Column: Specs & CTAs (7 cols) */}
+                  <div className="col-span-7 flex flex-col justify-between min-h-[130px]">
+                    <div className="space-y-1">
+                      <h2 className="text-sm font-serif tracking-wider font-bold gold-gradient-text uppercase leading-tight">
                         {activeShape.name[language] || activeShape.name['en']}
                       </h2>
-                      <div className="inline-flex items-center gap-1 mt-1 px-1.5 py-0.5 border border-gold-500/30 bg-gold-500/5 text-gold-500 text-[8px] uppercase tracking-widest font-serif rounded-[2px]">
-                        <Award className="w-2 h-2" />
-                        HPHT &amp; CVD
+                      <div className="text-[9px] text-gold-500 font-serif">
+                        {activeShape.sizeRange}
+                      </div>
+                      <div className="text-[8px] text-luxury-text-sec font-mono uppercase">
+                        {activeShape.labs} · {activeShape.certified ? 'Certified' : 'Parcel'}
                       </div>
                     </div>
-                    <span className="text-[9px] text-luxury-text-sec border border-luxury-border px-1.5 py-0.5 rounded-sm font-mono shrink-0">
-                      {activeShape.sizeRange}
-                    </span>
-                  </div>
 
-                  <p className="text-luxury-text-sec text-[11px] leading-relaxed font-sans line-clamp-3">
-                    {activeShape.desc[language] || activeShape.desc['en']}
-                  </p>
-
-                  {/* Mini spec row */}
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[10px] font-sans border-t border-luxury-border/50 pt-2.5">
-                    <div className="flex flex-col">
-                      <span className="text-luxury-text-sec/50 uppercase text-[8px] tracking-widest">Method</span>
-                      <strong className="text-luxury-text font-serif">{activeShape.labs}</strong>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-luxury-text-sec/50 uppercase text-[8px] tracking-widest">Certification</span>
-                      <strong className="text-luxury-text font-serif">
-                        {activeShape.certified ? 'GIA / IGI Certified' : 'Parcel / Sifted'}
-                      </strong>
+                    <div className="space-y-1.5 pt-2">
+                      <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="w-full inline-flex items-center justify-center gap-1 py-1.5 bg-gold-500 text-black font-serif text-[9px] uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer font-bold"
+                      >
+                        Enquire Now
+                      </button>
+                      <a
+                        href={`https://wa.me/919898507686?text=Hello,%20I%20would%20like%20to%20inquire%20about%20${encodeURIComponent(activeShape.name.en)}%20Diamond.`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full inline-flex items-center justify-center gap-1 py-1.5 border border-luxury-border bg-luxury-bg text-luxury-text-sec text-[9px] uppercase tracking-widest rounded-sm cursor-pointer font-serif"
+                      >
+                        <MessageSquare className="w-2.5 h-2.5 text-gold-500" /> WhatsApp
+                      </a>
                     </div>
                   </div>
 
-                  {/* CTAs */}
-                  <div className="grid grid-cols-2 gap-2 pt-1">
-                    <Link
-                      to="/contact"
-                      state={{ shape: activeShape.name.en }}
-                      className="inline-flex items-center justify-center gap-1.5 py-2.5 border border-gold-500 hover:bg-gold-500 text-gold-500 hover:text-black font-serif text-[9px] uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer font-bold"
-                    >
-                      {t('collectionPage.requestQuoteBtn') || 'Request Quote'}
-                      <ChevronRight className="w-3 h-3" />
-                    </Link>
-                    <a
-                      href={`https://wa.me/919898507686?text=Hello,%20I%20would%20like%20to%20inquire%20about%20${encodeURIComponent(activeShape.name.en)}%20Diamond%20(${encodeURIComponent(activeShape.sizeRange)}).`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 py-2.5 border border-luxury-border bg-luxury-bg hover:bg-gold-500/5 hover:border-gold-500/40 text-luxury-text-sec hover:text-gold-500 font-serif text-[9px] uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer"
-                    >
-                      <MessageSquare className="w-3 h-3" />
-                      WhatsApp
-                    </a>
-                  </div>
                 </div>
+
+                {/* Subtext description */}
+                <p className="text-luxury-text-sec text-[10px] leading-relaxed font-sans border-t border-luxury-border/50 pt-2 text-justify">
+                  {activeShape.desc[language] || activeShape.desc['en']}
+                </p>
               </motion.div>
             </AnimatePresence>
 
-            {/* Mobile: Filter Bar */}
-            <div className="flex flex-wrap gap-2 items-center text-[10px] mb-8">
-              <span className="text-luxury-text-sec uppercase tracking-widest font-bold flex items-center gap-1">
-                <SlidersHorizontal className="w-3 h-3 text-gold-500" /> Filters:
-              </span>
-              <select 
-                value={selectedGrowth} 
-                onChange={(e) => setSelectedGrowth(e.target.value)}
-                className="bg-luxury-bg-sec border border-luxury-border px-2 py-1.5 uppercase text-[9px] tracking-wider focus:outline-none focus:border-gold-500 text-luxury-text rounded-sm"
-              >
-                <option value="all">All Methods</option>
-                <option value="hpht">HPHT Only</option>
-                <option value="cvd">CVD Only</option>
-              </select>
-              <select 
-                value={selectedCert} 
-                onChange={(e) => setSelectedCert(e.target.value)}
-                className="bg-luxury-bg-sec border border-luxury-border px-2 py-1.5 uppercase text-[9px] tracking-wider focus:outline-none focus:border-gold-500 text-luxury-text rounded-sm"
-              >
-                <option value="all">All Certifications</option>
-                <option value="certified">Certified Only</option>
-                <option value="non-certified">Non-Certified</option>
-              </select>
+            {/* Mobile: Pills Quick Filters */}
+            <div className="bg-luxury-card border border-luxury-card-border p-4 rounded-sm space-y-3 mb-6">
+              <div className="text-[9px] text-gold-500 font-serif uppercase tracking-widest font-bold">Quick Catalog Filters</div>
+              
+              {/* Category Filters */}
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  { id: 'all', label: 'All Shapes' },
+                  { id: 'round', label: 'Round Cuts' },
+                  { id: 'fancy', label: 'Fancy Cuts' }
+                ].map(c => (
+                  <button
+                    key={c.id}
+                    onClick={() => setSelectedCategory(c.id)}
+                    className={`px-2.5 py-1 text-[8px] uppercase tracking-wider rounded-full border transition-all duration-200 ${
+                      selectedCategory === c.id 
+                        ? 'border-gold-500 bg-gold-500 text-black font-bold' 
+                        : 'border-luxury-border text-luxury-text-sec hover:border-gold-500/40'
+                    }`}
+                  >
+                    {c.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Method Filters */}
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  { id: 'all', label: 'All Methods' },
+                  { id: 'hpht', label: 'HPHT Only' },
+                  { id: 'cvd', label: 'CVD Only' }
+                ].map(m => (
+                  <button
+                    key={m.id}
+                    onClick={() => setSelectedGrowth(m.id)}
+                    className={`px-2.5 py-1 text-[8px] uppercase tracking-wider rounded-full border transition-all duration-200 ${
+                      selectedGrowth === m.id 
+                        ? 'border-gold-500 bg-gold-500 text-black font-bold' 
+                        : 'border-luxury-border text-luxury-text-sec hover:border-gold-500/40'
+                    }`}
+                  >
+                    {m.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Cert Filters */}
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  { id: 'all', label: 'All Certs' },
+                  { id: 'certified', label: 'Certified (GIA/IGI)' },
+                  { id: 'non-certified', label: 'Parcel / Sifted' }
+                ].map(c => (
+                  <button
+                    key={c.id}
+                    onClick={() => setSelectedCert(c.id)}
+                    className={`px-2.5 py-1 text-[8px] uppercase tracking-wider rounded-full border transition-all duration-200 ${
+                      selectedCert === c.id 
+                        ? 'border-gold-500 bg-gold-500 text-black font-bold' 
+                        : 'border-luxury-border text-luxury-text-sec hover:border-gold-500/40'
+                    }`}
+                  >
+                    {c.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -291,7 +347,7 @@ const Collection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
             
             {/* LEFT COLUMN: Sidebar Filters & Shapes list (Desktop) */}
-            <div className="hidden lg:flex lg:col-span-3 flex-col space-y-6 border-r border-luxury-border/60 pr-6 h-[650px]">
+            <div className="hidden lg:flex lg:col-span-3 flex-col space-y-6 border-r border-luxury-border/60 pr-6 h-[720px]">
               
               {/* Search */}
               <div className="space-y-2">
@@ -308,8 +364,33 @@ const Collection = () => {
                 </div>
               </div>
 
-              {/* Filters */}
+              {/* Pill Filters */}
               <div className="space-y-4">
+                {/* Category */}
+                <div className="space-y-2">
+                  <span className="text-[10px] uppercase tracking-widest text-luxury-text-sec/60 block font-bold">Shape Category</span>
+                  <div className="grid grid-cols-3 gap-1">
+                    {[
+                      { id: 'all', label: 'All' },
+                      { id: 'round', label: 'Round' },
+                      { id: 'fancy', label: 'Fancy' }
+                    ].map(c => (
+                      <button
+                        key={c.id}
+                        onClick={() => setSelectedCategory(c.id)}
+                        className={`py-1.5 text-[9px] uppercase tracking-wider border rounded-[1px] transition-colors duration-200 cursor-pointer ${
+                          selectedCategory === c.id
+                            ? 'border-gold-500 bg-gold-500/10 text-gold-500 font-semibold'
+                            : 'border-luxury-border bg-luxury-bg-sec/30 text-luxury-text-sec hover:border-gold-500/20'
+                        }`}
+                      >
+                        {c.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Growth */}
                 <div className="space-y-2">
                   <span className="text-[10px] uppercase tracking-widest text-luxury-text-sec/60 block font-bold">Growth Method</span>
                   <div className="grid grid-cols-3 gap-1">
@@ -329,12 +410,13 @@ const Collection = () => {
                   </div>
                 </div>
 
+                {/* Certification */}
                 <div className="space-y-2">
                   <span className="text-[10px] uppercase tracking-widest text-luxury-text-sec/60 block font-bold">Certification Status</span>
                   <div className="flex flex-col gap-1">
                     {[
                       { val: 'all', label: 'All Listings' },
-                      { val: 'certified', label: 'Certified (GIA/IGI)' },
+                      { val: 'certified', label: 'Certified (GIA/IGI/HRD)' },
                       { val: 'non-certified', label: 'Non-Certified Parcel' }
                     ].map((c) => (
                       <button
@@ -387,7 +469,6 @@ const Collection = () => {
             {/* CENTER COLUMN: Large Interactive Image Frame */}
             <div className="col-span-1 lg:col-span-5 flex flex-col justify-center items-center bg-luxury-bg-sec border border-luxury-border rounded-sm p-6 relative min-h-[380px] lg:min-h-[500px]">
               
-              {/* Delicate Diamond Sparkle (floating animation) */}
               <motion.div
                 animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -396,12 +477,10 @@ const Collection = () => {
                 <Sparkles className="w-5 h-5" />
               </motion.div>
 
-              {/* Luxury Circular Outline Backdrop */}
               <div className="absolute w-[280px] h-[280px] md:w-[350px] md:h-[350px] border border-gold-500/5 rounded-full z-0 flex items-center justify-center">
                 <div className="w-[85%] h-[85%] border border-gold-500/5 rounded-full border-dashed" />
               </div>
 
-              {/* Soft Luxury Glow Radial Backdrop */}
               <div className="absolute w-[200px] h-[200px] bg-gold-500/5 rounded-full blur-3xl pointer-events-none z-0" />
 
               <AnimatePresence mode="wait">
@@ -415,11 +494,10 @@ const Collection = () => {
                 >
                   <img 
                     src={getShapeImageUrl(activeShape.imageName)} 
-                    alt={activeShape.name[language]} 
+                    alt={activeShape.name[language] || activeShape.name['en']} 
                     className="max-w-[70%] max-h-[320px] md:max-h-[380px] object-contain drop-shadow-[0_15px_45px_rgba(150,123,69,0.15)] filter brightness-95"
                   />
 
-                  {/* LightSweep reflective overlay */}
                   <motion.div 
                     initial={{ left: '-150%' }}
                     animate={{ left: '150%' }}
@@ -448,14 +526,13 @@ const Collection = () => {
                       {activeShape.name[language] || activeShape.name['en']}
                     </h2>
                     
-                    {/* B2B Premium Badge */}
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-gold-500/35 bg-gold-500/5 text-gold-500 text-[8px] uppercase tracking-widest font-serif rounded-[2px] font-bold">
                       <Award className="w-3 h-3 text-gold-500 shrink-0" />
-                      Available in HPHT & CVD Lab Grown
+                      Available in HPHT &amp; CVD Lab Grown
                     </div>
                   </div>
 
-                  {/* Multilingual Description */}
+                  {/* Description */}
                   <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">
                     {activeShape.desc[language] || activeShape.desc['en']}
                   </p>
@@ -482,14 +559,13 @@ const Collection = () => {
 
                   {/* Calls to Action */}
                   <div className="flex flex-col sm:flex-row gap-3 pt-6">
-                    <Link
-                      to="/contact"
-                      state={{ shape: activeShape.name.en }}
+                    <button
+                      onClick={() => setIsModalOpen(true)}
                       className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 border border-gold-500 hover:border-gold-600 text-gold-500 hover:text-black hover:bg-gold-500 font-serif text-[10px] uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer shadow-sm text-center font-bold"
                     >
                       {t('collectionPage.requestQuoteBtn') || "Request Quote"}
                       <ChevronRight className="w-3.5 h-3.5" />
-                    </Link>
+                    </button>
 
                     <a
                       href={`https://wa.me/919898507686?text=Hello,%20I%20would%20like%20to%20inquire%20about%20the%20${encodeURIComponent(activeShape.name.en)}%20Diamond%20sizes%20range%20${encodeURIComponent(activeShape.sizeRange)}.`}
@@ -514,10 +590,10 @@ const Collection = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center mb-16 max-w-2xl mx-auto">
-            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Technical Matrix</span>
+            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2 font-semibold">Technical Matrix</span>
             <h2 className="text-3xl font-serif tracking-wide mb-4 text-luxury-text uppercase">B2B Product Profiles</h2>
             <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">
-              Comprehensive inventory matrix covering certified and non-certified parcels of HPHT & CVD lab-grown diamonds for international exporters.
+              Comprehensive inventory matrix covering certified and non-certified parcels of HPHT &amp; CVD lab-grown diamonds for international exporters.
             </p>
           </div>
 
@@ -558,7 +634,6 @@ const Collection = () => {
             </table>
           </div>
 
-          {/* Catalog Footnote */}
           <div className="mt-8 text-center text-luxury-text-sec/60 text-[10px] italic font-sans">
             * Custom layouts, mixed parcels, and customized bulk orders can be processed upon specialized requests. GIA/IGI verification reports are supplied with all certified orders.
           </div>
@@ -566,9 +641,169 @@ const Collection = () => {
         </div>
       </section>
 
+      {/* ═══ B2B INQUIRY MODAL ════════════════════════════════════════ */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4">
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="bg-luxury-bg-sec border border-luxury-card-border max-w-lg w-full rounded-sm p-6 relative shadow-2xl font-serif"
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setIsModalOpen(false)} 
+                className="absolute top-4 right-4 text-luxury-text-sec hover:text-white transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Success State */}
+              {modalSuccess ? (
+                <div className="py-12 text-center space-y-4">
+                  <div className="w-16 h-16 bg-gold-500/10 border border-gold-500 rounded-full flex items-center justify-center mx-auto text-gold-500">
+                    <Check className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl text-luxury-text font-bold uppercase tracking-wider">
+                    {t('collectionPage.inquiryModal.successTitle') || 'Thank You'}
+                  </h3>
+                  <p className="text-luxury-text-sec text-xs font-sans max-w-sm mx-auto leading-relaxed">
+                    {(t('collectionPage.inquiryModal.successText') || 'Your inquiry for {shape} has been received. Our team will contact you shortly.').replace('{shape}', activeShape.name[language] || activeShape.name['en'])}
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleModalSubmit} className="space-y-4 text-left">
+                  <div>
+                    <span className="text-[9px] uppercase tracking-widest text-gold-500 font-bold block mb-1">Direct Sourcing Form</span>
+                    <h3 className="text-lg text-luxury-text uppercase font-semibold">
+                      {t('collectionPage.inquiryModal.title') || 'Request Quote / Enquire'}
+                    </h3>
+                    <p className="text-luxury-text-sec text-[10px] font-sans">
+                      {(t('collectionPage.inquiryModal.subtitle') || 'Submit your B2B requirements for {shape} diamond. We respond within 24 hours.').replace('{shape}', activeShape.name[language] || activeShape.name['en'])}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Readonly prefilled shape */}
+                    <div className="sm:col-span-2 space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-luxury-text-sec/80 block font-bold font-sans">
+                        {t('collectionPage.inquiryModal.shape') || 'Selected Shape'}
+                      </label>
+                      <input 
+                        type="text" 
+                        value={activeShape.name[language] || activeShape.name['en']} 
+                        disabled 
+                        className="w-full bg-luxury-bg border border-luxury-border text-xs uppercase tracking-wider text-gold-500 px-3 py-2.5 rounded-sm font-semibold cursor-not-allowed"
+                      />
+                    </div>
+
+                    {/* Name */}
+                    <div className="space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-luxury-text-sec/80 block font-bold font-sans">
+                        {t('collectionPage.inquiryModal.name') || 'Full Name'} *
+                      </label>
+                      <input 
+                        type="text" 
+                        required
+                        value={modalForm.name}
+                        onChange={(e) => setModalForm({...modalForm, name: e.target.value})}
+                        className="w-full bg-luxury-bg border border-luxury-border text-xs text-luxury-text px-3 py-2.5 rounded-sm focus:outline-none focus:border-gold-500 font-sans"
+                      />
+                    </div>
+
+                    {/* Company */}
+                    <div className="space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-luxury-text-sec/80 block font-bold font-sans">
+                        {t('collectionPage.inquiryModal.company') || 'Company Name'} *
+                      </label>
+                      <input 
+                        type="text" 
+                        required
+                        value={modalForm.company}
+                        onChange={(e) => setModalForm({...modalForm, company: e.target.value})}
+                        className="w-full bg-luxury-bg border border-luxury-border text-xs text-luxury-text px-3 py-2.5 rounded-sm focus:outline-none focus:border-gold-500 font-sans"
+                      />
+                    </div>
+
+                    {/* Email */}
+                    <div className="space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-luxury-text-sec/80 block font-bold font-sans">
+                        {t('collectionPage.inquiryModal.email') || 'Business Email'} *
+                      </label>
+                      <input 
+                        type="email" 
+                        required
+                        value={modalForm.email}
+                        onChange={(e) => setModalForm({...modalForm, email: e.target.value})}
+                        className="w-full bg-luxury-bg border border-luxury-border text-xs text-luxury-text px-3 py-2.5 rounded-sm focus:outline-none focus:border-gold-500 font-sans"
+                      />
+                    </div>
+
+                    {/* WhatsApp */}
+                    <div className="space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-luxury-text-sec/80 block font-bold font-sans">
+                        {t('collectionPage.inquiryModal.whatsapp') || 'WhatsApp Number'} *
+                      </label>
+                      <input 
+                        type="tel" 
+                        required
+                        value={modalForm.whatsapp}
+                        onChange={(e) => setModalForm({...modalForm, whatsapp: e.target.value})}
+                        className="w-full bg-luxury-bg border border-luxury-border text-xs text-luxury-text px-3 py-2.5 rounded-sm focus:outline-none focus:border-gold-500 font-sans"
+                      />
+                    </div>
+
+                    {/* Carat requirement */}
+                    <div className="space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-luxury-text-sec/80 block font-bold font-sans">
+                        {t('collectionPage.inquiryModal.carats') || 'Carats Required'}
+                      </label>
+                      <input 
+                        type="text" 
+                        placeholder="e.g. 1.5ct, 2ct"
+                        value={modalForm.carats}
+                        onChange={(e) => setModalForm({...modalForm, carats: e.target.value})}
+                        className="w-full bg-luxury-bg border border-luxury-border text-xs text-luxury-text px-3 py-2.5 rounded-sm focus:outline-none focus:border-gold-500 font-sans"
+                      />
+                    </div>
+
+                    {/* Quantity */}
+                    <div className="space-y-1">
+                      <label className="text-[9px] uppercase tracking-widest text-luxury-text-sec/80 block font-bold font-sans">
+                        {t('collectionPage.inquiryModal.quantity') || 'Quantity'}
+                      </label>
+                      <input 
+                        type="text" 
+                        placeholder="e.g. 10 stones, parcel"
+                        value={modalForm.quantity}
+                        onChange={(e) => setModalForm({...modalForm, quantity: e.target.value})}
+                        className="w-full bg-luxury-bg border border-luxury-border text-xs text-luxury-text px-3 py-2.5 rounded-sm focus:outline-none focus:border-gold-500 font-sans"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={modalLoading}
+                      className="w-full py-3 bg-gold-500 hover:bg-gold-600 text-black text-xs uppercase tracking-widest font-bold font-sans transition-all duration-300 rounded-sm cursor-pointer disabled:opacity-50"
+                    >
+                      {modalLoading ? 'Sending...' : (t('collectionPage.inquiryModal.submit') || 'Submit Inquiry')}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </motion.div>
+
+          </div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 };
 
 export default Collection;
-

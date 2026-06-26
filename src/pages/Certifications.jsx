@@ -40,9 +40,9 @@ const Certifications = () => {
       </section>
 
       {/* Lab Details */}
-      <section className="py-28 md:py-36 bg-luxury-bg">
+      <section className="py-24 md:py-32 bg-luxury-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* IGI */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ const Certifications = () => {
                 </div>
               </div>
               <p className="text-luxury-text-sec text-xs leading-relaxed font-sans mb-6">
-                {t('certsPage.igiDesc')}
+                {t('certsPage.igiDetail') || t('certsPage.igiDesc')}
               </p>
               <div className="border-t border-luxury-border pt-4 flex gap-4 text-[10px] text-gold-600 font-serif">
                 <span>✓ Verified Growth: HPHT</span>
@@ -74,7 +74,7 @@ const Certifications = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
               className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/25 transition-all duration-300 relative group shadow-md"
             >
               <div className="flex items-center gap-4 mb-6">
@@ -87,11 +87,37 @@ const Certifications = () => {
                 </div>
               </div>
               <p className="text-luxury-text-sec text-xs leading-relaxed font-sans mb-6">
-                {t('certsPage.giaDesc')}
+                {t('certsPage.giaDetail') || t('certsPage.giaDesc')}
               </p>
               <div className="border-t border-luxury-border pt-4 flex gap-4 text-[10px] text-gold-600 font-serif">
                 <span>✓ Detailed Color/Clarity Audits</span>
                 <span>✓ Natural Diamond Matching Standards</span>
+              </div>
+            </motion.div>
+
+            {/* HRD */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/25 transition-all duration-300 relative group shadow-md"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 border border-gold-500 rotate-45 flex items-center justify-center bg-luxury-bg">
+                  <span className="-rotate-45 font-bold text-gold-500 text-sm">HRD</span>
+                </div>
+                <div>
+                  <h3 className="text-luxury-text text-lg font-serif tracking-wider font-bold">{t('certsPage.hrdTitle') || 'HRD Antwerp'}</h3>
+                  <span className="text-[9px] uppercase tracking-widest text-luxury-text-sec/60 font-sans">European Expertise</span>
+                </div>
+              </div>
+              <p className="text-luxury-text-sec text-xs leading-relaxed font-sans mb-6">
+                {t('certsPage.hrdDetail') || 'European diamond certification expertise. Highly respected by European wholesalers and retail jewelry brands.'}
+              </p>
+              <div className="border-t border-luxury-border pt-4 flex gap-4 text-[10px] text-gold-600 font-serif">
+                <span>✓ High European Standing</span>
+                <span>✓ Precise Optical Profiling</span>
               </div>
             </motion.div>
           </div>
@@ -99,7 +125,7 @@ const Certifications = () => {
       </section>
 
       {/* QC Steps */}
-      <section className="py-28 md:py-36 bg-luxury-bg-sec border-t border-luxury-border">
+      <section className="py-24 md:py-32 bg-luxury-bg-sec border-t border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Internal Audits</span>
@@ -131,8 +157,42 @@ const Certifications = () => {
         </div>
       </section>
 
+      {/* Trust & Compliance Section */}
+      <section className="py-24 md:py-32 bg-luxury-bg border-t border-luxury-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Buyer Guarantees</span>
+            <h2 className="text-3xl font-serif tracking-wide text-luxury-text uppercase">
+              {t('certsPage.compliance.title') || 'Trust & Compliance'}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: t('certsPage.compliance.shipping') || 'Secure International Shipping', desc: t('certsPage.compliance.shippingDesc') || 'Fully insured armored delivery (Brinks, Malca-Amit) directly to your jewelry business.' },
+              { title: t('certsPage.compliance.docs') || 'Export Documentation Support', desc: t('certsPage.compliance.docsDesc') || 'Customs clearance, certificates of origin, and tax invoicing fully managed by our experts.' },
+              { title: t('certsPage.compliance.pkg') || 'Professional Packaging', desc: t('certsPage.compliance.pkgDesc') || 'Vacuum-sealed tamper-evident packaging protects diamond parcels in transit.' },
+              { title: t('certsPage.compliance.qc') || 'Quality Control Procedures', desc: t('certsPage.compliance.qcDesc') || 'Every diamond undergoes dual testing: digital verification and manual inspection.' },
+              { title: t('certsPage.compliance.comm') || 'Responsive B2B Communication', desc: t('certsPage.compliance.commDesc') || 'Multilingual support in English, Italian, and French to streamline your sourcing.' },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.08 }}
+                className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-all duration-300"
+              >
+                <h4 className="text-luxury-text font-serif font-bold text-sm mb-2 uppercase tracking-wide">{item.title}</h4>
+                <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Specimen Certificate Verification Support */}
-      <section className="py-28 md:py-36 bg-luxury-bg relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-luxury-bg-sec border-t border-luxury-border relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border border-gold-500/20 bg-luxury-card p-10 rounded-sm relative shadow-2xl flex flex-col md:flex-row justify-between items-center gap-10">
             <div className="font-serif">

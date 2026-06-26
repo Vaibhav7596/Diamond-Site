@@ -1,8 +1,11 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import LightReflect from '../components/LightReflect';
 import craftsmanImage from '../assets/diamond_craftsman.png';
+import officeEntranceImage from '../assets/surat_office_entrance.png';
+import securePackagingImage from '../assets/secure_export_packaging.png';
 import { Gem, Award, Check, ArrowRight, Globe, MapPin } from 'lucide-react';
 
 // Milestones, journeyPoints, and values are now defined dynamically inside the component to support multi-language routing.
@@ -298,6 +301,70 @@ const AboutUs = () => {
         </div>
       </section>
 
+      {/* ── BEHIND THE OPERATIONS ─────────────────────── */}
+      <section className="py-24 md:py-32 bg-luxury-bg border-b border-luxury-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Authentic Assets</span>
+            <h2 className="text-3xl font-serif tracking-wide text-luxury-text uppercase">
+              Behind Our Operations
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Office Entrance */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-4"
+            >
+              <div className="h-[300px] w-full rounded-sm overflow-hidden border border-luxury-card-border relative group">
+                <LightReflect>
+                  <img
+                    src={officeEntranceImage}
+                    alt="R Sutariya Exports Surat Office Entrance"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  />
+                </LightReflect>
+              </div>
+              <div className="font-serif">
+                <h4 className="text-luxury-text uppercase tracking-wide font-bold text-sm">Surat Headquarters Office</h4>
+                <p className="text-luxury-text-sec text-xs font-sans mt-1 leading-relaxed">
+                  Our professional office center in Surat coordinates customer relations, bulk logistics routing, and billing administration.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Secure Packaging */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="space-y-4"
+            >
+              <div className="h-[300px] w-full rounded-sm overflow-hidden border border-luxury-card-border relative group">
+                <LightReflect>
+                  <img
+                    src={securePackagingImage}
+                    alt="Secure Diamond Export Packaging"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  />
+                </LightReflect>
+              </div>
+              <div className="font-serif">
+                <h4 className="text-luxury-text uppercase tracking-wide font-bold text-sm">Secure Export Facility</h4>
+                <p className="text-luxury-text-sec text-xs font-sans mt-1 leading-relaxed">
+                  Every certified lab-grown diamond is carefully placed in tamper-evident sealed packaging with its laboratory certificates.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ───────────────────────────────────────── */}
       <section className="py-28 md:py-36 bg-luxury-bg">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -314,13 +381,22 @@ const AboutUs = () => {
             <p className="text-luxury-text-sec font-sans text-xs leading-relaxed mb-10 max-w-xl mx-auto">
               {t('about.ctaDesc')}
             </p>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-gold-500 hover:bg-gold-600 text-black font-serif text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.35)] rounded-sm"
-            >
-              {t('about.ctaButton')}
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-gold-500 hover:bg-gold-600 text-black font-serif text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.35)] rounded-sm"
+              >
+                {t('about.ctaButton')}
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+              <Link
+                to="/diamond-journey"
+                className="inline-flex items-center justify-center gap-3 px-10 py-4 border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-black font-serif text-xs uppercase tracking-widest font-semibold transition-all duration-300 rounded-sm"
+              >
+                {t('nav.journey')}
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
