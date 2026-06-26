@@ -58,10 +58,10 @@ const MainLayout = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-luxury-bg text-luxury-text transition-colors duration-500">
+    <div className="flex flex-col min-h-screen bg-luxury-bg text-luxury-text transition-colors duration-500 overflow-x-hidden">
       <ScrollToTop />
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-[64px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />

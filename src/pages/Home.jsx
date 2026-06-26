@@ -48,7 +48,7 @@ const Home = () => {
     <div className="bg-luxury-bg text-luxury-text transition-colors duration-500">
       
       {/* 1. Hero Section */}
-      <section className="relative min-h-[95vh] flex items-center justify-center bg-black overflow-hidden py-24">
+      <section className="relative min-h-[95vh] flex items-center justify-center bg-black overflow-hidden py-24 -mt-[64px]">
         {/* Background Image Fade In */}
         <motion.div 
           initial={{ opacity: 0 }}

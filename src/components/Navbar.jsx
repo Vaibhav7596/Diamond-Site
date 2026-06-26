@@ -10,7 +10,11 @@ const Navbar = () => {
   const { t, language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(() => {
+    // Initialize from actual scroll position — prevents wrong-state on first render
+    if (typeof window !== 'undefined') return window.scrollY > 50;
+    return false;
+  });
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const [showMobileLangDropdown, setShowMobileLangDropdown] = useState(false);
   const location = useLocation();
@@ -246,7 +250,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-[68px] left-0 w-full bg-[#0b0c10]/98 border-b border-gold-500/15 backdrop-blur-lg z-30 xl:hidden overflow-hidden"
+            className="fixed top-[64px] left-0 w-full bg-[#0b0c10]/98 border-b border-gold-500/15 backdrop-blur-lg z-30 xl:hidden overflow-hidden"
           >
             <div className="px-4 pt-4 pb-6 space-y-1">
               {navLinks.map((link) => (
