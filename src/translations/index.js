@@ -159,6 +159,7 @@ export const translations = {
         { location: "Surat, Gujarat", role: "Expansion Hub", desc: "Global diamond manufacturing capital" },
         { location: "Europe", role: "Export Destination", desc: "Italy · France · and beyond" }
       ],
+      legacyTagline: "Leadership Heritage",
       legacyTitle: "Founder Legacy & Core Values",
       legacyDesc: "Under the vision of our founders, we believe that trust is the hardest gem to polish. Our operations are guided by family values, transparent grading, and a dedication to forming lifetime business relationships with European designers and retailers.",
       legacyP2: "As the next generation stepped into leadership roles, they brought fresh perspective while preserving the principles that built the business. The commitment to excellence — in every stone, every shipment, every conversation — remains unchanged.",
@@ -418,6 +419,7 @@ export const translations = {
         { location: "Surat, Gujarat", role: "Hub di espansione", desc: "Capitale mondiale della produzione di diamanti" },
         { location: "Europa", role: "Destinazione di esportazione", desc: "Italia · France · e oltre" }
       ],
+      legacyTagline: "Eredità della Leadership",
       legacyTitle: "Eredità dei Fondatori e Valori Fondamentali",
       legacyDesc: "Secondo la visione dei nostri fondatori, crediamo che la fiducia sia la gemma più difficile da lucidare. Le nostre operazioni sono guidate da valori familiari, valutazioni trasparenti e dedizione a costruire relazioni commerciali a vita con i partner europei.",
       legacyP2: "Quando la generazione successiva è entrata nei ruoli di leadership, ha portato una nuova prospettiva pur preservando i principi che hanno costruito l'azienda. L'impegno per l'eccellenza in ogni pietra, spedizione e conversazione rimane immutato.",
@@ -678,6 +680,7 @@ export const translations = {
         { location: "Surat, Gujarat", role: "Pôle d'expansion", desc: "Capitale mondiale de la fabrication de diamants" },
         { location: "Europe", role: "Destination d'exportation", desc: "Italie · France · et au-delà" }
       ],
+      legacyTagline: "Héritage du leadership",
       legacyTitle: "Héritage des fondateurs et valeurs",
       legacyDesc: "Selon la vision de nos fondateurs, nous croyons que la confiance est la gemme la plus difficile à polir. Nos opérations sont guidées par des valeurs familiales, des classements transparents et la volonté d'établir des partenariats à long terme.",
       legacyP2: "Lorsque la génération suivante a accédé aux postes de direction, elle a apporté une perspective nouvelle tout en préservant les principes fondateurs. Notre exigence d'excellence demeure inchangée.",

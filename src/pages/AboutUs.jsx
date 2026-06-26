@@ -251,7 +251,7 @@ const AboutUs = () => {
       <section className="py-28 md:py-36 bg-luxury-bg-sec border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Leadership Heritage</span>
+            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">{t('about.legacyTagline')}</span>
             <h2 className="text-3xl md:text-4xl font-serif tracking-wide text-luxury-text uppercase">
               {t('about.legacyTitle')}
             </h2>
