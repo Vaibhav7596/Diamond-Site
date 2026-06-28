@@ -51,7 +51,7 @@ const JourneySidebar = ({ currentStep, onStepSelect }) => {
               {!isLast && (
                 <div 
                   className={`absolute left-5 top-10 w-px h-[calc(100%+20px)] 
-                    ${isCompleted || isActive ? 'bg-gold-primary' : 'bg-gray-600'}`}
+                    ${isCompleted || isActive ? 'bg-gold-primary' : 'bg-luxury-border'}`}
                 />
               )}
 
@@ -61,7 +61,7 @@ const JourneySidebar = ({ currentStep, onStepSelect }) => {
                   w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300
                   ${isActive ? 'bg-gold-primary text-black shadow-[0_0_15px_rgba(200,155,74,0.4)]' : 
                     isCompleted ? 'bg-luxury-bg border border-gold-primary text-gold-primary' : 
-                    'bg-luxury-bg border border-gray-600 text-gray-500'}
+                    'bg-luxury-bg border border-luxury-border text-luxury-text-sec opacity-80'}
                 `}>
                   <Icon size={18} className={isActive ? 'fill-current' : ''} />
                 </div>
@@ -69,19 +69,19 @@ const JourneySidebar = ({ currentStep, onStepSelect }) => {
 
               {/* Text Content */}
               <div className={`
-                flex-1 p-3 rounded-xl transition-all duration-300 relative
-                ${isActive ? 'bg-gradient-to-r from-[#2D2418] to-transparent border border-gold-primary/30' : 'bg-transparent'}
+                flex-1 p-3 rounded-xl transition-all duration-300 relative border
+                ${isActive ? 'bg-gradient-to-r from-gold-primary/20 to-transparent border-gold-primary/30' : 'bg-transparent border-transparent'}
               `}>
                 <div className="flex flex-col">
                   <span className={`
                     text-xs font-serif font-bold uppercase tracking-wider mb-1
-                    ${isActive || isCompleted ? 'text-gold-primary' : 'text-gray-500'}
+                    ${isActive || isCompleted ? 'text-gold-primary' : 'text-luxury-text-sec opacity-80'}
                   `}>
                     Step {String(step.id).padStart(2, '0')}
                   </span>
                   <span className={`
                     text-sm font-semibold 
-                    ${isActive ? 'text-white' : isCompleted ? 'text-gray-300' : 'text-gray-500'}
+                    ${isActive ? 'text-luxury-text' : isCompleted ? 'text-luxury-text-sec' : 'text-luxury-text-sec opacity-80'}
                   `}>
                     {step.label}
                   </span>
@@ -92,7 +92,7 @@ const JourneySidebar = ({ currentStep, onStepSelect }) => {
                         animate={{ opacity: 1, height: 'auto', marginTop: 4 }}
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="text-xs text-gray-400 overflow-hidden block"
+                        className="text-xs text-luxury-text-sec overflow-hidden block"
                       >
                         {step.sub}
                       </motion.span>
@@ -108,7 +108,7 @@ const JourneySidebar = ({ currentStep, onStepSelect }) => {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -10 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-main rotate-45 border-l border-b border-gold-primary/30" 
+                      className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-luxury-bg rotate-45 border-l border-b border-gold-primary/30" 
                     />
                   )}
                 </AnimatePresence>

@@ -6,7 +6,7 @@ const HeroSection = ({ step, title, subtitle, body, bannerFrom, bannerTo }) => {
   const placeholderImage = `https://images.unsplash.com/photo-1599643478524-fb524458f447?q=80&w=800&auto=format&fit=crop`;
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-[4fr_5.5fr] gap-6 items-center mb-6">
+    <section className="grid grid-cols-1 lg:grid-cols-[4fr_5.5fr] gap-5 items-center mb-6">
       
       {/* Left Content */}
       <motion.div 
@@ -19,7 +19,7 @@ const HeroSection = ({ step, title, subtitle, body, bannerFrom, bannerTo }) => {
           STEP · {step} / 08
         </span>
         
-        <h1 className="text-[48px] md:text-[50px] font-bold text-gray-300 leading-[1.15] mb-2 max-w-[470px]">
+        <h1 className="text-[48px] md:text-[50px] font-bold text-luxury-text-sec leading-[1.15] mb-2 max-w-[470px]">
           {title}
         </h1>
         
@@ -34,7 +34,7 @@ const HeroSection = ({ step, title, subtitle, body, bannerFrom, bannerTo }) => {
           <div className="flex-1 h-px bg-white/10"></div>
         </div>
         
-        <p className="text-[16px] text-gray-400 leading-[1.85] max-w-[400px]">
+        <p className="text-[16px] text-luxury-text-sec leading-[1.85] max-w-[400px]">
           {body}
         </p>
 
@@ -50,7 +50,7 @@ const HeroSection = ({ step, title, subtitle, body, bannerFrom, bannerTo }) => {
         <img 
           src={placeholderImage} 
           alt={title} 
-          className="w-full h-full object-cover"
+          className="w-full h-full max-h-[400px] object-cover"
         />
         
         {/* Very subtle shadow / dark overlay on edges for luxury feel */}

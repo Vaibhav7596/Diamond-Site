@@ -49,7 +49,7 @@ const DiamondJourney = () => {
   };
 
   return (
-    <div className="bg-app text-gray-300 w-full min-h-screen font-sans">
+    <div className="bg-luxury-bg text-luxury-text w-full min-h-screen font-sans">
       <JourneyLayout 
         sidebar={
           <JourneySidebar 
