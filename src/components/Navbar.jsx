@@ -19,6 +19,12 @@ const Navbar = () => {
   const [showMobileLangDropdown, setShowMobileLangDropdown] = useState(false);
   const location = useLocation();
 
+  const handleNavLinkClick = (path) => {
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -68,7 +74,11 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-4">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
+            <Link 
+              to="/" 
+              onClick={() => handleNavLinkClick('/')}
+              className="flex items-center gap-2.5 group flex-shrink-0"
+            >
               <img src={logoImg} alt="R SUTARIYA EXPORTS Logo" className="h-9 w-9 object-contain rounded-sm bg-white p-0.5" />
               <div className="flex flex-col">
                 <span className="text-white font-serif tracking-widest text-sm font-semibold group-hover:text-gold-500 transition-colors duration-300 whitespace-nowrap">R SUTARIYA</span>
@@ -84,6 +94,7 @@ const Navbar = () => {
                   <NavLink
                     key={link.path}
                     to={link.path}
+                    onClick={() => handleNavLinkClick(link.path)}
                     className={({ isActive }) => `relative py-2 px-2 text-[11px] uppercase tracking-wide font-serif transition-colors duration-300 whitespace-nowrap leading-none ${
                       isActive ? 'text-gold-500 font-semibold' : 'text-white/90 hover:text-gold-500'
                     }`}
@@ -163,6 +174,7 @@ const Navbar = () => {
               {/* Inquiry Button */}
               <Link
                 to="/contact"
+                onClick={() => handleNavLinkClick('/contact')}
                 className="inline-flex items-center justify-center px-4 py-2 bg-transparent border border-gold-500 text-gold-500 hover:text-black font-serif text-[11px] uppercase tracking-wide overflow-hidden transition-all duration-300 hover:bg-gold-500 shadow-[0_0_10px_rgba(197,168,128,0.05)] hover:shadow-[0_0_15px_rgba(212,175,55,0.2)] rounded-sm cursor-pointer whitespace-nowrap flex-shrink-0"
               >
                 {t('inquiry')}
@@ -261,7 +273,10 @@ const Navbar = () => {
                   className={({ isActive }) => `block py-3 px-4 text-sm uppercase tracking-widest font-serif transition-colors ${
                     isActive ? 'text-gold-500 bg-gold-500/5 border-l-2 border-gold-500 pl-3.5 font-semibold' : 'text-white/90 hover:text-gold-500 border-l-2 border-transparent'
                   }`}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    handleNavLinkClick(link.path);
+                    setIsOpen(false);
+                  }}
                 >
                   {link.label}
                 </NavLink>
@@ -270,7 +285,10 @@ const Navbar = () => {
                 <Link
                   to="/contact"
                   className="w-full inline-flex items-center justify-center py-3 bg-gold-500 text-black font-serif text-xs uppercase tracking-widest rounded-sm font-semibold hover:bg-gold-600 transition-colors"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    handleNavLinkClick('/contact');
+                    setIsOpen(false);
+                  }}
                 >
                   {t('inquiry')}
                 </Link>

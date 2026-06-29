@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Mail, Phone, MapPin, Send, Award, Globe, ShieldCheck, Gem } from 'lucide-react';
 import logoImg from '../assets/logo.jpeg';
@@ -7,6 +7,13 @@ import logoImg from '../assets/logo.jpeg';
 const Footer = () => {
   const { t, setLanguage } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+
+  const handleNavLinkClick = (path) => {
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const certBadges = [
     { label: 'IGI Certified', icon: Award },
@@ -47,7 +54,11 @@ const Footer = () => {
 
           {/* Brand Info */}
           <div>
-            <Link to="/" className="flex items-center gap-3 mb-5 group">
+            <Link 
+              to="/" 
+              onClick={() => handleNavLinkClick('/')}
+              className="flex items-center gap-3 mb-5 group"
+            >
               <img src={logoImg} alt="R SUTARIYA EXPORTS Logo" className="h-8 w-8 object-contain rounded-sm bg-white p-0.5" />
               <div className="flex flex-col">
                 <span className="text-luxury-text tracking-widest text-sm font-semibold group-hover:text-gold-500 transition-colors duration-300">R SUTARIYA</span>
@@ -88,13 +99,13 @@ const Footer = () => {
               Navigate
             </h4>
             <ul className="space-y-3 text-xs tracking-wider font-sans">
-              <li><Link to="/" className="hover:text-gold-500 transition-colors">{t('nav.home')}</Link></li>
-              <li><Link to="/about" className="hover:text-gold-500 transition-colors">{t('nav.about')}</Link></li>
-              <li><Link to="/collection" className="hover:text-gold-500 transition-colors">{t('nav.collection')}</Link></li>
-              <li><Link to="/certifications" className="hover:text-gold-500 transition-colors">{t('nav.certs')}</Link></li>
-              <li><Link to="/export-shipping" className="hover:text-gold-500 transition-colors">{t('nav.export')}</Link></li>
-              <li><Link to="/diamond-journey" className="hover:text-gold-500 transition-colors">{t('nav.journey')}</Link></li>
-              <li><Link to="/contact" className="hover:text-gold-500 transition-colors">{t('nav.contact')}</Link></li>
+              <li><Link to="/" onClick={() => handleNavLinkClick('/')} className="hover:text-gold-500 transition-colors">{t('nav.home')}</Link></li>
+              <li><Link to="/about" onClick={() => handleNavLinkClick('/about')} className="hover:text-gold-500 transition-colors">{t('nav.about')}</Link></li>
+              <li><Link to="/collection" onClick={() => handleNavLinkClick('/collection')} className="hover:text-gold-500 transition-colors">{t('nav.collection')}</Link></li>
+              <li><Link to="/certifications" onClick={() => handleNavLinkClick('/certifications')} className="hover:text-gold-500 transition-colors">{t('nav.certs')}</Link></li>
+              <li><Link to="/export-shipping" onClick={() => handleNavLinkClick('/export-shipping')} className="hover:text-gold-500 transition-colors">{t('nav.export')}</Link></li>
+              <li><Link to="/diamond-journey" onClick={() => handleNavLinkClick('/diamond-journey')} className="hover:text-gold-500 transition-colors">{t('nav.journey')}</Link></li>
+              <li><Link to="/contact" onClick={() => handleNavLinkClick('/contact')} className="hover:text-gold-500 transition-colors">{t('nav.contact')}</Link></li>
             </ul>
 
             {/* B2B Quick Stats */}
