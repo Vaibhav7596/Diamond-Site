@@ -45,9 +45,25 @@
   --color-gold-900: #312613;
   --color-gold-accent: #a78b54;
 
-  --color-luxury-dark: #121212;
-  --color-luxury-black: #0b0c10;
+  /* Diamond Journey Specific Tokens */
+  --color-app: #050505;
+  --color-main: #070707;
+  --color-sidebar: #090A0C;
+  --color-card: #101114;
   
+  --color-gold-primary: #C89B4A;
+  --color-gold-hover: #D8B46A;
+  --color-gold-muted: #A97B2E;
+
+  --color-gray-300: #F5F5F5;
+  --color-gray-400: #D2D2D2;
+  --color-gray-500: #AAAAAA;
+  --color-gray-600: #727272;
+
+  --spacing-4\.5: 1.125rem;
+
+  --color-luxury-dark: #121212;
+  --color-luxury-black: #0b0c10;  
   --font-serif: "Montserrat", "Inter", sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
   
