@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { journeyData } from '../../../data/journeyData';
+import { useLanguage } from '../../../context/LanguageContext';
 import { ArrowRight, Scan, Monitor, Target, Award } from 'lucide-react';
 
 const Step02 = ({ onNext }) => {
-  const data = journeyData[2];
+  const { language } = useLanguage();
+  const data = journeyData[language]?.[2] || journeyData.en[2];
   const featureIcons = [Scan, Monitor, Target, Award];
 
   return (
@@ -35,7 +37,7 @@ const Step02 = ({ onNext }) => {
 
         {/* Right: Hero Image (3D Scan + Planned Cut View) */}
         <div className="lg:col-span-8 relative">
-           <img src="/journey/2/hero.png" alt="Precision Planning" className="w-full max-h-[280px] object-contain rounded-xl object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
+           <motion.img initial={{ scale: 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} src="/journey/2/hero.png" alt="Precision Planning" className="w-full max-h-[280px] object-contain rounded-xl object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
         </div>
       </div>
 
@@ -74,7 +76,7 @@ const Step02 = ({ onNext }) => {
         
         {/* Left: Cut Diagram Image */}
         <div className="lg:col-span-8 flex flex-col bg-luxury-bg border border-luxury-border rounded-xl p-5">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Cut Diagram</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.diagramTitle || "Cut Diagram"}</h3>
            <div className="flex-1 flex items-center justify-center relative min-h-[250px]">
               <img src="/journey/2/cut-diagram.png" alt="Cut Diagram" className="max-h-[250px] object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
            </div>
@@ -83,7 +85,7 @@ const Step02 = ({ onNext }) => {
         {/* Right: Proportions Table & Button */}
         <div className="lg:col-span-4 flex flex-col justify-between">
            <div className="bg-luxury-bg border border-luxury-border rounded-xl p-5">
-              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Proportions</h3>
+              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.proportionsTitle || "Proportions"}</h3>
               <div className="flex flex-col gap-4">
                 {data.proportions.map((prop, idx) => (
                   <div key={idx} className="flex justify-between items-center py-2 border-b border-luxury-border last:border-0">

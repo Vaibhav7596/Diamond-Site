@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { journeyData } from '../../../data/journeyData';
+import { useLanguage } from '../../../context/LanguageContext';
 import { ArrowRight, ShieldCheck, Eye, Globe, CheckCircle } from 'lucide-react';
 
 const Step06 = ({ onNext }) => {
-  const data = journeyData[6];
+  const { language } = useLanguage();
+  const data = journeyData[language]?.[6] || journeyData.en[6];
   
   // Why Matters icons
   const whyIcons = [CheckCircle, Eye, ShieldCheck, Globe];
@@ -54,12 +56,12 @@ const Step06 = ({ onNext }) => {
 
         {/* Center: Hero Image */}
         <div className="lg:col-span-4 lg:col-span-5 relative">
-           <img src="/journey/6/hero.png" alt="Certification" className="w-full h-[300px] object-cover rounded-xl bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
+           <motion.img initial={{ scale: 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} src="/journey/6/hero.png" alt="Certification" className="w-full h-[300px] object-cover rounded-xl bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
         </div>
 
         {/* Right: Why Certification Matters */}
         <div className="lg:col-span-3 flex flex-col bg-luxury-bg border border-luxury-border rounded-xl p-5">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Why Certification Matters</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.whyTitle || "Why Certification Matters"}</h3>
            <div className="flex flex-col gap-5">
               {data.whyMatters.map((item, idx) => {
                 const Icon = whyIcons[idx];
@@ -87,7 +89,7 @@ const Step06 = ({ onNext }) => {
            
            {/* Labs */}
            <div className="flex flex-col">
-              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Certified By Leading Laboratories</h3>
+              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.labsTitle || "Certified By Leading Laboratories"}</h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                  {data.labs.map((lab, idx) => (
                    <div key={idx} className="flex flex-col items-center justify-start text-center">
@@ -102,7 +104,7 @@ const Step06 = ({ onNext }) => {
 
            {/* Includes */}
            <div className="flex flex-col mt-4">
-              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Certification Includes</h3>
+              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.includesTitle || "Certification Includes"}</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
                  {data.includes.map((inc, idx) => (
                    <div key={idx} className="bg-luxury-bg border border-luxury-border rounded-xl p-4 flex flex-col items-center text-center hover:border-gold-primary/50 transition-colors">
@@ -120,7 +122,7 @@ const Step06 = ({ onNext }) => {
         {/* Right Column (Spans 4 or 5) - Sample Certificate Preview */}
         <div className="lg:col-span-5 flex flex-col justify-between">
            <div className="flex flex-col">
-              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Sample Certificate Preview</h3>
+              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.previewTitle || "Sample Certificate Preview"}</h3>
               <div className="bg-luxury-card text-black rounded-xl p-5 relative flex flex-col shadow-inner">
                  <div className="flex justify-between items-start mb-6">
                     <img src="/journey/6/certifications/image.png" alt="IGI" className="h-8 object-contain filter invert opacity-80" onError={(e) => { e.target.style.display = 'none'; }} />

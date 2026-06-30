@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { journeyData } from '../../../data/journeyData';
+import { useLanguage } from '../../../context/LanguageContext';
 import { ArrowRight, Box, Activity, Clock, Gem } from 'lucide-react';
 
 const Step01 = ({ onNext }) => {
-  const data = journeyData[1];
+  const { language } = useLanguage();
+  const data = journeyData[language]?.[1] || journeyData.en[1];
 
   const featureIcons = [Box, Activity, Clock, Gem];
 
@@ -38,18 +40,17 @@ const Step01 = ({ onNext }) => {
         {/* Center: Hero Image */}
         <div className="lg:col-span-5 relative flex items-center justify-center">
           <div className="w-full rounded-2xl overflow-hidden bg-luxury-bg border border-luxury-border p-2">
-             <img src="/journey/1/hero.png" alt="Growth Chamber" className="w-full h-[280px] object-cover rounded-xl" />
+             <motion.img initial={{ scale: 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} src="/journey/1/hero.png" alt="Growth Chamber" className="w-full h-[280px] object-cover rounded-xl" />
           </div>
         </div>
 
         {/* Right: The Growth Process Timeline */}
         <div className="lg:col-span-3 flex flex-col items-center">
-           <h3 className="text-luxury-text text-xs tracking-widest uppercase mb-5">The Growth Process</h3>
+           <h3 className="text-luxury-text text-xs tracking-widest uppercase mb-5">{data.timelineTitle || "The Growth Process"}</h3>
            <div className="relative flex flex-col items-center gap-5">
               {data.timeline.map((step, idx) => (
                 <div key={idx} className="flex flex-col items-center gap-3 relative z-10">
                    <div className="w-12 h-12 rounded-lg bg-luxury-bg border border-luxury-border flex items-center justify-center p-2">
-                     {/* Try to use the provided icons, fallback to nothing if path is tricky */}
                      <img 
                        src={idx === 0 ? "/journey/1/growth-process/image.png" : 
                             idx === 1 ? "/journey/1/growth-process/image copy.png" : 
@@ -90,7 +91,7 @@ const Step01 = ({ onNext }) => {
 
         {/* Specs Table */}
         <div className="lg:col-span-4 bg-luxury-bg border border-luxury-border rounded-xl p-5">
-          <h3 className="text-luxury-text text-xs tracking-widest uppercase mb-6">Growth Specifications</h3>
+          <h3 className="text-luxury-text text-xs tracking-widest uppercase mb-6">{data.specTitle || "Growth Specifications"}</h3>
           <div className="flex flex-col gap-3">
             {data.specifications.map((spec, idx) => (
               <div key={idx} className="flex justify-between items-center py-2 border-b border-luxury-border last:border-0">
@@ -108,7 +109,7 @@ const Step01 = ({ onNext }) => {
          {/* Left Diamond */}
          <div className="flex flex-col items-center gap-4 z-10 bg-luxury-bg px-4">
             <img src="/journey/1/from-to-section/image.png" className="h-16 object-contain" alt="Seed" onError={(e) => { e.target.style.display = 'none'; }} />
-            <span className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest">From A Microscopic Seed</span>
+            <span className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest">{data.fromLabel || "From A Microscopic Seed"}</span>
          </div>
 
          {/* Dashed line connecting them */}
@@ -117,7 +118,7 @@ const Step01 = ({ onNext }) => {
          {/* Right Diamond */}
          <div className="flex flex-col items-center gap-4 z-10 bg-luxury-bg px-4">
             <img src="/journey/1/from-to-section/image copy.png" className="h-20 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" alt="Rough" onError={(e) => { e.target.style.display = 'none'; }} />
-            <span className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest">To A Diamond In The Making</span>
+            <span className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest">{data.toLabel || "To A Diamond In The Making"}</span>
          </div>
       </div>
        {/* Bottom padding spacer */}

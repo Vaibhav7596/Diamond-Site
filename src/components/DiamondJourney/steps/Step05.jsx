@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { journeyData } from '../../../data/journeyData';
+import { useLanguage } from '../../../context/LanguageContext';
 import { ArrowRight, Microscope, Target, Activity, Disc, Check, Quote } from 'lucide-react';
 
 const Step05 = ({ onNext }) => {
-  const data = journeyData[5];
+  const { language } = useLanguage();
+  const data = journeyData[language]?.[5] || journeyData.en[5];
   
   // Equipment icons
   const equipmentIcons = [Microscope, Target, Activity, Disc];
@@ -53,12 +55,12 @@ const Step05 = ({ onNext }) => {
 
         {/* Center: Hero Image */}
         <div className="lg:col-span-4 lg:col-span-5 relative">
-           <img src="/journey/5/hero.png" alt="Quality Inspection" className="w-full h-[300px] object-cover rounded-xl bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
+           <motion.img initial={{ scale: 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} src="/journey/5/hero.png" alt="Quality Inspection" className="w-full h-[300px] object-cover rounded-xl bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
         </div>
 
         {/* Right: Inspection Equipment */}
         <div className="lg:col-span-3 flex flex-col bg-luxury-bg border border-luxury-border rounded-xl p-5">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Inspection Equipment</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.equipmentTitle || "Inspection Equipment"}</h3>
            <div className="flex flex-col gap-5">
               {data.equipment.map((item, idx) => {
                 const Icon = equipmentIcons[idx];
@@ -80,7 +82,7 @@ const Step05 = ({ onNext }) => {
 
       {/* Middle Row: 4C Quality Evaluation */}
       <div className="flex flex-col bg-luxury-bg border border-luxury-border rounded-xl p-5 lg:p-6">
-         <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-5 text-center lg:text-left">4C Quality Evaluation</h3>
+         <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-5 text-center lg:text-left">{data.evalTitle || "4C Quality Evaluation"}</h3>
          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {data.evaluations.map((evalItem, idx) => (
               <div key={idx} className="flex flex-col items-center text-center px-4">
@@ -98,7 +100,7 @@ const Step05 = ({ onNext }) => {
         
         {/* Left: Internal & External Quality Checks */}
         <div className="lg:col-span-8 flex flex-col justify-between">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Internal & External Quality Checks</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.checksTitle || "Internal & External Quality Checks"}</h3>
            <div className="flex-1 bg-luxury-bg border border-luxury-border rounded-xl p-5 flex items-center justify-between overflow-x-auto">
               {data.internalChecks.map((check, idx) => (
                 <React.Fragment key={idx}>
@@ -120,7 +122,7 @@ const Step05 = ({ onNext }) => {
         {/* Right: Promise & Gemologist Quote */}
         <div className="lg:col-span-4 flex flex-col gap-5">
            <div className="bg-luxury-bg border border-luxury-border rounded-xl p-5">
-              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-5">Our Quality Promise</h3>
+              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-5">{data.promiseTitle || "Our Quality Promise"}</h3>
               <div className="flex flex-col gap-3">
                  {data.promise.map((item, idx) => (
                    <div key={idx} className="flex items-start gap-3">

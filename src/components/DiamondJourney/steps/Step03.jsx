@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { journeyData } from '../../../data/journeyData';
+import { useLanguage } from '../../../context/LanguageContext';
 import { ArrowRight, Scissors, Target, Zap, Settings, Hexagon, Crosshair, CheckCircle, Diamond, Check, Scale } from 'lucide-react';
 
 const Step03 = ({ onNext }) => {
-  const data = journeyData[3];
+  const { language } = useLanguage();
+  const data = journeyData[language]?.[3] || journeyData.en[3];
   
   // Left 2x2 feature icons
   const featureIcons = [Scissors, Target, Zap, Settings];
@@ -51,7 +53,7 @@ const Step03 = ({ onNext }) => {
 
         {/* Right: Hero Image */}
         <div className="lg:col-span-8 relative">
-           <img src="/journey/3/hero.png" alt="Expert Cutting" className="w-full max-h-[280px] object-contain rounded-xl object-cover aspect-[2/1] bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
+           <motion.img initial={{ scale: 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} src="/journey/3/hero.png" alt="Expert Cutting" className="w-full max-h-[280px] object-contain rounded-xl object-cover aspect-[2/1] bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
         </div>
       </div>
 
@@ -73,7 +75,7 @@ const Step03 = ({ onNext }) => {
 
         {/* Right: Cutting Process */}
         <div className="lg:col-span-8 flex flex-col justify-between">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-4">Cutting Process</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-4">{data.processTitle || "Cutting Process"}</h3>
            <div className="flex-1 bg-luxury-bg border border-luxury-border rounded-xl p-5 flex items-center justify-between overflow-x-auto">
               {data.process.map((step, idx) => (
                 <React.Fragment key={idx}>
@@ -120,7 +122,7 @@ const Step03 = ({ onNext }) => {
         {/* Right: Cut Quality Standards */}
         <div className="lg:col-span-5 flex flex-col justify-between">
            <div className="bg-luxury-bg border border-luxury-border rounded-xl p-5 flex-1">
-              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Cut Quality Standards</h3>
+              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.standardsTitle || "Cut Quality Standards"}</h3>
               <div className="grid grid-cols-3 gap-4 h-full pt-4">
                 {data.cutQuality.map((qual, idx) => {
                   const Icon = qualityIcons[idx];

@@ -27,6 +27,11 @@ export const translations = {
       contact: "Contact Us",
       journey: "Diamond Journey"
     },
+    journey: {
+      next: "Next Step",
+      prev: "Previous",
+      finish: "Finish Journey"
+    },
 
     // Language Selection
     langSelect: {
@@ -161,11 +166,10 @@ export const translations = {
         step6Desc: "Orders are shipped worldwide with professional export support and secure logistics management."
       },
       stats: {
-        shapes: "Diamond Shapes",
-        avail: "HPHT & CVD Available",
-        global: "Global Export Capability",
-        heritage: "Multi-Generation Heritage",
-        certs: "International Cert Support"
+        countriesServed: "Countries Served",
+        yearsExperience: "Years Experience",
+        diamondsExported: "Diamonds Exported",
+        satisfiedClients: "Satisfied Clients"
       },
       journeyTeaser: {
         tagline: "Transparency & Trust",
@@ -622,6 +626,11 @@ export const translations = {
       contact: "Contattaci",
       journey: "Viaggio del Diamante"
     },
+    journey: {
+      next: "Prossimo Passo",
+      prev: "Precedente",
+      finish: "Termina Viaggio"
+    },
 
     // Language Selection
     langSelect: {
@@ -756,11 +765,10 @@ export const translations = {
         step6Desc: "Gli ordini vengono spediti in tutto il mondo con supporto professionale all'esportazione e gestione sicura della logistica."
       },
       stats: {
-        shapes: "Forme di Diamanti",
-        avail: "HPHT & CVD Disponibili",
-        global: "Esportazione Globale",
-        heritage: "Tradizione Multigenerazionale",
-        certs: "Supporto Certificazioni"
+        countriesServed: "Paesi Serviti",
+        yearsExperience: "Anni di Esperienza",
+        diamondsExported: "Diamanti Esportati",
+        satisfiedClients: "Clienti Soddisfatti"
       },
       journeyTeaser: {
         tagline: "Trasparenza e Fiducia",
@@ -1062,6 +1070,11 @@ export const translations = {
       contact: "Contactez-nous",
       journey: "Parcours du Diamant"
     },
+    journey: {
+      next: "Étape Suivante",
+      prev: "Précédent",
+      finish: "Terminer le Voyage"
+    },
 
     // Language Selection
     langSelect: {
@@ -1126,6 +1139,12 @@ export const translations = {
       cta: {
         title: "Prêt à Approvisionner des Diamants HPHT Premium ?",
         subtitle: "Discutez de vos besoins de volume avec nos experts en diamants dès aujourd'hui. Réponse sous 24h."
+      },
+      stats: {
+        countriesServed: "Pays Desservis",
+        yearsExperience: "Années d'Expérience",
+        diamondsExported: "Diamants Exportés",
+        satisfiedClients: "Clients Satisfaits"
       },
       journeyTeaser: {
         tagline: "Transparence et Confiance",

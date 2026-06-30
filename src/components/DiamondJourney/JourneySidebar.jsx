@@ -4,11 +4,8 @@ import {
   Atom, Settings2, Diamond, ShieldCheck, 
   Search, Award, Package, Globe 
 } from 'lucide-react';
-
-const ICONS = [
-  Atom, Settings2, Diamond, SparklesIcon, 
-  Search, Award, Package, Globe
-];
+import { useLanguage } from '../../context/LanguageContext';
+import { journeyData } from '../../data/journeyData';
 
 // Fallback for Sparkles since it might conflict or we can just use another Diamond/Star icon
 function SparklesIcon(props) {
@@ -19,27 +16,30 @@ function SparklesIcon(props) {
   );
 }
 
-const STEPS_DATA = [
-  { id: 1, label: "HPHT / CVD Growth", sub: "Where Purity Begins" },
-  { id: 2, label: "Precision Planning", sub: "Engineering Every Facet" },
-  { id: 3, label: "Expert Cutting", sub: "Precision In Every Facet" },
-  { id: 4, label: "Master Polishing", sub: "Reveal Every Reflection" },
-  { id: 5, label: "Quality Inspection", sub: "Verifying Every Detail" },
-  { id: 6, label: "Certification", sub: "Independent Verification" },
-  { id: 7, label: "Secure Packaging", sub: "Protected With Precision" },
-  { id: 8, label: "Global Delivery", sub: "Delivered With Confidence" }
+const ICONS = [
+  Atom, Settings2, Diamond, SparklesIcon, 
+  Search, Award, Package, Globe
 ];
 
 const JourneySidebar = ({ currentStep, onStepSelect }) => {
+  const { language } = useLanguage();
+  const data = journeyData[language] || journeyData.en;
+
+  const stepsList = [1, 2, 3, 4, 5, 6, 7, 8].map(id => ({
+    id,
+    label: data[id].title,
+    sub: data[id].subtitle
+  }));
+
   return (
     <div className="py-4 px-6 flex flex-col h-full">
       <div className="relative">
-        {STEPS_DATA.map((step, index) => {
+        {stepsList.map((step, index) => {
           const Icon = ICONS[index];
           const isActive = currentStep === step.id;
           const isCompleted = currentStep > step.id;
           const isUpcoming = currentStep < step.id;
-          const isLast = index === STEPS_DATA.length - 1;
+          const isLast = index === stepsList.length - 1;
 
           return (
             <div 
@@ -49,10 +49,14 @@ const JourneySidebar = ({ currentStep, onStepSelect }) => {
             >
               {/* Timeline Connector */}
               {!isLast && (
-                <div 
-                  className={`absolute left-5 top-10 w-px h-[calc(100%+20px)] 
-                    ${isCompleted || isActive ? 'bg-gold-primary' : 'bg-luxury-border'}`}
-                />
+                <div className="absolute left-5 top-10 w-px h-[calc(100%+20px)] bg-luxury-border overflow-hidden">
+                  <motion.div 
+                    initial={{ height: "0%" }}
+                    animate={{ height: isCompleted ? "100%" : isActive ? "50%" : "0%" }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="w-full bg-gold-primary origin-top"
+                  />
+                </div>
               )}
 
               {/* Icon Container */}

@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { journeyData } from '../../../data/journeyData';
+import { useLanguage } from '../../../context/LanguageContext';
 import { ArrowRight, Crosshair, Sparkles, Droplet, Hand, Check, Diamond, ShieldCheck } from 'lucide-react';
 
 const Step04 = ({ onNext }) => {
-  const data = journeyData[4];
+  const { language } = useLanguage();
+  const data = journeyData[language]?.[4] || journeyData.en[4];
   
   // Feature icons
   const featureIcons = [Crosshair, Sparkles, Droplet, Hand];
@@ -44,7 +46,7 @@ const Step04 = ({ onNext }) => {
 
         {/* Right: Hero Image */}
         <div className="lg:col-span-8 relative">
-           <img src="/journey/4/hero.png" alt="Master Polishing" className="w-full max-h-[280px] object-contain rounded-xl object-cover aspect-[2/1] bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
+           <motion.img initial={{ scale: 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} src="/journey/4/hero.png" alt="Master Polishing" className="w-full max-h-[280px] object-contain rounded-xl object-cover aspect-[2/1] bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
         </div>
       </div>
 
@@ -68,7 +70,7 @@ const Step04 = ({ onNext }) => {
 
         {/* Right: Polishing Stages */}
         <div className="lg:col-span-5 flex flex-col justify-between">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-4">Polishing Stages</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-4">{data.stagesTitle || "Polishing Stages"}</h3>
            <div className="flex-1 bg-luxury-bg border border-luxury-border rounded-xl p-5 flex items-center justify-between overflow-x-auto">
               {data.stages.map((stage, idx) => (
                 <React.Fragment key={idx}>
@@ -93,23 +95,23 @@ const Step04 = ({ onNext }) => {
         
         {/* Left: Before & After */}
         <div className="flex flex-col">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Before & After Polishing</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.beforeAfterTitle || "Before & After Polishing"}</h3>
            <div className="flex-1 flex items-center justify-between gap-4">
               <div className="flex flex-col items-center">
                  <img src="/journey/4/before-after/image.png" alt="Before" className="h-20 object-contain mb-4" onError={(e) => { e.target.style.display = 'none'; }} />
-                 <span className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest">Before Polishing</span>
+                 <span className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest">{data.beforeLabel || "Before Polishing"}</span>
               </div>
               <div className="text-gold-primary">→</div>
               <div className="flex flex-col items-center">
                  <img src="/journey/4/before-after/image copy.png" alt="After" className="h-24 object-contain mb-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" onError={(e) => { e.target.style.display = 'none'; }} />
-                 <span className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest">After Polishing</span>
+                 <span className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest">{data.afterLabel || "After Polishing"}</span>
               </div>
            </div>
         </div>
 
         {/* Middle: Polishing Quality Checks */}
         <div className="flex flex-col">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Polishing Quality Checks</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.checksTitle || "Polishing Quality Checks"}</h3>
            <div className="flex flex-col gap-3">
               {data.qualityChecks.map((check, idx) => (
                 <div key={idx} className="flex items-center gap-3">
@@ -122,7 +124,7 @@ const Step04 = ({ onNext }) => {
 
         {/* Right: Result */}
         <div className="flex flex-col relative">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Result</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.resultTitle || "Result"}</h3>
            <div className="flex items-center gap-5">
               <img src="/journey/4/result.png" alt="Result" className="w-32 h-32 object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
               <div className="flex flex-col gap-3">

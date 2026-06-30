@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 
 import JourneyLayout from "../components/DiamondJourney/JourneyLayout";
@@ -39,15 +40,15 @@ const DiamondJourney = () => {
 
   const renderStepContent = () => {
     switch (currentStep) {
-      case 1: return <Step01 />;
-      case 2: return <Step02 />;
-      case 3: return <Step03 />;
-      case 4: return <Step04 />;
-      case 5: return <Step05 />;
-      case 6: return <Step06 />;
-      case 7: return <Step07 />;
-      case 8: return <Step08 />;
-      default: return <Step01 />;
+      case 1: return <Step01 key="step1" />;
+      case 2: return <Step02 key="step2" />;
+      case 3: return <Step03 key="step3" />;
+      case 4: return <Step04 key="step4" />;
+      case 5: return <Step05 key="step5" />;
+      case 6: return <Step06 key="step6" />;
+      case 7: return <Step07 key="step7" />;
+      case 8: return <Step08 key="step8" />;
+      default: return <Step01 key="step1" />;
     }
   };
 
@@ -61,7 +62,9 @@ const DiamondJourney = () => {
           />
         }
       >
-        {renderStepContent()}
+        <AnimatePresence mode="wait">
+          {renderStepContent()}
+        </AnimatePresence>
         
         <NavigationButtons 
           onPrev={handlePrev} 

@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { journeyData } from '../../../data/journeyData';
+import { useLanguage } from '../../../context/LanguageContext';
 import { ArrowRight, Lock, EyeOff, Umbrella, ShieldCheck, Map, CheckCircle, Package, Box, Truck, Shield } from 'lucide-react';
 
 const Step07 = ({ onNext }) => {
-  const data = journeyData[7];
+  const { language } = useLanguage();
+  const data = journeyData[language]?.[7] || journeyData.en[7];
   
   // Feature icons
   const featureIcons = [Lock, EyeOff, Umbrella, ShieldCheck, Map];
@@ -40,12 +42,12 @@ const Step07 = ({ onNext }) => {
 
         {/* Center: Hero Image */}
         <div className="lg:col-span-4 lg:col-span-5 relative">
-           <img src="/journey/7/hero.png" alt="Secure Packaging" className="w-full h-[300px] object-cover rounded-xl bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
+           <motion.img initial={{ scale: 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} src="/journey/7/hero.png" alt="Secure Packaging" className="w-full h-[300px] object-cover rounded-xl bg-luxury-bg border border-luxury-border" onError={(e) => { e.target.style.display = 'none'; }} />
         </div>
 
         {/* Right: Packaging Overview (Layers) */}
         <div className="lg:col-span-3 flex flex-col bg-luxury-bg border border-luxury-border rounded-xl p-5">
-           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Packaging Overview</h3>
+           <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.overviewTitle || "Packaging Overview"}</h3>
            <div className="flex flex-col gap-4 relative">
               {data.layers.map((layer, idx) => (
                 <div key={idx} className="flex items-center gap-4 relative z-10">
@@ -63,7 +65,7 @@ const Step07 = ({ onNext }) => {
 
       {/* Middle Row: Our Packaging Process */}
       <div className="flex flex-col bg-luxury-bg border border-luxury-border rounded-xl p-5">
-         <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">Our Packaging Process</h3>
+         <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.processTitle || "Our Packaging Process"}</h3>
          <div className="flex items-start justify-between overflow-x-auto gap-4">
             {data.process.map((step, idx) => {
               const Icon = processIcons[idx];
@@ -109,7 +111,7 @@ const Step07 = ({ onNext }) => {
         {/* Right: Why Our Packaging Stands Out */}
         <div className="lg:col-span-4 flex flex-col justify-between">
            <div className="flex flex-col">
-              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-4">Why Our Packaging Stands Out</h3>
+              <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-4">{data.standsOutTitle || "Why Our Packaging Stands Out"}</h3>
               <div className="flex flex-col gap-3">
                  {data.standsOut.map((item, idx) => (
                    <div key={idx} className="flex items-start gap-3">

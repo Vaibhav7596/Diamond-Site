@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import LightReflect from '../components/LightReflect';
 import NumberCounter from '../components/NumberCounter';
-import InteractiveMap from '../components/InteractiveMap';
+
+
 import heroDiamond from '../assets/hero_diamond.png';
 import { 
   Award, ShieldCheck, Factory, Truck, UserCheck, 
@@ -61,6 +62,15 @@ const TimelineStep = ({ step, idx, isEven }) => {
 
 const Home = () => {
   const { t } = useLanguage();
+  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+  
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth - 0.5) * 25;
+    const y = (clientY / innerHeight - 0.5) * 25;
+    setMousePosition({ x, y });
+  };
 
   const heroWords = t('home.heroTitle').split(' ');
 
@@ -111,63 +121,124 @@ const Home = () => {
     { shape: "Radiant", image: radiantCut, desc: t('home.collection.radiantDesc'), sizes: "0.80ct - 15.0ct+" },
   ];
 
-  // Timeline Scroll Animation Setup
-  const timelineRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ["start center", "end center"]
-  });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
     <div className="bg-luxury-bg text-luxury-text transition-colors duration-500">
       
-      {/* 1. Hero Section */}
-      <section className="relative min-h-[95vh] flex items-center justify-center bg-black overflow-hidden py-24 -mt-[64px]">
+      {/* 1. Hero Section — Sticky: next sections slide over it */}
+      <div className="sticky top-0 z-0">
+      <section 
+        onMouseMove={handleMouseMove}
+        className="relative min-h-[95vh] flex items-center justify-center bg-black overflow-hidden py-24 -mt-[64px]"
+      >
+        {/* Background Image Container with Parallax + Zoom */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.45 }}
-          transition={{ duration: 2.0 }}
-          className="absolute inset-0 z-0"
+          animate={{ 
+            x: mousePosition.x * 0.4, 
+            y: mousePosition.y * 0.4,
+          }}
+          transition={{ type: "tween", ease: "easeOut", duration: 0.8 }}
+          className="absolute inset-0 z-0 opacity-45 pointer-events-none"
         >
-          <img 
+          <motion.img 
             src={heroDiamond} 
             alt="Premium Loose Diamond Background" 
-            className="w-full h-full object-cover object-center scale-105"
+            className="w-full h-full object-cover object-center"
+            animate={{
+              scale: [1.02, 1.07, 1.02],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
           />
         </motion.div>
+        
+        {/* Subtle Luxury Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-transparent z-0 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center relative">
-          <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-4">Established Heritage Exporter</span>
+        {/* Animated Light Rays & Reflective Overlays */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-25 mix-blend-screen overflow-hidden">
+          <motion.div 
+            animate={{ 
+              x: ['-50%', '150%'],
+              opacity: [0, 0.45, 0.45, 0]
+            }}
+            transition={{ 
+              duration: 7, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              repeatDelay: 5 
+            }}
+            className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-gold-500/10 to-transparent -skew-x-12"
+          />
+          <motion.div 
+            animate={{ 
+              x: ['-150%', '50%'],
+              opacity: [0, 0.35, 0.35, 0]
+            }}
+            transition={{ 
+              duration: 9, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              repeatDelay: 3 
+            }}
+            className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12"
+          />
+          <div className="absolute top-0 left-1/4 w-32 h-[150%] bg-gradient-to-b from-white/5 to-transparent blur-[80px] rotate-[35deg]" />
+          <div className="absolute top-0 right-1/4 w-40 h-[150%] bg-gradient-to-b from-white/3 to-transparent blur-[100px] -rotate-[25deg]" />
+        </div>
+
+        {/* Content Container (Float in opposite direction to create depth) */}
+        <motion.div 
+          animate={{ 
+            x: mousePosition.x * -0.15, 
+            y: mousePosition.y * -0.15 
+          }}
+          transition={{ type: "tween", ease: "easeOut", duration: 0.8 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center relative"
+        >
+          <motion.span 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-4"
+          >
+            Established Heritage Exporter
+          </motion.span>
           
           <h1 className="text-4xl md:text-6xl font-serif tracking-wide mb-8 leading-tight max-w-4xl mx-auto text-white">
             {heroWords.map((word, idx) => (
-              <motion.span
-                key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: idx * 0.05, ease: "easeOut" }}
-                className="inline-block mr-2 md:mr-3"
-              >
-                {word}
-              </motion.span>
+              <span key={idx} className="inline-block overflow-hidden mr-2 md:mr-3 pb-1">
+                <motion.span
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ 
+                    duration: 0.95, 
+                    delay: idx * 0.04, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }}
+                  className="inline-block"
+                >
+                  {word}
+                </motion.span>
+              </span>
             ))}
           </h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-gray-300 font-serif text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
           >
             {t('home.heroSubtitle')}
           </motion.p>
 
           <motion.div 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+            transition={{ duration: 1.0, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Link 
@@ -183,8 +254,12 @@ const Home = () => {
               {t('contactUs')}
             </Link>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
+      </div>
+
+      {/* Spacer to push content below sticky hero */}
+      <div className="relative z-10 bg-luxury-bg">
 
       {/* 2. Trust Indicators Banner */}
       <section className="bg-luxury-bg-sec border-y border-luxury-border py-10 relative overflow-hidden">
@@ -395,13 +470,12 @@ const Home = () => {
       {/* 7. Trust Statistics Section (Updated number counters) */}
       <section className="py-24 md:py-32 bg-luxury-bg border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-5 divide-x-0 lg:divide-x divide-luxury-border/60">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x-0 md:divide-x divide-luxury-border/60 gap-y-12 md:gap-y-0">
             {[
-              { to: '16', from: 0, suffix: '+', label: t('home.stats.shapes'), duration: 1.5, delay: 0 },
-              { to: '100', from: 0, suffix: '%', label: t('home.stats.avail'), duration: 1.5, delay: 0.1 },
-              { to: '100', from: 0, suffix: '%', label: t('home.stats.global'), duration: 1.5, delay: 0.2 },
-              { to: '3', from: 0, suffix: '', label: t('home.stats.heritage'), duration: 1.5, delay: 0.3 },
-              { to: '100', from: 0, suffix: '%', label: t('home.stats.certs'), duration: 1.5, delay: 0.4 },
+              { to: '10', from: 0, suffix: '+', label: t('home.stats.countriesServed'), duration: 1.8, delay: 0 },
+              { to: '45', from: 0, suffix: '+', label: t('home.stats.yearsExperience'), duration: 1.8, delay: 0.15 },
+              { to: '40000', from: 0, suffix: '+', label: t('home.stats.diamondsExported'), duration: 2.2, delay: 0.3 },
+              { to: '1100', from: 0, suffix: '+', label: t('home.stats.satisfiedClients'), duration: 2.0, delay: 0.45 },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -491,43 +565,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 9. From Creation to Delivery (New Timeline) */}
-      <section className="py-24 md:py-32 bg-luxury-bg border-b border-luxury-border relative">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Lab-Grown Diamond Pipeline</span>
-            <h2 className="text-3xl md:text-4xl font-serif tracking-wide mb-4 text-luxury-text uppercase">
-              {t('home.creationDelivery.title')}
-            </h2>
-            <p className="text-luxury-text-sec font-serif max-w-xl mx-auto text-xs leading-relaxed">
-              {t('home.creationDelivery.subtitle')}
-            </p>
-          </div>
 
-          <div ref={timelineRef} className="relative mt-20">
-            {/* Background Track Line */}
-            <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-4 bottom-4 w-[1px] bg-luxury-border" />
-            
-            {/* Active Progress Line */}
-            <motion.div 
-              style={{ height: lineHeight }}
-              className="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-4 w-[1.5px] bg-gold-500 shadow-[0_0_10px_rgba(212,175,55,0.4)] origin-top"
-            />
-            
-            {/* Timeline items */}
-            <div className="space-y-4">
-              {creationSteps.map((step, idx) => (
-                <TimelineStep 
-                  key={idx} 
-                  step={step} 
-                  idx={idx} 
-                  isEven={idx % 2 === 1} 
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 10. Export Map Section */}
       <section className="py-24 md:py-32 bg-luxury-bg-sec border-b border-luxury-border relative overflow-hidden">
@@ -542,9 +580,6 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="mb-16">
-            <InteractiveMap />
-          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
@@ -737,6 +772,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </div>{/* end z-10 wrapper */}
     </div>
   );
 };

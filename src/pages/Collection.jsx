@@ -17,6 +17,8 @@ const Collection = () => {
   // Active Shape State
   const [selectedShapeId, setSelectedShapeId] = useState('round-brilliant');
 
+
+
   // B2B Inquiry Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalForm, setModalForm] = useState({
@@ -438,27 +440,56 @@ const Collection = () => {
               {/* Scrollable Shapes List */}
               <div className="flex-1 flex flex-col space-y-1.5 overflow-y-auto pr-1 select-none">
                 <span className="text-[10px] uppercase tracking-widest text-luxury-text-sec/60 block font-bold">Shapes Available ({filteredShapes.length})</span>
-                <div className="space-y-1 pr-1 overflow-y-auto flex-1 scrollbar-thin">
-                  {filteredShapes.map((shape) => {
-                    const isActive = shape.id === selectedShapeId;
-                    const shapeName = shape.name[language] || shape.name['en'];
-                    return (
-                      <button
-                        key={shape.id}
-                        onClick={() => setSelectedShapeId(shape.id)}
-                        className={`w-full flex items-center justify-between p-2.5 border text-left transition-all duration-300 rounded-[1px] cursor-pointer ${
-                          isActive
-                            ? 'border-gold-500 bg-gold-500/5 text-gold-500'
-                            : 'border-luxury-border bg-luxury-bg-sec/20 text-luxury-text-sec hover:border-gold-500/25 hover:text-luxury-text'
-                        }`}
-                      >
-                        <span className="text-[10px] font-semibold tracking-wider uppercase font-serif truncate">{shapeName}</span>
-                        {isActive && (
-                          <motion.div layoutId="activeShapeIndicator" className="w-1.5 h-1.5 bg-gold-500 rounded-full shrink-0 ml-2" />
-                        )}
-                      </button>
-                    );
-                  })}
+                <div className="space-y-2 pr-1 overflow-y-auto flex-1 scrollbar-thin">
+                  <AnimatePresence>
+                    {filteredShapes.map((shape) => {
+                      const isActive = shape.id === selectedShapeId;
+                      const shapeName = shape.name[language] || shape.name['en'];
+                      return (
+                        <motion.button
+                          layout
+                          key={shape.id}
+                          onClick={() => setSelectedShapeId(shape.id)}
+                          className={`w-full flex items-center gap-3 p-3 border text-left transition-all duration-300 rounded-sm cursor-pointer relative overflow-hidden group ${
+                            isActive
+                              ? 'border-gold-500 bg-gold-500/5 text-gold-500 shadow-[0_0_12px_rgba(212,175,55,0.15)]'
+                              : 'border-luxury-border bg-luxury-bg-sec/20 text-luxury-text-sec hover:border-gold-500/30 hover:bg-luxury-bg-sec/40 hover:text-luxury-text hover:shadow-[0_0_8px_rgba(212,175,55,0.05)]'
+                          }`}
+                        >
+                          {/* Mini Thumbnail */}
+                          <div className="w-10 h-10 bg-black/40 border border-luxury-border/80 flex items-center justify-center p-1 rounded-sm overflow-hidden shrink-0 group-hover:border-gold-500/30 transition-colors">
+                            <img 
+                              src={getShapeImageUrl(shape.imageName)} 
+                              alt={shapeName} 
+                              className="w-full h-full object-contain filter brightness-95 group-hover:scale-110 transition-transform duration-300"
+                            />
+                          </div>
+
+                          {/* Metadata */}
+                          <div className="flex-grow min-w-0">
+                            <span className="text-[10px] font-bold tracking-wider uppercase font-serif block truncate">
+                              {shapeName.replace(" CUT", "").replace(" BRILLIANT", "")}
+                            </span>
+                            <div className="text-[8px] text-luxury-text-sec/80 flex gap-2 items-center mt-1">
+                              <span>{shape.sizeRange.split(' – ')[0]} - {shape.sizeRange.split(' – ')[1]}</span>
+                              <span className="w-1 h-1 bg-luxury-text-sec/40 rounded-full" />
+                              <span>{shape.labs}</span>
+                            </div>
+                          </div>
+
+
+
+                          {/* Active Indicator Bar */}
+                          {isActive && (
+                            <motion.div 
+                              layoutId="activeShapeIndicator" 
+                              className="absolute top-0 bottom-0 left-0 w-[2px] bg-gold-500" 
+                            />
+                          )}
+                        </motion.button>
+                      );
+                    })}
+                  </AnimatePresence>
                   {filteredShapes.length === 0 && (
                     <span className="text-xs text-luxury-text-sec/50 italic block py-4 text-center">No shapes match selection filters.</span>
                   )}
@@ -490,7 +521,7 @@ const Collection = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.93 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="relative z-10 w-full h-full flex items-center justify-center overflow-hidden"
+                  className="relative z-10 w-full h-full flex items-center justify-center overflow-hidden rounded-sm"
                 >
                   <img 
                     src={getShapeImageUrl(activeShape.imageName)} 

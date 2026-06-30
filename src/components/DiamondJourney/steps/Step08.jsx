@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { journeyData } from '../../../data/journeyData';
+import { useLanguage } from '../../../context/LanguageContext';
 import { ArrowRight, ShieldCheck, Globe, MapPin, Shield, CheckCircle, Plane, Gem, Award } from 'lucide-react';
 
 const Step08 = ({ onNext }) => {
-  const data = journeyData[8];
+  const { language } = useLanguage();
+  const data = journeyData[language]?.[8] || journeyData.en[8];
   
   // Feature icons
   const featureIcons = [ShieldCheck, Globe, MapPin, Shield];
@@ -53,18 +56,19 @@ const Step08 = ({ onNext }) => {
           </div>
 
           <div className="flex justify-start mt-4">
-             <button 
+             <Link
+               to="/contact"
                className="px-6 py-3 border border-gold-primary/50 text-gold-primary text-xs tracking-widest uppercase rounded flex items-center gap-3 hover:bg-gold-primary/10 transition-colors"
              >
                COMMITMENT TO YOU <ArrowRight size={14} />
-             </button>
+             </Link>
           </div>
         </div>
 
         {/* Right Column: Hero Image */}
         <div className="lg:col-span-7 relative">
            <div className="w-full h-full rounded-xl overflow-hidden relative group border border-luxury-border">
-              <img src="/journey/8/hero.png" alt="Global Delivery" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 bg-luxury-bg" onError={(e) => { e.target.style.display = 'none'; }} />
+              <motion.img initial={{ scale: 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} src="/journey/8/hero.png" alt="Global Delivery" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 bg-luxury-bg" onError={(e) => { e.target.style.display = 'none'; }} />
               {/* Subtle overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-luxury-bg via-transparent to-transparent opacity-60 pointer-events-none"></div>
            </div>
