@@ -135,29 +135,29 @@ const Step06 = ({ onNext }) => {
                  
                  <div className="grid grid-cols-2 gap-5">
                     <div className="flex flex-col gap-2">
-                       <div className="flex justify-between border-b border-stone-200 pb-1">
-                          <span className="text-[8px] text-stone-500 uppercase">Shape and Cutting Style</span>
-                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.shape}</span>
+                       <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
+                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Shape &amp; Cut Style</span>
+                          <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.shape}</span>
                        </div>
-                       <div className="flex justify-between border-b border-stone-200 pb-1">
-                          <span className="text-[8px] text-stone-500 uppercase">Measurements</span>
-                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.measurements}</span>
+                       <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
+                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Measurements</span>
+                          <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.measurements}</span>
                        </div>
-                       <div className="flex justify-between border-b border-stone-200 pb-1">
-                          <span className="text-[8px] text-stone-500 uppercase">Carat Weight</span>
-                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.carat}</span>
+                       <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
+                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Carat Weight</span>
+                          <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.carat}</span>
                        </div>
-                       <div className="flex justify-between border-b border-stone-200 pb-1">
-                          <span className="text-[8px] text-stone-500 uppercase">Color Grade</span>
-                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.color}</span>
+                       <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
+                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Color Grade</span>
+                          <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.color}</span>
                        </div>
-                       <div className="flex justify-between border-b border-stone-200 pb-1">
-                          <span className="text-[8px] text-stone-500 uppercase">Clarity Grade</span>
-                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.clarity}</span>
+                       <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
+                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Clarity Grade</span>
+                          <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.clarity}</span>
                        </div>
-                       <div className="flex justify-between border-b border-stone-200 pb-1">
-                          <span className="text-[8px] text-stone-500 uppercase">Cut Grade</span>
-                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.cut}</span>
+                       <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
+                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Cut Grade</span>
+                          <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.cut}</span>
                        </div>
                     </div>
                     
