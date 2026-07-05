@@ -123,63 +123,59 @@ const Step06 = ({ onNext }) => {
         <div className="lg:col-span-5 flex flex-col justify-between">
            <div className="flex flex-col">
               <h3 className="text-[10px] text-luxury-text-sec opacity-80 uppercase tracking-widest mb-6">{data.previewTitle || "Sample Certificate Preview"}</h3>
-              <div className="bg-luxury-card text-black rounded-xl p-5 relative flex flex-col shadow-inner">
+              
+              <div className="bg-[#faf9f6] border border-stone-200 text-stone-900 rounded-xl p-5 relative flex flex-col shadow-md">
                  <div className="flex justify-between items-start mb-6">
-                    <img src="/journey/6/certifications/image.png" alt="IGI" className="h-8 object-contain filter invert opacity-80" onError={(e) => { e.target.style.display = 'none'; }} />
+                    <img src="/journey/6/certifications/image.png" alt="IGI" className="h-8 object-contain opacity-80" onError={(e) => { e.target.style.display = 'none'; }} />
                     <div className="text-right">
-                       <div className="text-[8px] font-bold tracking-widest uppercase">Laboratory Grown Diamond Report</div>
-                       <div className="text-[8px] text-luxury-text-sec opacity-60 mt-1">Report Number: {data.samplePreview.reportNo}</div>
+                       <div className="text-[8px] font-bold tracking-widest uppercase text-stone-900">Laboratory Grown Diamond Report</div>
+                       <div className="text-[8px] text-stone-500 mt-1">Report Number: {data.samplePreview.reportNo}</div>
                     </div>
                  </div>
                  
                  <div className="grid grid-cols-2 gap-5">
                     <div className="flex flex-col gap-2">
-                       <div className="flex justify-between border-b border-luxury-border pb-1">
-                          <span className="text-[8px] text-luxury-text-sec opacity-60 uppercase">Shape and Cutting Style</span>
-                          <span className="text-[9px] font-medium">{data.samplePreview.shape}</span>
+                       <div className="flex justify-between border-b border-stone-200 pb-1">
+                          <span className="text-[8px] text-stone-500 uppercase">Shape and Cutting Style</span>
+                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.shape}</span>
                        </div>
-                       <div className="flex justify-between border-b border-luxury-border pb-1">
-                          <span className="text-[8px] text-luxury-text-sec opacity-60 uppercase">Measurements</span>
-                          <span className="text-[9px] font-medium">{data.samplePreview.measurements}</span>
+                       <div className="flex justify-between border-b border-stone-200 pb-1">
+                          <span className="text-[8px] text-stone-500 uppercase">Measurements</span>
+                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.measurements}</span>
                        </div>
-                       <div className="flex justify-between border-b border-luxury-border pb-1">
-                          <span className="text-[8px] text-luxury-text-sec opacity-60 uppercase">Carat Weight</span>
-                          <span className="text-[9px] font-medium">{data.samplePreview.carat}</span>
+                       <div className="flex justify-between border-b border-stone-200 pb-1">
+                          <span className="text-[8px] text-stone-500 uppercase">Carat Weight</span>
+                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.carat}</span>
                        </div>
-                       <div className="flex justify-between border-b border-luxury-border pb-1">
-                          <span className="text-[8px] text-luxury-text-sec opacity-60 uppercase">Color Grade</span>
-                          <span className="text-[9px] font-medium">{data.samplePreview.color}</span>
+                       <div className="flex justify-between border-b border-stone-200 pb-1">
+                          <span className="text-[8px] text-stone-500 uppercase">Color Grade</span>
+                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.color}</span>
                        </div>
-                       <div className="flex justify-between border-b border-luxury-border pb-1">
-                          <span className="text-[8px] text-luxury-text-sec opacity-60 uppercase">Clarity Grade</span>
-                          <span className="text-[9px] font-medium">{data.samplePreview.clarity}</span>
+                       <div className="flex justify-between border-b border-stone-200 pb-1">
+                          <span className="text-[8px] text-stone-500 uppercase">Clarity Grade</span>
+                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.clarity}</span>
                        </div>
-                       <div className="flex justify-between border-b border-luxury-border pb-1">
-                          <span className="text-[8px] text-luxury-text-sec opacity-60 uppercase">Cut Grade</span>
-                          <span className="text-[9px] font-medium">{data.samplePreview.cut}</span>
+                       <div className="flex justify-between border-b border-stone-200 pb-1">
+                          <span className="text-[8px] text-stone-500 uppercase">Cut Grade</span>
+                          <span className="text-[9px] font-semibold text-stone-900">{data.samplePreview.cut}</span>
                        </div>
                     </div>
                     
                     <div className="flex flex-col items-center justify-center">
                        {/* Simplified mock proportion diagram */}
-                       <div className="relative w-full aspect-[4/3] border border-luxury-border rounded p-2 flex items-center justify-center">
-                          <img src="/journey/3/propotion-excellence.png" alt="Proportions" className="max-w-full max-h-full object-contain filter invert opacity-60 mix-blend-multiply" onError={(e) => { e.target.style.display = 'none'; }} />
+                       <div className="relative w-full aspect-[4/3] border border-stone-200 rounded p-2 flex items-center justify-center bg-white">
+                          <img src="/journey/3/propotion-excellence.png" alt="Proportions" className="max-w-full max-h-full object-contain opacity-70" onError={(e) => { e.target.style.display = 'none'; }} />
                        </div>
                     </div>
                  </div>
 
-                 <div className="mt-5 text-[7px] text-luxury-text-sec opacity-80 italic border-t border-luxury-border pt-3">
+                 <div className="mt-5 text-[7px] text-stone-500 italic border-t border-stone-200 pt-3">
                     This Laboratory Grown Diamond Report includes advanced security features to ensure authenticity.
                  </div>
               </div>
            </div>
-
-           
         </div>
-
       </div>
-      
-      
     </motion.div>
   );
 };
