@@ -129,34 +129,34 @@ const Step06 = ({ onNext }) => {
                     <img src="/journey/6/certifications/image.png" alt="IGI" className="h-8 object-contain opacity-80" onError={(e) => { e.target.style.display = 'none'; }} />
                     <div className="text-right">
                        <div className="text-[8px] font-bold tracking-widest uppercase text-stone-900">Laboratory Grown Diamond Report</div>
-                       <div className="text-[8px] text-stone-500 mt-1">Report Number: {data.samplePreview.reportNo}</div>
+                       <div className="text-[8px] text-stone-600 mt-1">Report Number: {data.samplePreview.reportNo}</div>
                     </div>
                  </div>
                  
                  <div className="grid grid-cols-2 gap-5">
                     <div className="flex flex-col gap-2">
                        <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
-                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Shape &amp; Cut Style</span>
+                          <span className="text-[7.5px] text-stone-700 uppercase tracking-tight">Shape &amp; Cut Style</span>
                           <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.shape}</span>
                        </div>
                        <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
-                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Measurements</span>
+                          <span className="text-[7.5px] text-stone-700 uppercase tracking-tight">Measurements</span>
                           <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.measurements}</span>
                        </div>
                        <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
-                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Carat Weight</span>
+                          <span className="text-[7.5px] text-stone-700 uppercase tracking-tight">Carat Weight</span>
                           <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.carat}</span>
                        </div>
                        <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
-                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Color Grade</span>
+                          <span className="text-[7.5px] text-stone-700 uppercase tracking-tight">Color Grade</span>
                           <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.color}</span>
                        </div>
                        <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
-                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Clarity Grade</span>
+                          <span className="text-[7.5px] text-stone-700 uppercase tracking-tight">Clarity Grade</span>
                           <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.clarity}</span>
                        </div>
                        <div className="grid grid-cols-[1.2fr_1fr] items-baseline border-b border-stone-200 pb-1 gap-1">
-                          <span className="text-[7.5px] text-stone-500 uppercase tracking-tight">Cut Grade</span>
+                          <span className="text-[7.5px] text-stone-700 uppercase tracking-tight">Cut Grade</span>
                           <span className="text-[9px] font-semibold text-stone-900 text-right">{data.samplePreview.cut}</span>
                        </div>
                     </div>
@@ -169,7 +169,7 @@ const Step06 = ({ onNext }) => {
                     </div>
                  </div>
 
-                 <div className="mt-5 text-[7px] text-stone-500 italic border-t border-stone-200 pt-3">
+                 <div className="mt-5 text-[7px] text-stone-600 italic border-t border-stone-200 pt-3">
                     This Laboratory Grown Diamond Report includes advanced security features to ensure authenticity.
                  </div>
               </div>
