@@ -26,6 +26,12 @@ const Collection = () => {
       const matched = diamondShapes.find(s => s.id.toLowerCase() === shapeParam.toLowerCase());
       if (matched) {
         setSelectedShapeId(matched.id);
+        setTimeout(() => {
+          const explorerEl = document.getElementById('explorer');
+          if (explorerEl) {
+            explorerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 150);
       }
     }
   }, [searchParams]);
@@ -35,35 +41,20 @@ const Collection = () => {
       const timer = setTimeout(() => {
         const activeEl = containerRef.current.querySelector(`[data-shape-id="${selectedShapeId}"]`);
         if (activeEl) {
-          activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          const container = containerRef.current;
+          const containerTop = container.getBoundingClientRect().top;
+          const elemTop = activeEl.getBoundingClientRect().top;
+          const relativeTop = elemTop - containerTop;
+          
+          container.scrollTo({
+            top: container.scrollTop + relativeTop - (container.clientHeight / 2) + (activeEl.clientHeight / 2),
+            behavior: 'smooth'
+          });
         }
       }, 100);
       return () => clearTimeout(timer);
     }
   }, [selectedShapeId]);
-
-  const getShapeCoverImageUrl = (shape) => {
-    const coverMap = {
-      "round-brilliant": "Round Cut Cover.jpeg",
-      "oval": "Oval Cut Cover.jpeg",
-      "marquise": "Marquise Cover.jpeg",
-      "pear": "Pear Cut Cover.jpeg",
-      "cushion": "Cushion Cover.jpeg",
-      "princess": "Princess Cover.jpeg",
-      "four-step-emerald": "Emrald Cover.jpeg",
-      "square-emerald": "Emrald Cover.jpeg",
-      "square-radiant": "Radiant Cut Cover.jpeg",
-      "heart": "Heart Cover.jpeg",
-      "rose-cut": "RoseCut Cover.jpeg",
-      "rectangular-radiant": "Radiant Cut Cover.jpeg",
-      "triangle": "Triangle Cover.jpeg",
-      "trilliant": "Trillioncut Cover.jpeg",
-      "baguette": "Buguatte Cover.jpeg",
-      "tapered-baguette": "Taperbuguette Cover.jpeg"
-    };
-    const coverName = coverMap[shape.id] || shape.imageName;
-    return getShapeImageUrl(coverName);
-  };
 
 
   // B2B Inquiry Modal State
@@ -202,7 +193,7 @@ const Collection = () => {
       </section>
 
       {/* 2. Interactive B2B Catalog Panel */}
-      <section className="py-12 md:py-20 bg-luxury-bg border-b border-luxury-border">
+      <section id="explorer" className="py-12 md:py-20 bg-luxury-bg border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* ═══ MOBILE LAYOUT ═══════════════════════════════════════════ */}
@@ -507,7 +498,7 @@ const Collection = () => {
                           {/* Mini Thumbnail */}
                           <div className="w-10 h-10 bg-black/40 border border-luxury-border/80 flex items-center justify-center p-1 rounded-sm overflow-hidden shrink-0 group-hover:border-gold-500/30 transition-colors">
                             <img 
-                              src={getShapeCoverImageUrl(shape)} 
+                              src={getShapeImageUrl(shape.imageName)} 
                               alt={shapeName} 
                               className="w-full h-full object-contain filter brightness-95 group-hover:scale-110 transition-transform duration-300"
                             />
