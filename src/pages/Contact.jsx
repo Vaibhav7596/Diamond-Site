@@ -168,16 +168,32 @@ const Contact = () => {
                 </ul>
               </div>
 
-              {/* Stylized Minimal Dark Map visual */}
-              <div className="h-64 w-full bg-luxury-card border border-luxury-card-border relative rounded-sm flex items-center justify-center overflow-hidden shadow-xl">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-500/5 via-transparent to-transparent opacity-60" />
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500 rotate-45 flex items-center justify-center animate-pulse mb-4">
-                    <span className="text-gold-500 text-[8px] -rotate-45 font-bold">RS</span>
+              {/* Google Maps Embed */}
+              <div className="w-full rounded-sm overflow-hidden border border-luxury-card-border shadow-xl">
+                <div className="relative">
+                  <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-2 bg-luxury-bg/90 backdrop-blur-sm px-4 py-2.5 border-b border-luxury-border pointer-events-none">
+                    <MapPin className="w-3.5 h-3.5 text-gold-500 shrink-0" />
+                    <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold">R Sutariya Exports — Surat, Gujarat</span>
                   </div>
-                  <span className="text-[10px] tracking-widest text-luxury-text uppercase font-serif font-bold">SURAT, GUJARAT</span>
-                  <span className="text-[9px] text-luxury-text-sec/60 font-sans mt-1">Global Manufacturing Hub</span>
+                  <iframe
+                    title="R Sutariya Exports Location"
+                    src="https://maps.google.com/maps?q=R+Sutariya+Exports,+Surat,+Gujarat,+India&output=embed&z=16"
+                    width="100%"
+                    height="280"
+                    style={{ border: 0, display: 'block', marginTop: '36px' }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
+                <a
+                  href="https://maps.app.goo.gl/1gih6gbk8ukJ7pes5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 py-2.5 bg-luxury-bg border-t border-luxury-border text-[10px] uppercase tracking-widest text-gold-500 hover:text-luxury-text font-serif transition-colors duration-200"
+                >
+                  <MapPin className="w-3 h-3" /> Open in Google Maps
+                </a>
               </div>
             </div>
 

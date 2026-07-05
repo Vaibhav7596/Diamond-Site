@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Sparkles, ChevronRight, MessageSquare, Award, X, Check } from 'lucide-react';
@@ -17,6 +17,53 @@ const Collection = () => {
   // Active Shape State
   const [selectedShapeId, setSelectedShapeId] = useState('round-brilliant');
 
+  const [searchParams] = useSearchParams();
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const shapeParam = searchParams.get('shape');
+    if (shapeParam) {
+      const matched = diamondShapes.find(s => s.id.toLowerCase() === shapeParam.toLowerCase());
+      if (matched) {
+        setSelectedShapeId(matched.id);
+      }
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (selectedShapeId && containerRef.current) {
+      const timer = setTimeout(() => {
+        const activeEl = containerRef.current.querySelector(`[data-shape-id="${selectedShapeId}"]`);
+        if (activeEl) {
+          activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedShapeId]);
+
+  const getShapeCoverImageUrl = (shape) => {
+    const coverMap = {
+      "round-brilliant": "Round Cut Cover.jpeg",
+      "oval": "Oval Cut Cover.jpeg",
+      "marquise": "Marquise Cover.jpeg",
+      "pear": "Pear Cut Cover.jpeg",
+      "cushion": "Cushion Cover.jpeg",
+      "princess": "Princess Cover.jpeg",
+      "four-step-emerald": "Emrald Cover.jpeg",
+      "square-emerald": "Emrald Cover.jpeg",
+      "square-radiant": "Radiant Cut Cover.jpeg",
+      "heart": "Heart Cover.jpeg",
+      "rose-cut": "RoseCut Cover.jpeg",
+      "rectangular-radiant": "Radiant Cut Cover.jpeg",
+      "triangle": "Triangle Cover.jpeg",
+      "trilliant": "Trillioncut Cover.jpeg",
+      "baguette": "Buguatte Cover.jpeg",
+      "tapered-baguette": "Taperbuguette Cover.jpeg"
+    };
+    const coverName = coverMap[shape.id] || shape.imageName;
+    return getShapeImageUrl(coverName);
+  };
 
 
   // B2B Inquiry Modal State
@@ -440,7 +487,7 @@ const Collection = () => {
               {/* Scrollable Shapes List */}
               <div className="flex-1 flex flex-col space-y-1.5 overflow-y-auto pr-1 select-none">
                 <span className="text-[10px] uppercase tracking-widest text-luxury-text-sec/60 block font-bold">Shapes Available ({filteredShapes.length})</span>
-                <div className="space-y-2 pr-1 overflow-y-auto flex-1 scrollbar-thin">
+                <div ref={containerRef} className="space-y-2 pr-1 overflow-y-auto flex-1 scrollbar-thin">
                   <AnimatePresence>
                     {filteredShapes.map((shape) => {
                       const isActive = shape.id === selectedShapeId;
@@ -449,6 +496,7 @@ const Collection = () => {
                         <motion.button
                           layout
                           key={shape.id}
+                          data-shape-id={shape.id}
                           onClick={() => setSelectedShapeId(shape.id)}
                           className={`w-full flex items-center gap-3 p-3 border text-left transition-all duration-300 rounded-sm cursor-pointer relative overflow-hidden group ${
                             isActive
@@ -459,7 +507,7 @@ const Collection = () => {
                           {/* Mini Thumbnail */}
                           <div className="w-10 h-10 bg-black/40 border border-luxury-border/80 flex items-center justify-center p-1 rounded-sm overflow-hidden shrink-0 group-hover:border-gold-500/30 transition-colors">
                             <img 
-                              src={getShapeImageUrl(shape.imageName)} 
+                              src={getShapeCoverImageUrl(shape)} 
                               alt={shapeName} 
                               className="w-full h-full object-contain filter brightness-95 group-hover:scale-110 transition-transform duration-300"
                             />
@@ -524,7 +572,7 @@ const Collection = () => {
                   className="relative z-10 w-full h-full flex items-center justify-center overflow-hidden rounded-sm"
                 >
                   <img 
-                    src={getShapeImageUrl(activeShape.imageName)} 
+                    src={getShapeImageUrl(activeShape.id.includes('radiant') ? 'Radiant cut.jpeg' : activeShape.imageName)} 
                     alt={activeShape.name[language] || activeShape.name['en']} 
                     className="max-w-[70%] max-h-[320px] md:max-h-[380px] object-contain drop-shadow-[0_15px_45px_rgba(150,123,69,0.15)] filter brightness-95"
                   />

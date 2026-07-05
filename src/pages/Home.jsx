@@ -113,12 +113,12 @@ const Home = () => {
   ];
 
   const collections = [
-    { shape: "Round", image: roundCut, desc: t('home.collection.roundDesc'), sizes: "0.50ct - 15.0ct+" },
-    { shape: "Oval", image: ovalCut, desc: t('home.collection.ovalDesc'), sizes: "0.70ct - 12.0ct+" },
-    { shape: "Princess", image: princessCut, desc: t('home.collection.princessDesc'), sizes: "0.50ct - 10.0ct+" },
-    { shape: "Pear", image: pearCut, desc: t('home.collection.pearDesc'), sizes: "0.80ct - 10.0ct+" },
-    { shape: "Cushion", image: cushionCut, desc: t('home.collection.cushionDesc'), sizes: "1.00ct - 12.0ct+" },
-    { shape: "Radiant", image: radiantCut, desc: t('home.collection.radiantDesc'), sizes: "0.80ct - 15.0ct+" },
+    { shape: "Round", image: roundCut, desc: t('home.collection.roundDesc'), sizes: "0.50ct - 15.0ct+", shapeId: "round-brilliant" },
+    { shape: "Oval", image: ovalCut, desc: t('home.collection.ovalDesc'), sizes: "0.70ct - 12.0ct+", shapeId: "oval" },
+    { shape: "Princess", image: princessCut, desc: t('home.collection.princessDesc'), sizes: "0.50ct - 10.0ct+", shapeId: "princess" },
+    { shape: "Pear", image: pearCut, desc: t('home.collection.pearDesc'), sizes: "0.80ct - 10.0ct+", shapeId: "pear" },
+    { shape: "Cushion", image: cushionCut, desc: t('home.collection.cushionDesc'), sizes: "1.00ct - 12.0ct+", shapeId: "cushion" },
+    { shape: "Radiant", image: radiantCut, desc: t('home.collection.radiantDesc'), sizes: "0.80ct - 15.0ct+", shapeId: "square-radiant" },
   ];
 
   return (
@@ -526,7 +526,7 @@ const Home = () => {
                 transition={{ duration: 0.6, delay: idx * 0.08 }}
                 className="bg-luxury-card border border-luxury-card-border overflow-hidden relative group rounded-sm flex flex-col justify-between min-h-[380px]"
               >
-                <div className="h-48 w-full relative overflow-hidden bg-black/5 dark:bg-black/45 border-b border-luxury-border flex items-center justify-center p-4">
+                <Link to={`/collection?shape=${item.shapeId}`} className="h-48 w-full relative overflow-hidden bg-black/5 dark:bg-black/45 border-b border-luxury-border flex items-center justify-center p-4">
                   <LightReflect>
                     <img 
                       src={item.image} 
@@ -534,13 +534,15 @@ const Home = () => {
                       className="w-full h-full object-contain filter brightness-90 transition-transform duration-700 group-hover:scale-105"
                     />
                   </LightReflect>
-                </div>
+                </Link>
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-luxury-text text-lg font-serif mb-2 tracking-wider group-hover:text-gold-500 transition-colors duration-300">
-                      {item.shape}
-                    </h3>
+                    <Link to={`/collection?shape=${item.shapeId}`}>
+                      <h3 className="text-luxury-text text-lg font-serif mb-2 tracking-wider group-hover:text-gold-500 transition-colors duration-300">
+                        {item.shape}
+                      </h3>
+                    </Link>
                     <p className="text-luxury-text-sec text-xs leading-relaxed font-sans mb-4 min-h-[40px]">
                       {item.desc}
                     </p>
@@ -552,7 +554,7 @@ const Home = () => {
                       <span className="text-xs font-serif text-gold-500">{item.sizes}</span>
                     </div>
                     <Link
-                      to="/collection"
+                      to={`/collection?shape=${item.shapeId}`}
                       className="text-[10px] uppercase tracking-widest text-gold-500 hover:text-luxury-text font-serif transition-colors duration-200"
                     >
                       {t('requestQuote')} &rarr;
