@@ -10,7 +10,8 @@ import heroDiamond from '../assets/hero_diamond.png';
 import { 
   Award, ShieldCheck, Factory, Truck, UserCheck, 
   Gem, Scissors, Search, Package, Globe, 
-  Building2, Sparkles, TrendingUp, ShoppingBag, Heart, CheckCircle2 
+  Building2, Sparkles, TrendingUp, ShoppingBag, Heart, CheckCircle2,
+  ChevronDown
 } from 'lucide-react';
 
 import roundCut from '../assets/round_cut.jfif';
@@ -63,6 +64,75 @@ const TimelineStep = ({ step, idx, isEven }) => {
 const Home = () => {
   const { t } = useLanguage();
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+  const [openIndex, setOpenIndex] = React.useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const faqData = [
+    {
+      q: "What are lab-grown diamonds?",
+      a: "Lab-grown diamonds are real diamonds created in controlled environments using advanced HPHT or CVD technology."
+    },
+    {
+      q: "Are lab-grown diamonds real diamonds?",
+      a: "Yes. They have the same chemical, physical, and optical properties as natural diamonds."
+    },
+    {
+      q: "What is the difference between lab-grown and natural diamonds?",
+      a: "The main difference is origin. Natural diamonds form underground, while lab-grown diamonds are created in laboratories."
+    },
+    {
+      q: "What is HPHT diamond growth?",
+      a: "HPHT (High Pressure High Temperature) replicates the natural conditions under which diamonds form."
+    },
+    {
+      q: "What is CVD diamond growth?",
+      a: "CVD (Chemical Vapor Deposition) grows diamonds layer by layer using carbon-rich gases in a controlled chamber."
+    },
+    {
+      q: "Are your diamonds certified?",
+      a: "Yes, diamonds can be supplied with internationally recognized certifications such as IGI or GIA, depending on availability and customer requirements."
+    },
+    {
+      q: "Which diamond shapes do you offer?",
+      a: "Round, Oval, Pear, Emerald, Radiant, Cushion, Princess, Marquise, Heart, and other custom shapes."
+    },
+    {
+      q: "Do you export internationally?",
+      a: "Yes, we export lab-grown diamonds worldwide with secure logistics and documentation support."
+    },
+    {
+      q: "Can I request custom specifications?",
+      a: "Yes. We can supply diamonds according to specific requirements including carat, color, clarity, cut, and shape."
+    },
+    {
+      q: "How do I request a quotation?",
+      a: "You can use the Inquiry form, WhatsApp button, or contact us directly for inventory and pricing information."
+    },
+    {
+      q: "Are lab-grown diamonds sustainable?",
+      a: "Lab-grown diamonds generally require less land disruption than traditional mining and offer a modern alternative for many buyers."
+    },
+    {
+      q: "Why choose R Sutariya Exports?",
+      a: "We combine advanced manufacturing, strict quality control, international certification, and reliable global export services."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  };
   
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
@@ -747,7 +817,73 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 13. Call To Action */}
+      {/* FAQ Schema (JSON-LD) for SEO */}
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* 13. Frequently Asked Questions Section */}
+      <section className="py-24 md:py-32 bg-luxury-bg border-b border-luxury-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="text-center mb-16">
+              <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Expert Knowledge</span>
+              <h2 className="text-2xl md:text-3xl font-serif tracking-wide text-luxury-text uppercase">
+                Frequently Asked Questions About Lab-Grown Diamonds
+              </h2>
+              <div className="w-16 h-[1px] bg-gold-500/35 mx-auto mt-6" />
+            </div>
+
+            <div className="space-y-2 border-t border-luxury-border/60">
+              {faqData.map((item, index) => {
+                const isOpen = openIndex === index;
+                return (
+                  <div 
+                    key={index} 
+                    className="border-b border-luxury-border/60 pb-2"
+                  >
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      aria-expanded={isOpen}
+                      className="w-full flex justify-between items-center py-4 text-left font-serif text-sm md:text-base text-luxury-text hover:text-gold-500 transition-colors duration-300 focus:outline-none group cursor-pointer"
+                    >
+                      <div className="flex items-center gap-3.5 pr-4">
+                        <Gem className="w-3.5 h-3.5 text-gold-500/80 shrink-0 group-hover:scale-110 transition-transform duration-300" />
+                        <span className="font-semibold tracking-wide text-xs md:text-sm">{item.q}</span>
+                      </div>
+                      <ChevronDown className={`w-4 h-4 text-gold-500/80 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ 
+                        height: isOpen ? 'auto' : 0, 
+                        opacity: isOpen ? 1 : 0 
+                      }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pb-5 pt-1 text-xs text-luxury-text-sec leading-relaxed font-sans pl-7 pr-2">
+                        {item.a}
+                      </p>
+                    </motion.div>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* 14. Call To Action */}
       <section className="relative py-24 md:py-32 bg-black overflow-hidden border-t border-luxury-border text-center">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#111111_1px,transparent_1px),linear-gradient(to_bottom,#111111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30 pointer-events-none" />
         
