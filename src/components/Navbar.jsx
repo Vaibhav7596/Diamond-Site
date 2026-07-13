@@ -61,16 +61,10 @@ const Navbar = () => {
   ];
 
   const currentLangObj = languages.find(l => l.code === language) || languages[0];
-  const isHome = location.pathname === '/';
-  const showTransparent = isHome && !isScrolled;
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
-        showTransparent 
-          ? 'bg-transparent py-5' 
-          : 'bg-[#0b0c10]/95 backdrop-blur-md border-b border-gold-500/15 py-3.5 shadow-sm'
-      }`}>
+      <nav className="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-[#0b0c10]/95 backdrop-blur-md border-b border-gold-500/15 py-3.5 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-4">
             {/* Logo */}

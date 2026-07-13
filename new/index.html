@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Site - Smooth Scroll Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+
+  <!-- Loading Screen -->
+  <div id="loading" class="loading-overlay">
+    <div class="progress-bar-container">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- Animation Container -->
+  <div class="animation-container">
+    <canvas id="animation-canvas"></canvas>
+  </div>
+
+  <!-- Scroll space wrapper -->
+  <div class="scroll-wrapper"></div>
+
+  <script>
+    const canvas = document.getElementById('animation-canvas');
+    const ctx = canvas.getContext('2d');
+    const progressBar = document.getElementById('progress-bar');
+    const body = document.body;
+
+    const frameCount = 300;
+    const images = [];
+    let imagesLoaded = 0;
+
+    // Generate filename helper
+    const getFrameUrl = index => `ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
+
+    // Animation state
+    let currentFrame = 1;
+    let targetFrame = 1;
+    const lerpFactor = 0.06; // Buttery smooth scroll interpolation factor
+
+    // Start preloading images safely
+    function preloadImages() {
+      for (let i = 1; i <= frameCount; i++) {
+        const img = new Image();
+        images.push(img); // Push immediately to preserve array ordering
+
+        img.onload = () => {
+          imagesLoaded++;
+          const progress = (imagesLoaded / frameCount) * 100;
+          progressBar.style.width = `${progress}%`;
+
+          if (imagesLoaded === frameCount) {
+            onPreloadComplete();
+          }
+        };
+        img.onerror = () => {
+          console.error(`Failed to load image: ${getFrameUrl(i)}`);
+          imagesLoaded++; // count it to avoid blocking the loader
+          if (imagesLoaded === frameCount) {
+            onPreloadComplete();
+          }
+        };
+        img.src = getFrameUrl(i); // Trigger loading last
+      }
+    }
+
+
+
+    // Update target frame based on scroll position (handles cross-browser scroll positions)
+    function updateScrollTarget() {
+      const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScrollTop <= 0) return;
+      const scrollFraction = scrollTop / maxScrollTop;
+      
+      // Calculate corresponding target frame index
+      targetFrame = 1 + scrollFraction * (frameCount - 1);
+    }
+
+    // Fit image to canvas preserving aspect ratio (Cover effect) in virtual CSS pixels
+    function drawCSSImage() {
+      const activeFrame = Math.round(currentFrame);
+      const safeFrame = Math.max(1, Math.min(frameCount, activeFrame));
+      const img = images[safeFrame - 1];
+      if (!img || !img.complete || img.naturalWidth === 0) return;
+
+      const cssWidth = window.innerWidth;
+      const cssHeight = window.innerHeight;
+      const imgWidth = img.naturalWidth;
+      const imgHeight = img.naturalHeight;
+
+      const imgRatio = imgWidth / imgHeight;
+      const canvasRatio = cssWidth / cssHeight;
+
+      let drawWidth, drawHeight, drawX, drawY;
+
+      if (canvasRatio > imgRatio) {
+        drawWidth = cssWidth;
+        drawHeight = cssWidth / imgRatio;
+        drawX = 0;
+        drawY = (cssHeight - drawHeight) / 2;
+      } else {
+        drawWidth = cssHeight * imgRatio;
+        drawHeight = cssHeight;
+        drawX = (cssWidth - drawWidth) / 2;
+        drawY = 0;
+      }
+
+      ctx.clearRect(0, 0, cssWidth, cssHeight);
+      ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+    }
+
+    // Animation Loop
+    function animate() {
+      // Smoothly interpolate currentFrame towards targetFrame
+      currentFrame += (targetFrame - currentFrame) * lerpFactor;
+      drawCSSImage();
+      requestAnimationFrame(animate);
+    }
+
+    // Handle canvas resizing
+    function resizeCanvas() {
+      // Use devicePixelRatio for super crisp rendering on high-DPI displays
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      
+      // Scale context to match screen layout dimensions using setTransform for cross-browser support
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Redraw immediately
+      drawCSSImage();
+    }
+
+    // Triggered when preloading finishes
+    function onPreloadComplete() {
+      setTimeout(() => {
+        document.getElementById('loading').classList.add('fade-out');
+        body.classList.remove('loading');
+        
+        // Initialize position on load (in case page refreshed while scrolled down)
+        updateScrollTarget();
+        currentFrame = targetFrame;
+        
+        resizeCanvas();
+        requestAnimationFrame(animate);
+      }, 500); // Small delay to let the progress bar fill up beautifully
+    }
+
+    // Event Listeners
+    window.addEventListener('scroll', updateScrollTarget);
+    window.addEventListener('resize', resizeCanvas);
+
+    // Initial setup
+    preloadImages();
+  </script>
+</body>
+</html>

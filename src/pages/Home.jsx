@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { staggerContainer, fadeUpItem, cardHoverProps, btnHoverProps, btnGhostHoverProps, viewportOnce } from '../utils/motionVariants';
 import LightReflect from '../components/LightReflect';
 import NumberCounter from '../components/NumberCounter';
-
-
+import VideoHero from '../components/VideoHero';
 import heroDiamond from '../assets/hero_diamond.png';
 import { 
   Award, ShieldCheck, Factory, Truck, UserCheck, 
@@ -63,7 +63,6 @@ const TimelineStep = ({ step, idx, isEven }) => {
 
 const Home = () => {
   const { t } = useLanguage();
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
   const [openIndex, setOpenIndex] = React.useState(null);
 
   const toggleFAQ = (index) => {
@@ -134,16 +133,6 @@ const Home = () => {
     }))
   };
   
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth - 0.5) * 25;
-    const y = (clientY / innerHeight - 0.5) * 25;
-    setMousePosition({ x, y });
-  };
-
-  const heroWords = t('home.heroTitle').split(' ');
-
   const trustIndicators = [
     t('home.trust.heritage'),
     t('home.trust.specialists'),
@@ -193,142 +182,11 @@ const Home = () => {
 
   return (
     <div className="bg-luxury-bg text-luxury-text transition-colors duration-500">
-      
-      {/* 1. Hero Section — Sticky: next sections slide over it */}
-      <div className="sticky top-0 z-0">
-      <section 
-        onMouseMove={handleMouseMove}
-        className="relative min-h-[95vh] flex items-center justify-center bg-black overflow-hidden py-24 -mt-[64px]"
-      >
-        {/* Background Image Container with Parallax + Zoom */}
-        <motion.div 
-          animate={{ 
-            x: mousePosition.x * 0.4, 
-            y: mousePosition.y * 0.4,
-          }}
-          transition={{ type: "tween", ease: "easeOut", duration: 0.8 }}
-          className="absolute inset-0 z-0 opacity-45 pointer-events-none"
-        >
-          <motion.img 
-            src={heroDiamond} 
-            alt="Premium Loose Diamond Background" 
-            className="w-full h-full object-cover object-center"
-            animate={{
-              scale: [1.02, 1.07, 1.02],
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </motion.div>
-        
-        {/* Subtle Luxury Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-transparent z-0 pointer-events-none" />
 
-        {/* Animated Light Rays & Reflective Overlays */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-25 mix-blend-screen overflow-hidden">
-          <motion.div 
-            animate={{ 
-              x: ['-50%', '150%'],
-              opacity: [0, 0.45, 0.45, 0]
-            }}
-            transition={{ 
-              duration: 7, 
-              repeat: Infinity, 
-              ease: "easeInOut",
-              repeatDelay: 5 
-            }}
-            className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-gold-500/10 to-transparent -skew-x-12"
-          />
-          <motion.div 
-            animate={{ 
-              x: ['-150%', '50%'],
-              opacity: [0, 0.35, 0.35, 0]
-            }}
-            transition={{ 
-              duration: 9, 
-              repeat: Infinity, 
-              ease: "easeInOut",
-              repeatDelay: 3 
-            }}
-            className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12"
-          />
-          <div className="absolute top-0 left-1/4 w-32 h-[150%] bg-gradient-to-b from-white/5 to-transparent blur-[80px] rotate-[35deg]" />
-          <div className="absolute top-0 right-1/4 w-40 h-[150%] bg-gradient-to-b from-white/3 to-transparent blur-[100px] -rotate-[25deg]" />
-        </div>
+      {/* 1. Hero Section — Cinematic video scroll experience */}
+      <VideoHero t={t} heroWords={t('home.heroTitle').split(' ')} />
 
-        {/* Content Container (Float in opposite direction to create depth) */}
-        <motion.div 
-          animate={{ 
-            x: mousePosition.x * -0.15, 
-            y: mousePosition.y * -0.15 
-          }}
-          transition={{ type: "tween", ease: "easeOut", duration: 0.8 }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center relative"
-        >
-          <motion.span 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-4"
-          >
-            Established Heritage Exporter
-          </motion.span>
-          
-          <h1 className="text-4xl md:text-6xl font-serif tracking-wide mb-8 leading-tight max-w-4xl mx-auto text-white">
-            {heroWords.map((word, idx) => (
-              <span key={idx} className="inline-block overflow-hidden mr-2 md:mr-3 pb-1">
-                <motion.span
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  transition={{ 
-                    duration: 0.95, 
-                    delay: idx * 0.04, 
-                    ease: [0.16, 1, 0.3, 1] 
-                  }}
-                  className="inline-block"
-                >
-                  {word}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-gray-300 font-serif text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
-          >
-            {t('home.heroSubtitle')}
-          </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <Link 
-              to="/contact" 
-              className="w-full sm:w-auto px-8 py-3.5 bg-gold-500 hover:bg-gold-600 text-black font-serif text-xs uppercase tracking-widest font-semibold transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.25)] rounded-sm cursor-pointer"
-            >
-              {t('requestQuote')}
-            </Link>
-            <Link 
-              to="/contact" 
-              className="w-full sm:w-auto px-8 py-3.5 bg-transparent border border-gray-300 hover:border-gold-500 text-white hover:text-gold-500 font-serif text-xs uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer"
-            >
-              {t('contactUs')}
-            </Link>
-          </motion.div>
-        </motion.div>
-      </section>
-      </div>
-
-      {/* Spacer to push content below sticky hero */}
+      {/* Rest of page content */}
       <div className="relative z-10 bg-luxury-bg">
 
       {/* 2. Trust Indicators Banner */}
@@ -425,19 +283,27 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer(0.07, 0.05)}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+          >
             {whyChooseUs.map((item, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.08 }}
-                className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/30 hover:shadow-[0_0_20px_rgba(150,123,69,0.05)] transition-all duration-300 group"
+                variants={fadeUpItem}
+                {...cardHoverProps}
+                className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/30 transition-colors duration-300 group cursor-default"
               >
-                <div className="w-10 h-10 border border-luxury-border rotate-45 flex items-center justify-center mb-6 bg-luxury-bg transition-colors duration-300 group-hover:border-gold-500">
+                <motion.div
+                  whileHover={{ rotate: 180, borderColor: '#967b45' }}
+                  transition={{ duration: 0.4, ease: [0.16,1,0.3,1] }}
+                  className="w-10 h-10 border border-luxury-border rotate-45 flex items-center justify-center mb-6 bg-luxury-bg"
+                >
                   <div className="-rotate-45">{item.icon}</div>
-                </div>
+                </motion.div>
                 <h3 className="text-luxury-text text-sm font-serif mb-2 tracking-wider group-hover:text-gold-500 transition-colors duration-300 uppercase">
                   {item.title}
                 </h3>
@@ -446,7 +312,7 @@ const Home = () => {
                 </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -463,19 +329,27 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer(0.07, 0.05)}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+          >
             {industriesServe.map((item, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.08 }}
-                className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-all duration-300 group flex items-start gap-4"
+                variants={fadeUpItem}
+                {...cardHoverProps}
+                className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-colors duration-300 group flex items-start gap-4 cursor-default"
               >
-                <div className="w-10 h-10 border border-luxury-border flex items-center justify-center bg-luxury-bg shrink-0 group-hover:border-gold-500 transition-colors duration-300">
+                <motion.div
+                  whileHover={{ scale: 1.15, color: '#c5a880' }}
+                  transition={{ duration: 0.25 }}
+                  className="w-10 h-10 border border-luxury-border flex items-center justify-center bg-luxury-bg shrink-0 group-hover:border-gold-500 transition-colors duration-300"
+                >
                   {item.icon}
-                </div>
+                </motion.div>
                 <div className="space-y-1">
                   <h3 className="text-luxury-text text-sm font-serif tracking-wider group-hover:text-gold-500 transition-colors duration-300 uppercase">
                     {item.title}
@@ -486,7 +360,7 @@ const Home = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -523,12 +397,14 @@ const Home = () => {
                     <span className="text-[9px] uppercase tracking-widest text-gold-500 font-bold block mb-1 font-serif">{t('home.capabilities.certsLabel')}</span>
                     <span className="text-sm font-serif text-luxury-text font-semibold">{t('home.capabilities.certsVal')}</span>
                   </div>
-                  <Link 
-                    to="/collection"
-                    className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-black font-serif text-[10px] uppercase tracking-widest font-bold transition-all duration-300 rounded-sm cursor-pointer"
-                  >
-                    Browse Catalog
-                  </Link>
+                  <motion.div {...btnHoverProps}>
+                    <Link
+                      to="/collection"
+                      className="btn-gold inline-block px-6 py-2.5 bg-gold-500 hover:bg-gold-600 text-black font-serif text-[10px] uppercase tracking-widest font-bold rounded-sm cursor-pointer"
+                    >
+                      Browse Catalog
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -540,7 +416,13 @@ const Home = () => {
       {/* 7. Trust Statistics Section (Updated number counters) */}
       <section className="py-24 md:py-32 bg-luxury-bg border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x-0 md:divide-x divide-luxury-border/60 gap-y-12 md:gap-y-0">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 divide-x-0 md:divide-x divide-luxury-border/60 gap-y-12 md:gap-y-0"
+            variants={staggerContainer(0.12, 0.1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+          >
             {[
               { to: '10', from: 0, suffix: '+', label: t('home.stats.countriesServed'), duration: 1.8, delay: 0 },
               { to: '45', from: 0, suffix: '+', label: t('home.stats.yearsExperience'), duration: 1.8, delay: 0.15 },
@@ -549,13 +431,19 @@ const Home = () => {
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="flex flex-col items-center justify-center py-6 px-4 group"
+                variants={fadeUpItem}
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col items-center justify-center py-6 px-4 group cursor-default"
               >
-                <div className="w-6 h-[1.5px] bg-gold-500/50 mb-4 group-hover:w-10 group-hover:bg-gold-500 transition-all duration-500" />
+                <motion.div
+                  className="h-[1.5px] bg-gold-500/50 mb-4"
+                  initial={{ width: '1.5rem' }}
+                  whileInView={{ width: '2.5rem' }}
+                  whileHover={{ width: '3rem', backgroundColor: '#967b45' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                />
                 <NumberCounter
                   to={item.to}
                   from={item.from}
@@ -566,10 +454,17 @@ const Home = () => {
                 <p className="text-[9px] uppercase tracking-widest text-luxury-text-sec font-serif mt-3 text-center leading-relaxed">
                   {item.label}
                 </p>
-                <div className="w-6 h-[1.5px] bg-gold-500/30 mt-4 group-hover:w-10 group-hover:bg-gold-500/60 transition-all duration-500" />
+                <motion.div
+                  className="h-[1.5px] bg-gold-500/30 mt-4"
+                  initial={{ width: '1.5rem' }}
+                  whileInView={{ width: '2rem' }}
+                  whileHover={{ width: '2.5rem', backgroundColor: 'rgba(150,123,69,0.6)' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                />
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -586,24 +481,36 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+            variants={staggerContainer(0.09, 0.05)}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+          >
             {collections.map((item, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.08 }}
+                variants={fadeUpItem}
+                whileHover={{ y: -6, boxShadow: '0 24px 60px rgba(150,123,69,0.12), 0 8px 20px rgba(0,0,0,0.18)' }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="bg-luxury-card border border-luxury-card-border overflow-hidden relative group rounded-sm flex flex-col justify-between min-h-[380px]"
               >
                 <Link to={`/collection?shape=${item.shapeId}`} className="h-48 w-full relative overflow-hidden bg-black/5 dark:bg-black/45 border-b border-luxury-border flex items-center justify-center p-4">
+                  {/* Image with scale on hover */}
                   <LightReflect>
-                    <img 
-                      src={item.image} 
-                      alt={`${item.shape} Cut Diamond Preview`} 
-                      className="w-full h-full object-contain filter brightness-90 transition-transform duration-700 group-hover:scale-105"
+                    <img
+                      src={item.image}
+                      alt={`${item.shape} Cut Diamond Preview`}
+                      className="w-full h-full object-contain filter brightness-90 transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                   </LightReflect>
+                  {/* Gold overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  {/* View label */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <span className="text-[9px] uppercase tracking-[0.3em] text-white/90 font-serif bg-black/40 px-3 py-1.5 backdrop-blur-sm rounded-sm">View Collection</span>
+                  </div>
                 </Link>
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
@@ -617,23 +524,25 @@ const Home = () => {
                       {item.desc}
                     </p>
                   </div>
-                  
+
                   <div className="border-t border-luxury-border pt-4 flex justify-between items-center">
                     <div className="text-left">
                       <span className="text-[9px] uppercase tracking-wider text-luxury-text-sec/60 block font-sans">{t('home.collection.sizes')}</span>
                       <span className="text-xs font-serif text-gold-500">{item.sizes}</span>
                     </div>
-                    <Link
-                      to={`/collection?shape=${item.shapeId}`}
-                      className="text-[10px] uppercase tracking-widest text-gold-500 hover:text-luxury-text font-serif transition-colors duration-200"
-                    >
-                      {t('requestQuote')} &rarr;
-                    </Link>
+                    <motion.div whileHover={{ x: 3 }} transition={{ duration: 0.2 }}>
+                      <Link
+                        to={`/collection?shape=${item.shapeId}`}
+                        className="text-[10px] uppercase tracking-widest text-gold-500 hover:text-luxury-text font-serif transition-colors duration-200"
+                      >
+                        {t('requestQuote')} &rarr;
+                      </Link>
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -886,28 +795,41 @@ const Home = () => {
       {/* 14. Call To Action */}
       <section className="relative py-24 md:py-32 bg-black overflow-hidden border-t border-luxury-border text-center">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#111111_1px,transparent_1px),linear-gradient(to_bottom,#111111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30 pointer-events-none" />
-        
+        {/* Ambient glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold-500/5 rounded-full blur-[120px] pointer-events-none" />
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-serif">
-          <h2 className="text-3xl md:text-5xl tracking-wide mb-6 gold-gradient-text leading-tight uppercase">
-            {t('home.cta.title')}
-          </h2>
-          <p className="text-gray-400 font-sans text-xs md:text-sm max-w-xl mx-auto mb-10 leading-relaxed">
-            {t('home.cta.subtitle')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link 
-              to="/contact" 
-              className="w-full sm:w-auto px-8 py-3.5 bg-gold-500 hover:bg-gold-600 text-black text-xs uppercase tracking-widest font-semibold font-sans rounded-sm transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.25)] cursor-pointer"
-            >
-              {t('requestQuote')}
-            </Link>
-            <Link 
-              to="/export-shipping" 
-              className="w-full sm:w-auto px-8 py-3.5 bg-transparent border border-gold-500 text-gold-400 hover:text-white text-xs uppercase tracking-widest font-sans rounded-sm transition-all duration-300 cursor-pointer"
-            >
-              Learn Export Journey
-            </Link>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <h2 className="text-3xl md:text-5xl tracking-wide mb-6 gold-gradient-text leading-tight uppercase">
+              {t('home.cta.title')}
+            </h2>
+            <p className="text-gray-400 font-sans text-xs md:text-sm max-w-xl mx-auto mb-10 leading-relaxed">
+              {t('home.cta.subtitle')}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <motion.div {...btnHoverProps}>
+                <Link
+                  to="/contact"
+                  className="btn-gold inline-block w-full sm:w-auto px-8 py-3.5 bg-gold-500 hover:bg-gold-600 text-black text-xs uppercase tracking-widest font-semibold font-sans rounded-sm shadow-[0_0_20px_rgba(212,175,55,0.3)] cursor-pointer"
+                >
+                  {t('requestQuote')}
+                </Link>
+              </motion.div>
+              <motion.div {...btnGhostHoverProps}>
+                <Link
+                  to="/export-shipping"
+                  className="btn-ghost inline-block w-full sm:w-auto px-8 py-3.5 bg-transparent border border-gold-500/60 hover:border-gold-500 text-gold-400 hover:text-white text-xs uppercase tracking-widest font-sans rounded-sm cursor-pointer"
+                >
+                  Learn Export Journey
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
       </div>{/* end z-10 wrapper */}

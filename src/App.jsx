@@ -5,7 +5,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LanguageSelection from './components/LanguageSelection';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 
 // Import Pages
 import Home from './pages/Home';
@@ -23,6 +23,18 @@ const ScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
   return null;
+};
+
+// Premium scroll progress bar — thin gold line at top of page
+const ScrollProgress = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
+  return (
+    <motion.div
+      className="scroll-progress-bar"
+      style={{ scaleX }}
+    />
+  );
 };
 
 // Global floating WhatsApp CTA
@@ -49,9 +61,23 @@ const FloatingWhatsApp = () => (
   </motion.a>
 );
 
+const AnimatedPage = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -15 }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 // Site Wrapper
 const MainLayout = () => {
   const { language } = useLanguage();
+  const location = useLocation();
 
   // Show splash page if language is not selected yet
   if (!language) {
@@ -60,18 +86,21 @@ const MainLayout = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-luxury-bg text-luxury-text transition-colors duration-500 overflow-x-hidden">
+      <ScrollProgress />
       <ScrollToTop />
       <Navbar />
       <main className="flex-grow pt-[64px]">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/collection" element={<Collection />} />
-          <Route path="/certifications" element={<Certifications />} />
-          <Route path="/export-shipping" element={<ExportShipping />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/diamond-journey" element={<DiamondJourney />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
+            <Route path="/about" element={<AnimatedPage><AboutUs /></AnimatedPage>} />
+            <Route path="/collection" element={<AnimatedPage><Collection /></AnimatedPage>} />
+            <Route path="/certifications" element={<AnimatedPage><Certifications /></AnimatedPage>} />
+            <Route path="/export-shipping" element={<AnimatedPage><ExportShipping /></AnimatedPage>} />
+            <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
+            <Route path="/diamond-journey" element={<AnimatedPage><DiamondJourney /></AnimatedPage>} />
+          </Routes>
+        </AnimatePresence>
       </main>
       <Footer />
       <FloatingWhatsApp />

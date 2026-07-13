@@ -1,0 +1,112 @@
+/* Reset defaults */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #0d0d0d;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0d0d0d;
+  color: #fff;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #333 #0d0d0d;
+}
+
+body.loading {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Fixed container to keep canvas in view */
+.animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none; /* Let all gestures pass to the scroll spacer */
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Scroll wrapper to create scrollable space */
+.scroll-wrapper {
+  position: relative;
+  height: 800vh; /* 800vh provides a comfortable, smooth scroll length for 300 frames */
+  width: 100%;
+  z-index: 2;
+}
+
+/* Loading Overlay - disappears once loaded */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0d0d0d;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
+}
+
+.loading-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.progress-bar-container {
+  width: 200px;
+  height: 2px;
+  background-color: #222;
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #d4af37, #f3e5ab); /* Premium gold gradient suitable for Diamond site */
+  transition: width 0.1s ease-out;
+}
