@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
 import JourneyLayout from "../components/DiamondJourney/JourneyLayout";
@@ -26,11 +27,13 @@ const DiamondJourney = () => {
     return () => clearTimeout(timer);
   }, [currentStep]);
 
+  const navigate = useNavigate();
+
   const handleNext = () => {
     if (currentStep < 8) setCurrentStep(prev => prev + 1);
     else {
-      // If it's the last step and user clicks Finish
-      window.location.href = '/contact';
+      // If it's the last step and user clicks Finish — use React Router navigate
+      navigate('/contact');
     }
   };
 
