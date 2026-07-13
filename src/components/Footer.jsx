@@ -66,14 +66,14 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-xs text-luxury-text-sec/75 leading-relaxed mb-5 font-sans">
-              Family-owned B2B diamond manufacturers from Surat, India. Pioneers in premium HPHT &amp; CVD lab-grown diamond production for European jewelry markets.
+              Family-owned B2B diamond manufacturers from Surat, India. Pioneers in premium HPHT &amp; CVD lab-grown diamond production for global jewelry markets — Europe, UK &amp; USA.
             </p>
 
             {/* Capabilities Snapshot */}
             <div className="space-y-1.5 border-t border-luxury-border pt-4 mb-5">
               {[
                 { icon: Gem, text: 'HPHT & CVD · 16+ Shapes' },
-                { icon: Globe, text: 'Export to Italy · France · EU' },
+                { icon: Globe, text: 'Export to Italy · France · UK · USA · EU' },
                 { icon: ShieldCheck, text: 'IGI · GIA · HRD · IIDGR' },
               ].map(({ icon: Icon, text }, i) => (
                 <div key={i} className="flex items-center gap-2 text-[10px] text-luxury-text-sec/65 font-sans">
@@ -154,7 +154,7 @@ const Footer = () => {
             <div className="mt-6 border-t border-luxury-border pt-5">
               <p className="text-[10px] uppercase tracking-widest text-gold-500 font-serif mb-3">Export Markets</p>
               <div className="flex flex-wrap gap-2">
-                {['🇮🇹 Italy', '🇫🇷 France', '🇧🇪 Belgium', '🇨🇭 Switzerland', '🇳🇱 Netherlands'].map((m, i) => (
+                {['🇮🇹 Italy', '🇫🇷 France', '🇬🇧 UK', '🇺🇸 USA (New York)', '🇧🇪 Belgium', '🇨🇭 Switzerland', '🇳🇱 Netherlands'].map((m, i) => (
                   <span key={i} className="text-[10px] font-sans text-luxury-text-sec/65 border border-luxury-border px-2 py-1 rounded-sm">{m}</span>
                 ))}
               </div>

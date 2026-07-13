@@ -54,8 +54,8 @@ export const translations = {
         direct: "Direct from Surat, India"
       },
       whyUs: {
-        title: "Why European Jewelry Brands Partner With Us",
-        subtitle: "Delivering unmatched craftsmanship, certification, and direct manufacturer pricing to Europe's finest wholesalers and designers.",
+        title: "Why Global Jewelry Brands Partner With Us",
+        subtitle: "Delivering unmatched craftsmanship, certification, and direct manufacturer pricing to wholesalers and designers worldwide — from Europe to the UK and USA.",
         qualityTitle: "Superior HPHT Quality",
         qualityDesc: "Sourced and grown under maximum thermodynamic pressure, yielding premium purity and crystal structure.",
         certTitle: "International Certifications",
@@ -63,9 +63,9 @@ export const translations = {
         priceTitle: "Factory Direct Pricing",
         priceDesc: "Eliminate middlemen. Purchase directly from our state-of-the-art Surat manufacturing facility.",
         exportTitle: "Reliable Export Process",
-        exportDesc: "End-to-end logistics with fully insured door-to-door shipping tailored for France, Italy, and greater Europe.",
+        exportDesc: "End-to-end logistics with fully insured door-to-door shipping tailored for France, Italy, UK, USA, and beyond.",
         serviceTitle: "Personalized B2B Service",
-        serviceDesc: "Dedicated account managers who understand European market needs and custom diamond orders."
+        serviceDesc: "Dedicated account managers who understand global market needs and custom diamond orders."
       },
       collection: {
         title: "Featured Shape Collections",
@@ -76,6 +76,7 @@ export const translations = {
         pearDesc: "Splendid teardrop shapes blending round and marquise brilliance.",
         cushionDesc: "Soft square silhouettes with rounded edges for a vintage look.",
         radiantDesc: "Rectangular brilliant-cut diamonds with trimmed corners.",
+        marquiseDesc: "Elegant elongated boat-shaped cuts with pointed ends for a dramatic, finger-elongating effect.",
         sizes: "Available Sizes"
       },
       certPreview: {
@@ -84,12 +85,16 @@ export const translations = {
         text: "We partner with leading gemological laboratories to verify authenticity, color, and clarity. Sample certificates are available upon request, and all reports are verifiable online via IGI and GIA registers."
       },
       exportCoverage: {
-        title: "Seamless Shipping to Europe",
-        subtitle: "Connecting the diamond hub of Surat to the fashion capitals of Europe.",
+        title: "Seamless Global Shipping",
+        subtitle: "Connecting the diamond hub of Surat to the finest jewelry markets across Europe and the Americas.",
         italyTitle: "Italy Delivery",
         italyDesc: "Servicing wholesalers in Milan, Rome, Vicenza, and Valenza with customs handling.",
         franceTitle: "France Delivery",
         franceDesc: "Securing direct delivery to Paris, Lyon, and Nice jewelry ateliers.",
+        ukTitle: "UK Delivery",
+        ukDesc: "Servicing Hatton Garden, London and Birmingham diamond traders with insured door-to-door delivery.",
+        usaTitle: "USA Delivery",
+        usaDesc: "Direct shipments to New York City's Diamond District and major US jewelry trade hubs.",
         europeTitle: "Europe-Wide",
         europeDesc: "Fully insured door-to-door transit via specialized armored couriers (Malca-Amit, Brinks)."
       },
@@ -114,8 +119,8 @@ export const translations = {
         certsDesc: "Support for IGI, GIA, HRD, IIDGR, and other recognized certifications.",
         directTitle: "Direct Export from Surat",
         directDesc: "Located in the global diamond hub with direct access to manufacturing and export infrastructure.",
-        marketTitle: "European Market Experience",
-        marketDesc: "Serving buyers across major European jewelry markets.",
+        marketTitle: "Global Market Experience",
+        marketDesc: "Serving buyers across Europe, UK, and USA including Italy, France, and New York.",
         deliveryTitle: "Reliable Global Delivery",
         deliveryDesc: "Professional logistics support and secure shipment handling."
       },
@@ -139,7 +144,7 @@ export const translations = {
         title: "Product Capabilities",
         subtitle: "An overview of our standard supply parameters. Custom orders available upon request.",
         shapesLabel: "16+ Diamond Shapes",
-        shapesVal: "Round, Oval, Pear, Heart, Princess, Emerald, Marquise, Baguette, etc.",
+        shapesVal: "Round, Oval, Pear, Emerald, Marquise, Cushion, Princess, Heart, and other custom shapes.",
         sizesLabel: "Size Range",
         sizesVal: "0.005 CT – 5.00 CT",
         clarityLabel: "Clarity Range",
@@ -463,13 +468,14 @@ export const translations = {
       geoPoints: [
         { location: "Bhavnagar, Gujarat", role: "Origin", desc: "Village roots where the craft was born" },
         { location: "Surat, Gujarat", role: "Expansion Hub", desc: "Global diamond manufacturing capital" },
-        { location: "Europe", role: "Export Destination", desc: "Italy · France · and beyond" }
+        { location: "Europe", role: "Export Destination", desc: "Italy · France · UK · and beyond" },
+        { location: "USA", role: "Export Destination", desc: "New York · Diamond District" }
       ],
       legacyTagline: "Leadership Heritage",
       legacyTitle: "Founder Legacy & Core Values",
-      legacyDesc: "Under the vision of our founders, we believe that trust is the hardest gem to polish. Our operations are guided by family values, transparent grading, and a dedication to forming lifetime business relationships with European designers and retailers.",
+      legacyDesc: "Under the vision of our founders, we believe that trust is the hardest gem to polish. Our operations are guided by family values, transparent grading, and a dedication to forming lifetime business relationships with designers and retailers across Europe, UK, and the USA.",
       legacyP2: "As the next generation stepped into leadership roles, they brought fresh perspective while preserving the principles that built the business. The commitment to excellence — in every stone, every shipment, every conversation — remains unchanged.",
-      legacyP3: "Today, that same spirit drives our international expansion. Whether serving a wholesaler in Milan or a boutique designer in Paris, we bring the same integrity that began in a small Bhavnagar workshop decades ago.",
+      legacyP3: "Today, that same spirit drives our international expansion. Whether serving a wholesaler in Milan, a boutique designer in Paris, a Hatton Garden trader in London, or a New York diamond buyer, we bring the same integrity that began in a small Bhavnagar workshop decades ago.",
       values: [
         { title: "Quality", desc: "Every diamond we export meets stringent grading and quality standards established over generations." },
         { title: "Integrity", desc: "Transparent pricing, authentic certification, and honest communication at every step." },
@@ -564,18 +570,18 @@ export const translations = {
         step6: "6. Shipping",
         step6Desc: "Packed securely in high-security parcels and cleared through customs.",
         step7: "7. Delivery",
-        step7Desc: "Door-to-door courier delivery directly to your business in Italy or France."
+        step7Desc: "Door-to-door courier delivery directly to your business in Italy, France, UK, USA (New York), or anywhere globally."
       },
       shippingTitle: "Secure Global Logistics",
       shipping1: "Armored Logistics Partners (Brinks, Malca-Amit)",
       shipping2: "100% Insured Transit from Surat to your doorstep",
       shipping3: "Customs declaration and documentation handled by our agents",
       shipping4: "Secure tamper-evident vacuum-sealed packaging",
-      whyTrustTitle: "Why European Buyers Trust Us",
+      whyTrustTitle: "Why Global Buyers Trust Us",
       trust1: "Full Transparency: Video, report numbers, and detailed photos prior to shipping.",
-      trust2: "Bilingual B2B Communication: Seamless English, Italian, and French support.",
+      trust2: "Multilingual B2B Communication: Seamless English, Italian, French, and support for UK/US clients.",
       trust3: "Strict Certification: Zero compromise on GIA/IGI standard audits.",
-      trust4: "Reliable Schedule: Dedicated shipping pipelines ensuring timely imports."
+      trust4: "Reliable Schedule: Dedicated shipping pipelines ensuring timely imports to Europe, UK and USA."
     },
 
     // Contact Page

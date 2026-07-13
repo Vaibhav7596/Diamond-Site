@@ -16,7 +16,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { btnHoverProps, btnGhostHoverProps } from '../utils/motionVariants';
-import heroDiamond from '../assets/hero_diamond.png';
+
 
 const VideoHero = ({ t, heroWords }) => {
   const videoRef = useRef(null);
@@ -79,22 +79,12 @@ const VideoHero = ({ t, heroWords }) => {
     >
       {/* ── VIDEO (Full width cover layout) ── */}
       <div className="absolute inset-0 w-full h-full bg-black">
-        {/* Render fallback image only until video metadata is ready */}
-        {!videoReady && (
-          <img
-            src={heroDiamond}
-            alt="Diamond Background"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            aria-hidden="true"
-          />
-        )}
         <video
           ref={videoRef}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
           muted
           playsInline
           preload="auto"
-          poster={heroDiamond}
           onLoadedMetadata={() => setVideoReady(true)}
           onCanPlay={() => setVideoReady(true)}
           onEnded={handleIntroComplete}

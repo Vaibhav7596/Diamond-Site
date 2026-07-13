@@ -18,7 +18,7 @@ import roundCut from '../assets/round_cut.jfif';
 import ovalCut from '../assets/oval_cut.jfif';
 import princessCut from '../assets/princess_cut.jfif';
 import pearCut from '../assets/pear_cut.jfif';
-import radiantCut from '../assets/radiant_cut.jfif';
+import marquiseCut from '../assets/Marquise.jpeg';
 import cushionCut from '../assets/cushion_cut.jfif';
 
 // Timeline Step Sub-component for sequential activation & illumination
@@ -172,12 +172,12 @@ const Home = () => {
   ];
 
   const collections = [
-    { shape: "Round", image: roundCut, desc: t('home.collection.roundDesc'), sizes: "0.50ct - 15.0ct+", shapeId: "round-brilliant" },
-    { shape: "Oval", image: ovalCut, desc: t('home.collection.ovalDesc'), sizes: "0.70ct - 12.0ct+", shapeId: "oval" },
-    { shape: "Princess", image: princessCut, desc: t('home.collection.princessDesc'), sizes: "0.50ct - 10.0ct+", shapeId: "princess" },
-    { shape: "Pear", image: pearCut, desc: t('home.collection.pearDesc'), sizes: "0.80ct - 10.0ct+", shapeId: "pear" },
-    { shape: "Cushion", image: cushionCut, desc: t('home.collection.cushionDesc'), sizes: "1.00ct - 12.0ct+", shapeId: "cushion" },
-    { shape: "Radiant", image: radiantCut, desc: t('home.collection.radiantDesc'), sizes: "0.80ct - 15.0ct+", shapeId: "square-radiant" },
+    { shape: "Round", image: roundCut, desc: t('home.collection.roundDesc'), sizes: "0.01ct - 10ct", shapeId: "round-brilliant" },
+    { shape: "Oval", image: ovalCut, desc: t('home.collection.ovalDesc'), sizes: "0.1ct - 8.0ct", shapeId: "oval" },
+    { shape: "Princess", image: princessCut, desc: t('home.collection.princessDesc'), sizes: "0.1ct - 8.0ct", shapeId: "princess" },
+    { shape: "Pear", image: pearCut, desc: t('home.collection.pearDesc'), sizes: "0.15ct - 8.0ct", shapeId: "pear" },
+    { shape: "Cushion", image: cushionCut, desc: t('home.collection.cushionDesc'), sizes: "0.2ct - 10ct", shapeId: "cushion" },
+    { shape: "Marquise", image: marquiseCut, desc: t('home.collection.marquiseDesc'), sizes: "0.1ct - 5ct", shapeId: "marquise" },
   ];
 
   return (
@@ -552,7 +552,7 @@ const Home = () => {
       <section className="py-24 md:py-32 bg-luxury-bg-sec border-b border-luxury-border relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">European Logistics Network</span>
+            <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Global Logistics Network</span>
             <h2 className="text-3xl md:text-4xl font-serif tracking-wide mb-4 text-luxury-text uppercase">
               {t('home.exportCoverage.title')}
             </h2>
@@ -561,37 +561,43 @@ const Home = () => {
             </p>
           </div>
 
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {/* Italy */}
             <div className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4">
-                <img 
-                  src="https://flagcdn.com/it.svg" 
-                  alt="Italy" 
-                  className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10"
-                />
+                <img src="https://flagcdn.com/it.svg" alt="Italy" className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10" />
               </div>
               <h3 className="text-luxury-text text-md font-serif mb-2 tracking-wider font-bold">{t('home.exportCoverage.italyTitle')}</h3>
               <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{t('home.exportCoverage.italyDesc')}</p>
             </div>
+            {/* France */}
             <div className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4">
-                <img 
-                  src="https://flagcdn.com/fr.svg" 
-                  alt="France" 
-                  className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10"
-                />
+                <img src="https://flagcdn.com/fr.svg" alt="France" className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10" />
               </div>
               <h3 className="text-luxury-text text-md font-serif mb-2 tracking-wider font-bold">{t('home.exportCoverage.franceTitle')}</h3>
               <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{t('home.exportCoverage.franceDesc')}</p>
             </div>
+            {/* UK */}
             <div className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
               <div className="mb-4">
-                <img 
-                  src="https://flagcdn.com/eu.svg" 
-                  alt="Europe" 
-                  className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10"
-                />
+                <img src="https://flagcdn.com/gb.svg" alt="United Kingdom" className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10" />
+              </div>
+              <h3 className="text-luxury-text text-md font-serif mb-2 tracking-wider font-bold">{t('home.exportCoverage.ukTitle')}</h3>
+              <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{t('home.exportCoverage.ukDesc')}</p>
+            </div>
+            {/* USA */}
+            <div className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="mb-4">
+                <img src="https://flagcdn.com/us.svg" alt="USA" className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10" />
+              </div>
+              <h3 className="text-luxury-text text-md font-serif mb-2 tracking-wider font-bold">{t('home.exportCoverage.usaTitle')}</h3>
+              <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{t('home.exportCoverage.usaDesc')}</p>
+            </div>
+            {/* Europe */}
+            <div className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-all duration-300 flex flex-col items-center text-center">
+              <div className="mb-4">
+                <img src="https://flagcdn.com/eu.svg" alt="Europe" className="h-8 w-12 object-cover rounded-[2px] shadow-sm border border-gold-500/10" />
               </div>
               <h3 className="text-luxury-text text-md font-serif mb-2 tracking-wider font-bold">{t('home.exportCoverage.europeTitle')}</h3>
               <p className="text-luxury-text-sec text-xs leading-relaxed font-sans">{t('home.exportCoverage.europeDesc')}</p>

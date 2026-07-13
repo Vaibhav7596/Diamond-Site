@@ -40,6 +40,22 @@ const ExportShipping = () => {
       detail: 'Servicing Parisian jewelry maisons and boutique designers with fully insured armored logistics via Malca-Amit & Brinks.',
     },
     {
+      flagCode: 'gb',
+      city: 'United Kingdom',
+      hubs: 'London (Hatton Garden) · Birmingham',
+      transit: '2 – 3 Days',
+      method: 'Armored Air Courier',
+      detail: "Serving Hatton Garden diamond traders and Birmingham jewelers with door-to-door insured delivery and full UK customs clearance.",
+    },
+    {
+      flagCode: 'us',
+      city: 'USA',
+      hubs: 'New York (Diamond District) · Los Angeles',
+      transit: '4 – 6 Days',
+      method: 'Insured International Express',
+      detail: 'Direct shipments to the New York Diamond District (47th Street) and major US jewelry trade centers with full customs documentation.',
+    },
+    {
       flagCode: 'eu',
       city: 'Rest of Europe',
       hubs: 'Antwerp · Amsterdam · Zurich',
@@ -61,7 +77,7 @@ const ExportShipping = () => {
             transition={{ duration: 0.8 }}
             className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-3"
           >
-            Direct Pipeline to Europe
+            Direct Pipeline to Global Markets
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
