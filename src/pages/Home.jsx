@@ -18,7 +18,7 @@ import roundCut from '../assets/round_cut.jfif';
 import ovalCut from '../assets/oval_cut.jfif';
 import princessCut from '../assets/princess_cut.jfif';
 import pearCut from '../assets/pear_cut.jfif';
-import marquiseCut from '../assets/Marquise.jpeg';
+import marquiseCut from '../assets/Marquise(Cover).jpeg';
 import cushionCut from '../assets/cushion_cut.jfif';
 
 // Timeline Step Sub-component for sequential activation & illumination

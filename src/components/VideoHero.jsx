@@ -183,23 +183,7 @@ const VideoHero = ({ t, heroWords }) => {
         )}
       </AnimatePresence>
 
-      {/* Scroll Indicator */}
-      <AnimatePresence>
-        {!introActive && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[6] flex flex-col items-center gap-2 pointer-events-none"
-          >
-            <span className="text-[8px] uppercase tracking-[0.35em] text-white/50 font-serif">Scroll to Explore</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-              className="w-[1px] h-8 bg-gradient-to-b from-gold-500/70 to-transparent"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+
 
     </div>
   );
