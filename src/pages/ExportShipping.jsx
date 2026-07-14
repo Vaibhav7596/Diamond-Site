@@ -218,7 +218,7 @@ const ExportShipping = () => {
             >
               <div className="absolute -top-2 -right-2 w-4 h-4 rotate-45 bg-gold-500" />
               <p className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold text-center mb-1">Origin</p>
-              <h3 className="text-luxury-text font-serif text-lg font-bold tracking-wider text-center">🇮🇳 Surat, India</h3>
+              <h3 className="text-luxury-text font-serif text-lg font-bold tracking-wider text-center">🇮🇳 Surat (Gujarat), India</h3>
             </motion.div>
 
             {/* Animated vertical connector */}

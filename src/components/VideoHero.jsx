@@ -127,11 +127,11 @@ const VideoHero = ({ t, heroWords }) => {
               
               {/* Tagline */}
               <span className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-gold-400 font-serif font-bold block mb-4 [text-shadow:0_1px_4px_rgba(0,0,0,0.5)]">
-                Established Heritage Exporter · Surat, India
+                Established Heritage Exporter · Surat (Gujarat), India
               </span>
 
               {/* Title */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif tracking-wide leading-[1.08] text-white mb-6 uppercase [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif tracking-wide leading-[1.08] text-white mb-6 uppercase [text-shadow:0_2px_8px_rgba(0,0,0,0.6)]">
                 {heroWords.map((word, idx) => (
                   <span key={idx} className="inline-block mr-2 md:mr-3">
                     {word}

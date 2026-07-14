@@ -29,7 +29,7 @@ const Footer = () => {
       <div className="border-b border-luxury-border py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-gold-500 font-serif mb-1">Since 1973 · Surat, India</p>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-gold-500 font-serif mb-1">Since 1973 · Surat (Gujarat), India</p>
             <p className="text-luxury-text font-serif text-sm md:text-base tracking-wide">
               Precision Crafted. Ethically Grown. Globally Trusted.
             </p>
@@ -66,7 +66,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-xs text-luxury-text-sec/75 leading-relaxed mb-5 font-sans">
-              Family-owned B2B diamond manufacturers from Surat, India. Pioneers in premium HPHT &amp; CVD lab-grown diamond production for global jewelry markets — Europe, UK &amp; USA.
+              Family-owned B2B diamond manufacturers from Surat (Gujarat), India. Pioneers in premium HPHT &amp; CVD lab-grown diamond production for global jewelry markets — Europe, UK &amp; USA.
             </p>
 
             {/* Capabilities Snapshot */}

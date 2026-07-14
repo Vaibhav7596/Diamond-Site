@@ -44,14 +44,14 @@ export const translations = {
 
     // Home Page
     home: {
-      heroTitle: "Wholesale HPHT Lab-Grown Diamonds for European Jewelry Businesses",
-      heroSubtitle: "Directly exported from Surat, India with premium quality, international certification, and reliable global shipping.",
+      heroTitle: "Wholesale HPHT Lab-Grown Diamonds for Global Jewellery Businesses",
+      heroSubtitle: "Directly exported from Surat (Gujarat), India, serving jewellers, manufacturers, wholesalers, and retailers across the USA, Europe, UK, and worldwide with premium quality, international certification, and reliable global shipping.",
       trust: {
         heritage: "Heritage Since 1973",
         specialists: "HPHT Specialists",
         certified: "IGI/GIA Certified",
         export: "Global Export Support",
-        direct: "Direct from Surat, India"
+        direct: "Direct from Surat (Gujarat), India"
       },
       whyUs: {
         title: "Why Global Jewelry Brands Partner With Us",
@@ -649,14 +649,14 @@ export const translations = {
 
     // Home Page
     home: {
-      heroTitle: "Diamanti da Laboratorio HPHT all'Ingrosso per Gioiellerie Europee",
-      heroSubtitle: "Esportati direttamente da Surat, India, con qualità premium, certificazione internazionale e spedizione globale affidabile.",
+      heroTitle: "Diamanti da laboratorio HPHT all'ingrosso per aziende di gioielleria globali",
+      heroSubtitle: "Esportati direttamente da Surat (Gujarat), India, al servizio di gioiellieri, produttori, grossisti e rivenditori negli Stati Uniti, in Europa, nel Regno Unito e in tutto il mondo con qualità premium, certificazione internazionale e spedizione globale affidabile.",
       trust: {
         heritage: "Tradizione Dal 1973",
         specialists: "Specialisti HPHT",
         certified: "Certificato IGI/GIA",
         export: "Supporto Esportazione Globale",
-        direct: "Direttamente da Surat, India"
+        direct: "Direttamente da Surat (Gujarat), India"
       },
       whyUs: {
         title: "Perché i Brand di Gioielli Europei Collaborano con Noi",
@@ -862,7 +862,7 @@ export const translations = {
         tagline: "Sicuro e Assicurato",
         title: "Imballaggio ed Esportazione",
         body: "I diamanti certificati vengono inseriti in porta-gemme individuali antimanomissione, sigillati con i numeri di certificazione visibili attraverso l'imballaggio. Gli ordini vengono spediti tramite corrieri blindati — Malca-Amit o Brinks — con assicurazione a valore pieno dalla nostra struttura di Surat fino alla porta dell'acquirente in Europa.",
-        route1: "Surat, India",
+        route1: "Surat (Gujarat), India",
         route2: "Sdoganamento",
         route3: "Cargo Aereo Blindato",
         route4: "Consegna in Europa",
@@ -1093,14 +1093,14 @@ export const translations = {
 
     // Home Page
     home: {
-      heroTitle: "Diamants de Laboratoire HPHT en Gros pour la Bijouterie Européenne",
-      heroSubtitle: "Exportés directement de Surat, Inde, avec une qualité de premier choix, une certification internationale et une expédition mondiale fiable.",
+      heroTitle: "Diamants de laboratoire HPHT en gros pour les entreprises de joaillerie mondiales",
+      heroSubtitle: "Exportés directement de Surat (Gujarat), Inde, au service des bijoutiers, fabricants, grossistes et détaillants aux États-Unis, en Europe, au Royaume-Uni et dans le monde entier avec une qualité de premier choix, une certification internationale et une expédition mondiale fiable.",
       trust: {
         heritage: "Héritage Depuis 1973",
         specialists: "Spécialistes HPHT",
         certified: "Certifié IGI/GIA",
         export: "Support Export Mondial",
-        direct: "Direct de Surat, Inde"
+        direct: "Direct de Surat (Gujarat), Inde"
       },
       whyUs: {
         title: "Pourquoi les Marques de Bijoux Européennes Nous Font Confiance",
@@ -1238,7 +1238,7 @@ export const translations = {
         tagline: "Sécurisé et Assuré",
         title: "Emballage et Exportation",
         body: "Les diamants certifiés sont soigneusement placés dans des porte-gemmes individuels inviolables, scellés avec les numéros de certification visibles à travers l'emballage. Les commandes sont ensuite expédiées via des services de messagerie blindés — Malca-Amit ou Brinks — avec une assurance à pleine valeur de notre établissement de Surat jusqu'à la porte de l'acheteur en Europe.",
-        route1: "Surat, Inde",
+        route1: "Surat (Gujarat), Inde",
         route2: "Dédouanement",
         route3: "Fret Aérien Blindé",
         route4: "Livraison Europe",

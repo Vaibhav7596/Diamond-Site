@@ -6,7 +6,7 @@ const InteractiveMap = () => {
 
   // Larger viewbox: 1000x500
   const nodes = {
-    surat:  { x: 620, y: 280, label: 'Surat, India',        desc: 'Global Manufacturing & Export HQ' },
+    surat:  { x: 620, y: 280, label: 'Surat (Gujarat), India',        desc: 'Global Manufacturing & Export HQ' },
     italy:  { x: 370, y: 185, label: 'Milan / Rome, Italy', desc: '2–3 Days Transit · Duty-Cleared Door-to-Door' },
     france: { x: 300, y: 150, label: 'Paris, France',       desc: '3 Days Transit · Fully Insured Armored Courier' },
     europe: { x: 340, y: 135, label: 'Antwerp / Zurich',    desc: '3–5 Days · Custom Arrangement Across Europe' },
