@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rsutariyaexports.com/sitemap.xml
+Sitemap: https://rsutariyaexports.com/sitemap.xml
