@@ -35,6 +35,8 @@ const Contact = () => {
     }
   }, [location]);
 
+  const [honeypot, setHoneypot] = useState(''); // bot trap
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -45,47 +47,60 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Bot protection — if honeypot field is filled, silently reject
+    if (honeypot) return;
+
     setIsSubmitting(true);
     setErrorMsg('');
 
-    // Google Apps Script Webhook endpoint (configure here)
-    const webhookUrl = '';
-
-    // Build email body as fallback / primary route
-    const emailBody = [
-      `Full Name: ${formData.fullName}`,
-      `Company: ${formData.companyName}`,
-      `Country: ${formData.country}`,
-      `Email: ${formData.email}`,
-      `WhatsApp: ${formData.whatsappNumber}`,
-      `Diamond Shape: ${formData.diamondShape}`,
-      `Carat Requirement: ${formData.caratRequirement}`,
-      `Quantity: ${formData.quantityRequirement}`,
-      `Message: ${formData.message || 'N/A'}`,
-    ].join('%0A');
-
-    const mailtoLink = `mailto:rsutariyaexports@gmail.com?subject=B2B%20Diamond%20Inquiry%20-%20${encodeURIComponent(formData.companyName || formData.fullName)}&body=${emailBody}`;
-
     try {
-      if (webhookUrl) {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
+      const payload = {
+        access_key: '396b0ebd-4616-45e2-9daa-8f49bfa2a7da',
+        subject: `B2B Diamond Inquiry — ${formData.companyName || formData.fullName}`,
+        from_name: formData.fullName,
+        replyto: formData.email,
+        // Email body fields
+        'Full Name': formData.fullName,
+        'Company Name': formData.companyName,
+        'Country': formData.country,
+        'Email Address': formData.email,
+        'WhatsApp Number': formData.whatsappNumber,
+        'Diamond Shape': formData.diamondShape,
+        'Carat Requirement': formData.caratRequirement,
+        'Quantity Requirement': formData.quantityRequirement,
+        'Additional Message': formData.message || 'N/A',
+      };
+
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        // Reset form
+        setFormData({
+          fullName: '',
+          companyName: '',
+          country: '',
+          email: '',
+          whatsappNumber: '',
+          diamondShape: '',
+          caratRequirement: '',
+          quantityRequirement: '',
+          message: ''
         });
-        setIsSubmitting(false);
-        setIsSubmitted(true);
       } else {
-        // Open mailto: link so the inquiry always reaches rsutariyaexports@gmail.com
-        window.location.href = mailtoLink;
-        await new Promise(resolve => setTimeout(resolve, 1200));
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+        throw new Error(data.message || 'Submission failed');
       }
     } catch (err) {
       setIsSubmitting(false);
-      setErrorMsg('Submission failed. Please contact us directly via WhatsApp or Email.');
+      setErrorMsg('Submission failed. Please contact us directly via WhatsApp or Email at rsutariyaexports@gmail.com');
     }
   };
 
@@ -220,6 +235,14 @@ const Contact = () => {
                     )}
 
                     <form onSubmit={handleSubmit} className="space-y-6 text-xs text-luxury-text-sec font-sans">
+                      {/* Honeypot anti-spam trap */}
+                      <input 
+                        type="checkbox" 
+                        name="botcheck" 
+                        className="hidden" 
+                        style={{ display: 'none' }} 
+                        onChange={(e) => setHoneypot(e.target.checked ? 'spammer' : '')} 
+                      />
                       
                       {/* Name / Company */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
