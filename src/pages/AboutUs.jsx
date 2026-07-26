@@ -34,10 +34,10 @@ const AboutUs = () => {
     : [];
 
   return (
-    <div className="bg-luxury-bg text-luxury-text transition-colors duration-500">
+    <div className="bg-transparent text-luxury-text transition-colors duration-500">
 
       {/* ── HERO HEADER ───────────────────────────────── */}
-      <section className="relative py-28 md:py-40 bg-luxury-bg-sec border-b border-luxury-border overflow-hidden">
+      <section className="relative py-28 md:py-40 bg-luxury-bg-sec/80 backdrop-blur-md border-b border-luxury-border overflow-hidden">
         {/* decorative background word */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
           <span className="text-[18vw] font-serif font-bold text-luxury-border/30 leading-none tracking-widest uppercase">Heritage</span>

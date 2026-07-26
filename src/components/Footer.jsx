@@ -23,7 +23,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-luxury-bg-sec border-t border-luxury-border text-luxury-text-sec font-serif transition-colors duration-500">
+    <footer className="relative z-10 bg-luxury-bg-sec/90 backdrop-blur-md border-t border-luxury-border text-luxury-text-sec font-serif transition-colors duration-500">
 
       {/* ── Tagline Belt ── */}
       <div className="border-b border-luxury-border py-8">

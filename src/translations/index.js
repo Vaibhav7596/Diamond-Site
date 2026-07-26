@@ -154,6 +154,10 @@ export const translations = {
         certsLabel: "Certification Support",
         certsVal: "IGI / GIA / HRD / IIDGR"
       },
+      marquee: {
+        title: "OUR MASTERPIECE DIAMOND SHAPES",
+        subtitle: "From classic brilliant rounds to bespoke fancy cuts, engineered with extreme optical accuracy from raw carbon seed to final polish."
+      },
       creationDelivery: {
         title: "From Creation to Delivery",
         subtitle: "Every diamond follows a carefully managed journey from advanced growth technology to secure international delivery.",
@@ -753,6 +757,10 @@ export const translations = {
         colorVal: "D – M",
         certsLabel: "Certificazioni supportate",
         certsVal: "IGI / GIA / HRD / IIDGR"
+      },
+      marquee: {
+        title: "LE NOSTRE FORME DI DIAMANTI ESCLUSIVE",
+        subtitle: "Dai classici tagli rotondi brillante alle forme fantasia su misura, realizzati con estrema precisione ottica."
       },
       creationDelivery: {
         title: "Dalla creazione alla consegna",

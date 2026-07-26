@@ -6,6 +6,7 @@ import { useCanonical } from './utils/useCanonical';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LanguageSelection from './components/LanguageSelection';
+import AmbientBackground from './components/AmbientBackground';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 
 // Import Pages
@@ -87,11 +88,11 @@ const MainLayout = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-luxury-bg text-luxury-text transition-colors duration-500 overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-transparent text-luxury-text transition-colors duration-500 relative">
       <ScrollProgress />
       <ScrollToTop />
       <Navbar />
-      <main className="flex-grow pt-[64px]">
+      <main className="flex-grow pt-[64px] relative z-10 bg-transparent">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<AnimatedPage><Home /></AnimatedPage>} />
@@ -114,9 +115,12 @@ function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <Router>
-          <MainLayout />
-        </Router>
+        <div className="relative min-h-screen bg-luxury-bg text-luxury-text transition-colors duration-500 overflow-x-hidden">
+          <AmbientBackground />
+          <Router>
+            <MainLayout />
+          </Router>
+        </div>
       </LanguageProvider>
     </ThemeProvider>
   );

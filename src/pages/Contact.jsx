@@ -107,7 +107,7 @@ const Contact = () => {
   const diamondShapes = ["Round", "Oval", "Princess", "Pear", "Radiant", "Cushion", "Other / Mixed Parcel"];
 
   return (
-    <div className="bg-luxury-bg text-luxury-text transition-colors duration-500">
+    <div className="bg-transparent text-luxury-text transition-colors duration-500">
       
       {/* Header */}
       <section className="relative py-28 md:py-36 bg-luxury-bg-sec border-b border-luxury-border">

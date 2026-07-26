@@ -6,6 +6,7 @@ import { staggerContainer, fadeUpItem, cardHoverProps, btnHoverProps, btnGhostHo
 import LightReflect from '../components/LightReflect';
 import NumberCounter from '../components/NumberCounter';
 import VideoHero from '../components/VideoHero';
+import DiamondMarquee from '../components/DiamondMarquee';
 import heroDiamond from '../assets/hero_diamond.png';
 import { 
   Award, ShieldCheck, Factory, Truck, UserCheck, 
@@ -181,16 +182,16 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-luxury-bg text-luxury-text transition-colors duration-500">
+    <div className="bg-transparent text-luxury-text transition-colors duration-500">
 
       {/* 1. Hero Section — Cinematic video scroll experience */}
       <VideoHero t={t} heroWords={t('home.heroTitle').split(' ')} />
 
       {/* Rest of page content */}
-      <div className="relative z-10 bg-luxury-bg">
+      <div className="relative z-10 bg-transparent">
 
       {/* 2. Trust Indicators Banner */}
-      <section className="bg-luxury-bg-sec border-y border-luxury-border py-10 relative overflow-hidden">
+      <section className="bg-luxury-bg-sec/80 backdrop-blur-md border-y border-luxury-border py-10 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center lg:justify-between items-center gap-6 md:gap-8 text-center">
             {trustIndicators.map((text, idx) => (
@@ -211,7 +212,7 @@ const Home = () => {
       </section>
 
       {/* 3. About Our Heritage Section */}
-      <section className="py-24 md:py-32 bg-luxury-bg border-b border-luxury-border relative">
+      <section className="py-24 md:py-32 bg-luxury-bg/75 backdrop-blur-md border-b border-luxury-border relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <motion.div 
@@ -271,7 +272,7 @@ const Home = () => {
       </section>
 
       {/* 4. Why Choose R Sutariya Exports */}
-      <section className="py-24 md:py-32 bg-luxury-bg-sec border-b border-luxury-border">
+      <section className="py-24 md:py-32 bg-luxury-bg-sec/80 backdrop-blur-md border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">Direct Value Chain</span>
@@ -295,12 +296,12 @@ const Home = () => {
                 key={idx}
                 variants={fadeUpItem}
                 {...cardHoverProps}
-                className="bg-luxury-card border border-luxury-card-border p-8 rounded-sm hover:border-gold-500/30 transition-colors duration-300 group cursor-default"
+                className="bg-luxury-card/85 backdrop-blur-md border border-luxury-card-border p-8 rounded-xl hover:border-gold-500/30 transition-colors duration-300 group cursor-default"
               >
                 <motion.div
                   whileHover={{ rotate: 180, borderColor: '#967b45' }}
                   transition={{ duration: 0.4, ease: [0.16,1,0.3,1] }}
-                  className="w-10 h-10 border border-luxury-border rotate-45 flex items-center justify-center mb-6 bg-luxury-bg"
+                  className="w-10 h-10 border border-luxury-border rotate-45 flex items-center justify-center mb-6 bg-luxury-bg/80"
                 >
                   <div className="-rotate-45">{item.icon}</div>
                 </motion.div>
@@ -317,7 +318,7 @@ const Home = () => {
       </section>
 
       {/* 5. Industries We Serve Section */}
-      <section className="py-24 md:py-32 bg-luxury-bg border-b border-luxury-border">
+      <section className="py-24 md:py-32 bg-luxury-bg/75 backdrop-blur-md border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-2">B2B Core Targets</span>
@@ -341,12 +342,12 @@ const Home = () => {
                 key={idx}
                 variants={fadeUpItem}
                 {...cardHoverProps}
-                className="bg-luxury-card border border-luxury-card-border p-6 rounded-sm hover:border-gold-500/25 transition-colors duration-300 group flex items-start gap-4 cursor-default"
+                className="bg-luxury-card/85 backdrop-blur-md border border-luxury-card-border p-6 rounded-xl hover:border-gold-500/25 transition-colors duration-300 group flex items-start gap-4 cursor-default"
               >
                 <motion.div
                   whileHover={{ scale: 1.15, color: '#c5a880' }}
                   transition={{ duration: 0.25 }}
-                  className="w-10 h-10 border border-luxury-border flex items-center justify-center bg-luxury-bg shrink-0 group-hover:border-gold-500 transition-colors duration-300"
+                  className="w-10 h-10 border border-luxury-border flex items-center justify-center bg-luxury-bg/80 shrink-0 group-hover:border-gold-500 transition-colors duration-300 rounded-lg"
                 >
                   {item.icon}
                 </motion.div>
@@ -365,7 +366,7 @@ const Home = () => {
       </section>
 
       {/* 6. Product Capabilities Section */}
-      <section className="py-24 md:py-32 bg-luxury-bg-sec border-b border-luxury-border">
+      <section className="py-24 md:py-32 bg-luxury-bg-sec/80 backdrop-blur-md border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -379,7 +380,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="lg:col-span-8 bg-luxury-card border border-luxury-card-border p-8 rounded-sm">
+            <div className="lg:col-span-8 bg-luxury-card/85 backdrop-blur-md border border-luxury-card-border p-8 rounded-xl">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {[
                   { label: t('home.capabilities.shapesLabel'), val: t('home.capabilities.shapesVal') },
@@ -414,7 +415,7 @@ const Home = () => {
       </section>
 
       {/* 7. Trust Statistics Section (Updated number counters) */}
-      <section className="py-24 md:py-32 bg-luxury-bg border-b border-luxury-border">
+      <section className="py-24 md:py-32 bg-luxury-bg/75 backdrop-blur-md border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 divide-x-0 md:divide-x divide-luxury-border/60 gap-y-12 md:gap-y-0"
@@ -467,6 +468,9 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* 7.5. Infinite Diamond Shapes Marquee */}
+      <DiamondMarquee />
 
       {/* 8. Featured Shape Collections */}
       <section className="py-24 md:py-32 bg-luxury-bg-sec border-b border-luxury-border">

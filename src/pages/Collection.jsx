@@ -167,10 +167,10 @@ const Collection = () => {
   ];
 
   return (
-    <div className="bg-luxury-bg text-luxury-text transition-colors duration-500 min-h-screen">
+    <div className="bg-transparent text-luxury-text transition-colors duration-500 min-h-screen">
       
       {/* 1. Header */}
-      <section className="relative py-20 md:py-28 bg-luxury-bg-sec border-b border-luxury-border">
+      <section className="relative py-20 md:py-28 bg-luxury-bg-sec/75 backdrop-blur-md border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <span className="text-[10px] uppercase tracking-widest text-gold-500 font-serif font-bold block mb-3 font-semibold">Core Diamond Catalog</span>
           <motion.h1 
@@ -193,7 +193,7 @@ const Collection = () => {
       </section>
 
       {/* 2. Interactive B2B Catalog Panel */}
-      <section id="explorer" className="py-12 md:py-20 bg-luxury-bg border-b border-luxury-border">
+      <section id="explorer" className="py-12 md:py-20 bg-luxury-bg/70 backdrop-blur-md border-b border-luxury-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* ═══ MOBILE LAYOUT ═══════════════════════════════════════════ */}
