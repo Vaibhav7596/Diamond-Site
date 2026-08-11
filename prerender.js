@@ -221,7 +221,7 @@ const PAGES = [
             '@type': 'ContactPoint',
             contactType: 'sales',
             telephone: '+91-9898507686',
-            email: 'rsutariyaexports@gmail.com',
+            email: 'sales.rsutariyaexports@gmail.com',
             availableLanguage: ['English', 'Italian', 'French', 'Hindi', 'Gujarati'],
             areaServed: ['IN', 'IT', 'FR', 'BE', 'NL', 'CH', 'DE', 'GB', 'US'],
             hoursAvailable: {

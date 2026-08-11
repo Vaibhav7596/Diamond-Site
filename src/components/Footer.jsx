@@ -138,8 +138,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-gold-500 shrink-0" />
-                <a href="mailto:rsutariyaexports@gmail.com" className="hover:text-gold-500 transition-colors font-serif">
-                  rsutariyaexports@gmail.com
+                <a href="mailto:sales.rsutariyaexports@gmail.com" className="hover:text-gold-500 transition-colors font-serif">
+                  sales.rsutariyaexports@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -179,7 +179,7 @@ const Footer = () => {
               WhatsApp Inquiry
             </a>
             <a
-              href="mailto:rsutariyaexports@gmail.com"
+              href="mailto:sales.rsutariyaexports@gmail.com"
               className="inline-flex items-center gap-2 justify-center w-full py-2.5 border border-luxury-border hover:border-gold-500/50 text-luxury-text-sec hover:text-gold-500 font-serif text-xs uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer"
             >
               <Mail className="w-3.5 h-3.5" />
