@@ -44,7 +44,7 @@ export const translations = {
 
     // Home Page
     home: {
-      heroTitle: "Wholesale HPHT Lab-Grown Diamonds for Global Jewellery Businesses",
+      heroTitle: "HPHT & CVD Lab-Grown Diamonds for Global Jewellery Businesses",
       heroSubtitle: "Directly exported from Surat (Gujarat), India, serving jewellers, manufacturers, wholesalers, and retailers across the USA, Europe, UK, and worldwide with premium quality, international certification, and reliable global shipping.",
       trust: {
         heritage: "Heritage Since 1973",
@@ -413,8 +413,8 @@ export const translations = {
       storyTitle: "Our Heritage & Vision",
       storySubtitle: "Decades of diamond mastery, evolving from natural gems to next-generation HPHT technology.",
       heroTagline: "From a Gujarat Village to European Markets",
-      heroTitle: "Our Story",
-      heroSubtitle: "A journey shaped by craftsmanship, family values, and generations of dedication to diamonds.",
+      heroTitle: "About R SUTARIYA EXPORTS",
+      heroSubtitle: "Three generations of diamond cutting and polishing craftsmanship, evolving from natural diamonds to next-generation HPHT lab-grown manufacturing in Surat, Gujarat.",
       storyTagline: "The R SUTARIYA Story",
       storyHeading: "Generations of Diamond Mastery",
       p1: "Our story began in a small village in the Bhavnagar district of Gujarat, India. Driven by determination and craftsmanship, our founder and his brothers entered the diamond industry as workers — learning every aspect of diamond polishing through hands-on experience and dedication.",
@@ -494,8 +494,8 @@ export const translations = {
 
     // Collection Page
     collectionPage: {
-      title: "Our HPHT Diamond Collection",
-      subtitle: "B2B catalog of premium shapes. All diamonds are GIA/IGI certified. Price is available on quotation.",
+      title: "Wholesale Lab-Grown Diamond Shapes",
+      subtitle: "Factory-direct B2B catalog of IGI, GIA & HRD certified HPHT & CVD loose diamonds across 16+ shapes, custom length-to-width ratios, and calibrated parcels from Surat, India.",
       shape: "Shape",
       caratRange: "Carat Range",
       colors: "Color Range",
@@ -521,8 +521,8 @@ export const translations = {
 
     // Certifications Page
     certsPage: {
-      title: "Certifications & Quality Standards",
-      subtitle: "Independent laboratory verification guaranteeing absolute quality and B2B transparency.",
+      title: "Lab-Grown Diamond Certification",
+      subtitle: "Independent IGI, GIA & HRD laboratory verification guaranteeing authentic 4C grading, Type IIa growth confirmation, and laser girdle inscription.",
       igiTitle: "IGI (International Gemological Institute)",
       igiDesc: "The global benchmark in lab-grown diamond grading. Each certificate verifies growth method (HPHT), color, clarity, and laser inscriptions.",
       igiDetail: "International certification support available upon request. IGI certifies diamond growth type, color, and clarity with full digital verification.",
@@ -558,8 +558,8 @@ export const translations = {
 
     // Export Page
     exportPage: {
-      title: "B2B Export & Shipping Process",
-      subtitle: "Seamless door-to-door delivery from Surat to European workshops with full insurance.",
+      title: "Lab-Grown Diamond Exporter India",
+      subtitle: "Secure, fully insured door-to-door diamond shipping from Surat to the USA, Italy, France, UK, and worldwide with full export customs clearance.",
       steps: {
         step1: "1. Inquiry",
         step1Desc: "Specify your shape, carat, color, and clarity needs via our portal or WhatsApp.",
@@ -590,8 +590,8 @@ export const translations = {
 
     // Contact Page
     contactPage: {
-      title: "Initiate B2B Inquiry",
-      subtitle: "Contact our Surat office or submit details below. We cater specifically to European wholesalers and ateliers.",
+      title: "Contact Our Diamond Export Team",
+      subtitle: "Direct factory supply and wholesale quotations for certified HPHT & CVD lab-grown diamonds from Surat (Gujarat), India. Inquiries answered within 24 hours.",
       formTitle: "Source HPHT Diamonds",
       name: "Full Name",
       company: "Company Name",
@@ -894,8 +894,8 @@ export const translations = {
       storyTitle: "La Nostra Storia e Visione",
       storySubtitle: "Decenni di maestria nel settore dei diamanti, evolvendo dalle gemme naturali alla tecnologia HPHT di nuova generazione.",
       heroTagline: "Da un villaggio del Gujarat ai mercati europei",
-      heroTitle: "La Nostra Storia",
-      heroSubtitle: "Un viaggio plasmato dall'artigianato, dai valori familiari e da generazioni di dedizione ai diamanti.",
+      heroTitle: "Chi Siamo — R SUTARIYA EXPORTS",
+      heroSubtitle: "Tre generazioni di maestria nel taglio e nella lucidatura dei diamanti a Surat, India.",
       storyTagline: "La storia di R SUTARIYA",
       storyHeading: "Generazioni di maestria nei diamanti",
       p1: "La nostra storia è iniziata in un piccolo villaggio nel distretto di Bhavnagar del Gujarat, in India. Spinti da determinazione e spirito artigianale, il nostro fondatore e i suoi fratelli sono entrati nell'industria dei diamanti come operai, apprendendo ogni aspetto della lucidatura dei diamanti attraverso l'esperienza diretta e la dedizione.",
@@ -974,8 +974,8 @@ export const translations = {
 
     // Collection Page
     collectionPage: {
-      title: "Collezione Diamanti HPHT",
-      subtitle: "Catalogo B2B di forme premium. Tutti i diamanti sono certificati GIA/IGI. Prezzi disponibili su preventivo.",
+      title: "Forme di Diamanti da Laboratorio all'Ingrosso",
+      subtitle: "Catalogo B2B di diamanti sintetici HPHT e CVD certificati IGI, GIA e HRD in oltre 16 forme, direttamente da Surat, India.",
       shape: "Forma",
       caratRange: "Gamma Carati",
       colors: "Gamma Colore",
@@ -987,8 +987,8 @@ export const translations = {
 
     // Certifications Page
     certsPage: {
-      title: "Certificazioni e Standard di Qualità",
-      subtitle: "Verifiche di laboratori indipendenti per garantire qualità assoluta e trasparenza B2B.",
+      title: "Certificazione dei Diamanti da Laboratorio",
+      subtitle: "Verifica indipendente dei laboratori IGI, GIA e HRD per garantire qualità 4C e trasparenza assoluta.",
       igiTitle: "IGI (International Gemological Institute)",
       igiDesc: "Il punto di riferimento globale nella classificazione dei diamanti da laboratorio. Ogni certificato verifica il metodo di crescita (HPHT), il colore, la purezza e le iscrizioni laser.",
       giaTitle: "GIA (Gemological Institute of America)",
@@ -1006,8 +1006,8 @@ export const translations = {
 
     // Export Page
     exportPage: {
-      title: "Processo di Esportazione B2B",
-      subtitle: "Consegna porta a porta senza interruzioni da Surat ai laboratori europei con assicurazione totale.",
+      title: "Esportatore di Diamanti da Laboratorio dall'India",
+      subtitle: "Spedizioni sicure e assicurate porta a porta da Surat verso Italia, Francia, Regno Unito, USA e tutto il mondo.",
       steps: {
         step1: "1. Richiesta",
         step1Desc: "Specifica forma, carati, colore e purezza tramite il nostro modulo o WhatsApp.",
@@ -1038,8 +1038,8 @@ export const translations = {
 
     // Contact Page
     contactPage: {
-      title: "Invia una Richiesta B2B",
-      subtitle: "Contatta il nostro ufficio di Surat o compila il modulo sottostante. Assistiamo grossisti e atelier europei.",
+      title: "Contatta il Nostro Team di Esportazione Diamanti",
+      subtitle: "Richiedi quotazioni all'ingrosso e ordini personalizzati direttamente dai nostri uffici di Surat, India.",
       formTitle: "Fornitura Diamanti HPHT",
       name: "Nome Completo",
       company: "Nome Azienda",
@@ -1271,8 +1271,8 @@ export const translations = {
       storyTitle: "Notre Héritage et Vision",
       storySubtitle: "Des décennies de maîtrise du diamant, évoluant des gemmes naturelles vers la technologie HPHT de pointe.",
       heroTagline: "D'un village du Gujarat aux marchés européens",
-      heroTitle: "Notre Histoire",
-      heroSubtitle: "Un voyage façonné par l'artisanat, les valeurs familiales et des générations de dévouement aux diamants.",
+      heroTitle: "À Propos de R SUTARIYA EXPORTS",
+      heroSubtitle: "Trois générations d'artisanat dans la taille et le polissage de diamants à Surat, en Inde.",
       storyTagline: "L'histoire de R SUTARIYA",
       storyHeading: "Des générations de maîtrise du diamant",
       p1: "Notre histoire a commencé dans un petit village du district de Bhavnagar au Gujarat, en Inde. Guidés par la détermination et l'artisanat, notre fondateur et ses frères sont entrés dans l'industrie du diamant en tant qu'ouvriers, apprenant chaque aspect du polissage des diamants grâce à une expérience pratique et un dévouement sans faille.",
@@ -1351,8 +1351,8 @@ export const translations = {
 
     // Collection Page
     collectionPage: {
-      title: "Collection de Diamants HPHT",
-      subtitle: "Catalogue B2B de formes premium. Tous les diamants sont certificés GIA/IGI. Tarifs sur devis.",
+      title: "Formes de Diamants de Laboratoire en Gros",
+      subtitle: "Catalogue B2B de diamants de synthèse HPHT et CVD certifiés IGI, GIA et HRD dans plus de 16 formes depuis Surat, Inde.",
       shape: "Forme",
       caratRange: "Plage de Carats",
       colors: "Gamme de Couleurs",
@@ -1378,8 +1378,8 @@ export const translations = {
 
     // Certifications Page
     certsPage: {
-      title: "Certifications et Normes de Qualité",
-      subtitle: "Vérification par des laboratoires indépendants pour garantir une qualité absolue et la transparence B2B.",
+      title: "Certification des Diamants de Laboratoire",
+      subtitle: "Vérification indépendante par les laboratoires IGI, GIA et HRD garantissant une traçabilité et une qualité 4C irréprochables.",
       igiTitle: "IGI (International Gemological Institute)",
       igiDesc: "La référence mondiale pour la classification des diamants de laboratoire. Chaque certificat atteste de la méthode de croissance (HPHT), de la couleur, de la pureté et comporte une inscription laser.",
       igiDetail: "Support de certification internationale disponible sur demande. L'IGI atteste de la méthode de croissance, de la couleur et de la pureté avec une vérification en ligne complète.",
@@ -1415,8 +1415,8 @@ export const translations = {
 
     // Export Page
     exportPage: {
-      title: "Processus d'Exportation B2B",
-      subtitle: "Livraison porte-à-porte sécurisée de Surat jusqu'aux ateliers européens avec assurance complète.",
+      title: "Exportateur de Diamants de Laboratoire en Inde",
+      subtitle: "Expéditions internationales sécurisées et assurées de Surat vers la France, l'Italie, le Royaume-Uni, les États-Unis et le monde entier.",
       steps: {
         step1: "1. Demande",
         step1Desc: "Spécifiez vos besoins (forme, carats, couleur, pureté) via notre portail ou WhatsApp.",
@@ -1447,8 +1447,8 @@ export const translations = {
 
     // Contact Page
     contactPage: {
-      title: "Initier une Demande B2B",
-      subtitle: "Contactez notre bureau de Surat ou soumettez le formulaire ci-dessous. Nous desservons spécifiquement les grossistes et joailliers européens.",
+      title: "Contactez Notre Équipe d'Exportation de Diamants",
+      subtitle: "Demandez des devis de gros et des commandes personnalisées directement auprès de notre équipe à Surat, Inde.",
       formTitle: "Approvisionnement Diamants HPHT",
       name: "Nom Complet",
       company: "Nom de l'Entreprise",

@@ -10,6 +10,7 @@ const JourneyLayout = ({ sidebar, children }) => {
       
       {/* Main Content Area */}
       <main className="bg-luxury-bg w-full">
+        <h1 className="sr-only">The Diamond Journey | HPHT Lab-Grown Diamond Manufacturing Process</h1>
         <div className="w-full mx-auto px-6 lg:px-12 py-6 space-y-6">
           {children}
         </div>

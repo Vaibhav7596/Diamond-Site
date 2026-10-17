@@ -33,9 +33,9 @@ const LanguageSelection = () => {
           </div>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-serif tracking-widest uppercase mb-3 gold-gradient-text">
+        <h2 className="text-4xl md:text-5xl font-serif tracking-widest uppercase mb-3 gold-gradient-text">
           R SUTARIYA EXPORTS
-        </h1>
+        </h2>
         <p className="text-gold-300 font-serif tracking-widest text-xs uppercase mb-12">
           Surat • Antwerp • Milan • Paris
         </p>

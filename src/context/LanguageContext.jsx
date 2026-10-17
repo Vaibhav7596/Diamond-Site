@@ -5,8 +5,28 @@ const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguageState] = useState(() => {
-    const saved = localStorage.getItem('language');
-    // Default to empty string to trigger LanguageSelection page if not set
+    // 1. Check URL query param ?lang=en|it|fr
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const langParam = urlParams.get('lang');
+      if (langParam && ['en', 'it', 'fr'].includes(langParam)) {
+        localStorage.setItem('language', langParam);
+        return langParam;
+      }
+    }
+
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('language') : '';
+
+    // 2. If running in browser and a search crawler/bot is detected, or user landed on a deep subpage, default to 'en'
+    if (typeof window !== 'undefined') {
+      const isBot = /bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex|chrome-lighthouse|headless/i.test(navigator.userAgent);
+      if (isBot) return 'en';
+      if (window.location.pathname !== '/') {
+        return saved || 'en';
+      }
+    }
+
+    // Default to empty string on root '/' to trigger LanguageSelection page if not set
     return saved || '';
   });
 

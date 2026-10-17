@@ -31,12 +31,12 @@ const Step08 = ({ onNext }) => {
           <div className="text-gold-primary tracking-widest text-xs font-serif uppercase mb-6">
             STEP 08 / 08
           </div>
-          <h1 className="text-3xl lg:text-4xl font-serif text-luxury-text uppercase tracking-wide mb-2">
+          <h2 className="text-3xl lg:text-4xl font-serif text-luxury-text uppercase tracking-wide mb-2">
             {data.title}
-          </h1>
-          <h2 className="text-sm lg:text-base font-medium text-gold-primary uppercase tracking-[0.15em] mb-6">
-            {data.subtitle}
           </h2>
+          <h3 className="text-sm lg:text-base font-medium text-gold-primary uppercase tracking-[0.15em] mb-6">
+            {data.subtitle}
+          </h3>
           <p className="text-luxury-text-sec text-sm leading-relaxed mt-4 mb-10">
             {data.description}
           </p>
