@@ -83,7 +83,7 @@ const ExportShipping = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, ease: 'easeOut', delay: 0.1 }}
-            className="text-4xl md:text-5xl font-serif tracking-wide mb-6 leading-tight text-luxury-text uppercase"
+            className="text-4xl md:text-5xl font-serif tracking-wide mb-6 leading-tight gold-gradient-text uppercase"
           >
             {t('exportPage.title')}
           </motion.h1>
